@@ -1,0 +1,56 @@
+# 忽略
+# 演示功能：
+# 1、忽略服务名访问
+# 2、忽略正则
+
+
+zuul:
+  routes:
+    api-passenger: /zuul-api-passenger/**
+    api-driver: /zuul-api-driver/**
+  ignored-services:
+  - api-driver
+#  ignored-patterns: 
+#  - /*-driver/**
+        
+server:
+  port: 9100
+
+spring:
+  application:
+    name: online-taxi-zuul
+    
+  #zipkin
+  zipkin:
+    base-url: http://localhost:9411/
+    #采样比例1，百分之八采样
+  sleuth:
+    sampler:
+      rate: 1 
+#注册中心
+eureka: 
+  client:
+    #设置服务注册中心的URL
+    service-url:                      
+      defaultZone: http://root:root@eureka-7900:7900/eureka/
+  instance: 
+    hostname: localhost
+    instance-id: online-taxi-zuul 
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      ##默认是never
+      show-details: ALWAYS
+      enabled: true
+    routes: 
+      enabled: true
+        
+logging:
+  level:
+    com.netflix: debug
+    org.springframework: DEBUG

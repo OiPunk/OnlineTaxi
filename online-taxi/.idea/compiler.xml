@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-client" />
+        <module name="online-taxi-demo-app" />
+        <module name="service-order" />
+        <module name="online-taxi-common" />
+        <module name="api-passenger" />
+        <module name="service-passenger-user" />
+        <module name="api-driver" />
+        <module name="service-wallet" />
+        <module name="cloud-admin" />
+        <module name="online-taxi-zuul" />
+        <module name="service-jms-consumer" />
+        <module name="service-sms" />
+        <module name="service-verification-code" />
+        <module name="service-order-dispatch" />
+        <module name="eureka" />
+        <module name="service-valuation" />
+        <module name="hystrix-dashboard" />
+        <module name="service-jms-produce" />
+        <module name="api-listen-order" />
+        <module name="config-client-diy" />
+        <module name="online-taxi-config-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api-driver" target="1.8" />
+      <module name="api-listen-order" target="1.8" />
+      <module name="api-passenger" target="1.8" />
+      <module name="cloud-admin" target="1.8" />
+      <module name="config-client" target="1.8" />
+      <module name="config-client-diy" target="1.8" />
+      <module name="eureka" target="1.8" />
+      <module name="hystrix-dashboard" target="1.8" />
+      <module name="online-taxi-common" target="1.8" />
+      <module name="online-taxi-config-server" target="1.8" />
+      <module name="online-taxi-demo-app" target="1.8" />
+      <module name="online-taxi-parent" target="1.5" />
+      <module name="online-taxi-zuul" target="1.8" />
+      <module name="service-app-update" target="1.8" />
+      <module name="service-jms-consumer" target="1.8" />
+      <module name="service-jms-produce" target="1.8" />
+      <module name="service-order" target="1.8" />
+      <module name="service-order-dispatch" target="1.8" />
+      <module name="service-passenger-user" target="1.8" />
+      <module name="service-sms" target="1.8" />
+      <module name="service-valuation" target="1.8" />
+      <module name="service-verification-code" target="1.8" />
+      <module name="service-wallet" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-driver" options="-parameters" />
+      <module name="api-listen-order" options="-parameters" />
+      <module name="api-passenger" options="-parameters" />
+      <module name="cloud-admin" options="-parameters" />
+      <module name="config-client" options="-parameters" />
+      <module name="config-client-diy" options="-parameters" />
+      <module name="eureka" options="-parameters" />
+      <module name="hystrix-dashboard" options="-parameters" />
+      <module name="online-taxi-common" options="-parameters" />
+      <module name="online-taxi-config-server" options="-parameters" />
+      <module name="online-taxi-demo-app" options="-parameters" />
+      <module name="online-taxi-zuul" options="-parameters" />
+      <module name="service-app-update" options="-parameters" />
+      <module name="service-jms-consumer" options="-parameters" />
+      <module name="service-jms-produce" options="-parameters" />
+      <module name="service-order" options="-parameters" />
+      <module name="service-order-dispatch" options="-parameters" />
+      <module name="service-passenger-user" options="-parameters" />
+      <module name="service-sms" options="-parameters" />
+      <module name="service-valuation" options="-parameters" />
+      <module name="service-verification-code" options="-parameters" />
+      <module name="service-wallet" options="-parameters" />
+    </option>
+  </component>
+</project>

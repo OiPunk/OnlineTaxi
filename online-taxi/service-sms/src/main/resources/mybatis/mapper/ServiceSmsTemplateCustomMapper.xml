@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.online.taxi.dao.mapper.ServiceSmsTemplateCustomMapper" >
+
+    <!-- 根据templateId查询模板 -->
+    <select id="selectByTemplateId" resultMap="com.online.taxi.dao.mapper.ServiceSmsTemplateMapper.BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="com.online.taxi.dao.mapper.ServiceSmsTemplateMapper.Base_Column_List" />
+        from service_sms_template
+        where template_id = #{templateId}
+    </select>
+
+</mapper>

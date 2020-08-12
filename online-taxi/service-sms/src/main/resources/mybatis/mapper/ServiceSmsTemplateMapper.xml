@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.online.taxi.dao.mapper.ServiceSmsTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.online.taxi.dao.entity.ServiceSmsTemplate" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="template_id" property="templateId" jdbcType="VARCHAR" />
+    <result column="template_name" property="templateName" jdbcType="VARCHAR" />
+    <result column="template_content" property="templateContent" jdbcType="VARCHAR" />
+    <result column="template_type" property="templateType" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, template_id, template_name, template_content, template_type, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from service_sms_template
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from service_sms_template
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.online.taxi.dao.entity.ServiceSmsTemplate" >
+    insert into service_sms_template (id, template_id, template_name, 
+      template_content, template_type, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{templateId,jdbcType=VARCHAR}, #{templateName,jdbcType=VARCHAR}, 
+      #{templateContent,jdbcType=VARCHAR}, #{templateType,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.online.taxi.dao.entity.ServiceSmsTemplate" >
+    insert into service_sms_template
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="templateId != null" >
+        template_id,
+      </if>
+      <if test="templateName != null" >
+        template_name,
+      </if>
+      <if test="templateContent != null" >
+        template_content,
+      </if>
+      <if test="templateType != null" >
+        template_type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="templateId != null" >
+        #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="templateName != null" >
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="templateContent != null" >
+        #{templateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="templateType != null" >
+        #{templateType,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.online.taxi.dao.entity.ServiceSmsTemplate" >
+    update service_sms_template
+    <set >
+      <if test="templateId != null" >
+        template_id = #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="templateName != null" >
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="templateContent != null" >
+        template_content = #{templateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="templateType != null" >
+        template_type = #{templateType,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.online.taxi.dao.entity.ServiceSmsTemplate" >
+    update service_sms_template
+    set template_id = #{templateId,jdbcType=VARCHAR},
+      template_name = #{templateName,jdbcType=VARCHAR},
+      template_content = #{templateContent,jdbcType=VARCHAR},
+      template_type = #{templateType,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

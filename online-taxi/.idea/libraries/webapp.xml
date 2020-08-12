@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="webapp">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/online-taxi-demo-app/src/main/webapp.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

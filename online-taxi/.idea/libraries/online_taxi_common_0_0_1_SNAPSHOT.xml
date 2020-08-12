@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="online-taxi-common-0.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/online-taxi-common/target/online-taxi-common-0.0.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

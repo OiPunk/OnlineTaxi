@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE generatorConfiguration 
+ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" 
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- 数据库驱动 这里的mysql驱动要求写绝对路径，有的版本可能不同 -->
+	<classPathEntry location="C:\Users\cpf\.m2\repository\mysql\mysql-connector-java\8.0.13\mysql-connector-java-8.0.13.jar" />
+	
+	<context id="DB2Tables">
+		<!--覆盖生成XML文件-->
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<!--数据库链接URL，用户名、密码 -->
+		<!-- 记得改好对应数据库信息，建议加上数据库后面加上?serverTimezone=UTC -->
+		<!-- 不明白可以看链接(https://blog.csdn.net/m0_37482190/article/details/88880923) -->
+
+		<!--我这里的driverClass="com.mysql.cj.jdbc.Driver" 中由于mysql版本问题，需要加.cj-->
+		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/online-taxi-three?serverTimezone=UTC&amp;nullCatalogMeansCurrent=true"
+			userId="root" password="root">
+		</jdbcConnection>
+
+		<!-- 记得修改对应的包名和存放路径 -->
+		<!-- 生成模型的包名和位置 -->
+		<javaModelGenerator
+				targetPackage="com.online.taxi.dao.entity"
+				targetProject="src/main/java">
+			<property name="enableSubPackages" value="false" />
+			<!--是否针对string类型字段在set的时候进行trim调用-->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 生成映射文件的包名和位置 -->
+		<sqlMapGenerator targetPackage="mybatis/mapper"
+						 targetProject="src/main/resources">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+							 targetPackage="com.online.taxi.dao.mapper"
+							 targetProject="src/main/java">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+
+        <!--乘客 信息表-->
+        <table schema="root" tableName="service_sms_record" domainObjectName="ServiceSmsRecord"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table schema="root" tableName="service_sms_template" domainObjectName="ServiceSmsTemplate"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+		
+		
+	</context>
+</generatorConfiguration>

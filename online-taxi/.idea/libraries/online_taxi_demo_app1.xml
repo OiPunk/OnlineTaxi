@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="online-taxi-demo-app1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/online-taxi-demo-app/target/online-taxi-demo-app.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

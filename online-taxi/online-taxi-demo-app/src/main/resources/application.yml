@@ -1,0 +1,11 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: message
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp
+      suffix: .html
+  thymeleaf:
+    cash: false

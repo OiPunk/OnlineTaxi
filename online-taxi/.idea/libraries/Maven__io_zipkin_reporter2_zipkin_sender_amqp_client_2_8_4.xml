@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.zipkin.reporter2:zipkin-sender-amqp-client:2.8.4">
+    <CLASSES>
+      <root url="jar://D:/maven_repository/io/zipkin/reporter2/zipkin-sender-amqp-client/2.8.4/zipkin-sender-amqp-client-2.8.4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/maven_repository/io/zipkin/reporter2/zipkin-sender-amqp-client/2.8.4/zipkin-sender-amqp-client-2.8.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/maven_repository/io/zipkin/reporter2/zipkin-sender-amqp-client/2.8.4/zipkin-sender-amqp-client-2.8.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

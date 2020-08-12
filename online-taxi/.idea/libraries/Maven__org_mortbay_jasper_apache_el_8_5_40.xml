@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.mortbay.jasper:apache-el:8.5.40">
+    <CLASSES>
+      <root url="jar://D:/maven_repository/org/mortbay/jasper/apache-el/8.5.40/apache-el-8.5.40.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/maven_repository/org/mortbay/jasper/apache-el/8.5.40/apache-el-8.5.40-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/maven_repository/org/mortbay/jasper/apache-el/8.5.40/apache-el-8.5.40-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

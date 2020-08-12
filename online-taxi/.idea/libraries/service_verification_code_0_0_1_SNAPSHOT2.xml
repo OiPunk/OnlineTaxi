@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="service-verification-code-0.0.1-SNAPSHOT2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/service-verification-code/target/service-verification-code-0.0.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

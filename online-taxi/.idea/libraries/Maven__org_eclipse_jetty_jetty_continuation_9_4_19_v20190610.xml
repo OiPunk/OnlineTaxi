@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.eclipse.jetty:jetty-continuation:9.4.19.v20190610">
+    <CLASSES>
+      <root url="jar://D:/maven_repository/org/eclipse/jetty/jetty-continuation/9.4.19.v20190610/jetty-continuation-9.4.19.v20190610.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/maven_repository/org/eclipse/jetty/jetty-continuation/9.4.19.v20190610/jetty-continuation-9.4.19.v20190610-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/maven_repository/org/eclipse/jetty/jetty-continuation/9.4.19.v20190610/jetty-continuation-9.4.19.v20190610-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

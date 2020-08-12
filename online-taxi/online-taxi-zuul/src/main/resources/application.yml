@@ -1,0 +1,44 @@
+# 基础
+# 演示功能：
+# 1、默认。
+# 2、网关负载均衡。
+# 3、路由端点
+
+#api-driver: 
+#  ribbon: 
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+server:
+  port: 9100
+
+spring:
+  application:
+    name: online-taxi-zuul
+
+#注册中心
+eureka: 
+  client:
+    #设置服务注册中心的URL
+    service-url:                      
+      defaultZone: http://root:root@eureka-7900:7900/eureka/
+  instance: 
+    hostname: localhost
+    instance-id: online-taxi-zuul 
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      ##默认是never
+      show-details: ALWAYS
+      enabled: true
+    routes: 
+      enabled: true
+        
+logging:
+  level:
+    com.netflix: debug
+    org.springframework: DEBUG

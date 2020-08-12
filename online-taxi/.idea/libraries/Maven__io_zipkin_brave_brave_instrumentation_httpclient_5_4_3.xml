@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.zipkin.brave:brave-instrumentation-httpclient:5.4.3">
+    <CLASSES>
+      <root url="jar://D:/maven_repository/io/zipkin/brave/brave-instrumentation-httpclient/5.4.3/brave-instrumentation-httpclient-5.4.3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/maven_repository/io/zipkin/brave/brave-instrumentation-httpclient/5.4.3/brave-instrumentation-httpclient-5.4.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/maven_repository/io/zipkin/brave/brave-instrumentation-httpclient/5.4.3/brave-instrumentation-httpclient-5.4.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

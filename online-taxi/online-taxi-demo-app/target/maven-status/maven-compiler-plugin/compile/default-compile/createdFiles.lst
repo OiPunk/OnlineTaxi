@@ -1,0 +1,14 @@
+com\online\taxi\demo\websocket\config\WebSocketConfig.class
+com\online\taxi\demo\taxi\common\TestController.class
+com\online\taxi\demo\taxi\common\controller\LoginController.class
+com\online\taxi\demo\OnlineTaxiDemoApplication.class
+com\online\taxi\demo\taxi\entity\Order.class
+com\online\taxi\demo\websocket\controller\WelcomeController.class
+com\online\taxi\demo\websocket\server\WebSocketServer.class
+com\online\taxi\demo\taxi\common\constant\IdentityConstant.class
+com\online\taxi\demo\taxi\common\response\LoginResponse.class
+com\online\taxi\demo\taxi\common\controller\RouterController.class
+com\online\taxi\demo\taxi\common\request\LoginRequest.class
+com\online\taxi\demo\websocket\controller\SocketMessageController.class
+com\online\taxi\demo\taxi\passenger\OrderController.class
+com\online\taxi\demo\taxi\common\request\OrderRequest.class
