@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2bfd1cd-f7c7-45fd-8582-1fc9e13f78bc" name="Default" comment="" />
+    <list default="true" id="a2bfd1cd-f7c7-45fd-8582-1fc9e13f78bc" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/controller/ValuationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dao/DynamicDiscountRuleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dao/OrderDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dao/OrderRuleMirrorDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dao/OrderRulePriceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dao/OrderRulePriceDetailDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dao/OrderRulePriceTagDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dao/cache/PriceCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dao/cache/RuleCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dto/DriveMeter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dto/ForecastDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dto/PriceMeter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dto/TimeMeter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dto/request/CurrentPriceRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/dto/response/CurrentPriceResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/mapper/DynamicDiscountRuleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/mapper/OrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/mapper/OrderRuleMirrorMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/mapper/OrderRulePriceDetailMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/mapper/OrderRulePriceMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/mapper/OrderRulePriceTagMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/service/ValuationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/service/impl/ValuationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/task/ValuationRequestTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/task/ValuationTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/util/PriceHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/util/TimeSlice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/util/UnitConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/online-taxi-common/src/main/java/com/online/taxi/common/dto/ResponseResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/online-taxi-common/src/main/java/com/online/taxi/common/dto/ResponseResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/online-taxi-common/src/main/java/com/online/taxi/common/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/online-taxi-common/src/main/java/com/online/taxi/common/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/valuation/ServiceValuationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/ServiceValuationApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/valuation/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/valuation/controller/ForecastController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/controller/ForecastController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -21,21 +63,32 @@
     </option>
   </component>
   <component name="ProjectId" id="1fyyVcRO2wSPG1XfHnDWooTe3Qg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/service-valuation/src/main/java/com/online/taxi/valuation" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.online.taxi" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\develop\GitHub\OnlineTaxi\online-taxi\service-valuation\src\main\java\com\online\taxi\valuation" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ConfigClientDiyApplication">
     <configuration default="true" type="Application" factoryName="Application">
@@ -102,7 +155,7 @@
     </configuration>
     <configuration name="ServiceValuationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-valuation" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.online.taxi.valuation.ServiceValuationApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.online.taxi.ServiceValuationApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -172,6 +225,8 @@
       <workItem from="1593663720249" duration="599000" />
       <workItem from="1593757573712" duration="598000" />
       <workItem from="1597204655929" duration="6092000" />
+      <workItem from="1597329020836" duration="304000" />
+      <workItem from="1597329384229" duration="700000" />
     </task>
     <servers />
   </component>
@@ -179,18 +234,30 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="642" y="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1597329766988">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="642" y="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1597329766988" />
     <state x="601" y="174" key="FileChooserDialogImpl" timestamp="1597204707648">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="601" y="174" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597204707648" />
-    <state x="322" y="61" key="SettingsEditor" timestamp="1597204709419">
+    <state x="598" y="59" key="Maven.ArtifactSearchDialog" timestamp="1597329224340">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="322" y="61" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597204709419" />
+    <state x="598" y="59" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1597329224340" />
+    <state x="322" y="61" key="SettingsEditor" timestamp="1597329238243">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="322" y="61" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597329238243" />
     <state x="429" y="119" width="782" height="600" key="find.popup" timestamp="1597212351738">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="429" y="119" width="782" height="600" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1597212351738" />
+    <state x="503" y="37" key="refactoring.ChangeSignatureDialog" timestamp="1597329643407">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="503" y="37" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1597329643407" />
   </component>
   <component name="masterDetails">
     <states>

@@ -1,36 +1,45 @@
-package com.online.taxi.common.dto;
-
-import java.io.Serializable;
-
-import com.online.taxi.common.constant.CommonStatusEnum;
+package com.online.taxi.dto;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.http.HttpStatus;
+
+import com.online.taxi.constatnt.BusinessInterfaceStatus;
+
+import java.io.Serializable;
 
 /**
  * 通用返回值处理类
  *
+ * @date 2018/8/14
  */
 @Data
 @Accessors(chain = true)
-@SuppressWarnings("all")
+@SuppressWarnings("unchecked")
 public class ResponseResult<T> implements Serializable {
 
-	private static final long serialVersionUID = -2073390651767969040L;
-	
-	private int code;
+    private int code;
     private String message;
     private T data;
-    
-	/**
-     * 返回成功数据（status：1）
+
+    /**
+     * 返回成功数据（status：200）
      *
      * @param data 数据内容
      * @param <T>  数据类型
      * @return ResponseResult实例
      */
     public static <T> ResponseResult success(T data) {
-        return new ResponseResult().setCode(CommonStatusEnum.SUCCESS.getCode()).setMessage(CommonStatusEnum.SUCCESS.getValue()).setData(data);
+        return new ResponseResult().setCode(BusinessInterfaceStatus.SUCCESS.getCode()).setMessage(BusinessInterfaceStatus.SUCCESS.getValue()).setData(data);
+    }
+
+    /**
+     * 返回成功数据（status：200）
+     *
+     * @return ResponseResult实例
+     */
+    public static ResponseResult success() {
+        return success(null);
     }
 
     /**
@@ -41,7 +50,7 @@ public class ResponseResult<T> implements Serializable {
      * @return ResponseResult实例
      */
     public static <T> ResponseResult fail(T data) {
-        return new ResponseResult().setCode(CommonStatusEnum.INTERNAL_SERVER_EXCEPTION.getCode()).setMessage(CommonStatusEnum.INTERNAL_SERVER_EXCEPTION.getValue()).setData(data);
+        return new ResponseResult().setCode(HttpStatus.INTERNAL_SERVER_ERROR.value()).setMessage(HttpStatus.INTERNAL_SERVER_ERROR.name()).setData(data);
     }
 
     /**
