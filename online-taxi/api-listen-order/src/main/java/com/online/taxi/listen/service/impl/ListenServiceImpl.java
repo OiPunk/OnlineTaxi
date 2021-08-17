@@ -4,13 +4,14 @@ import com.online.taxi.common.constant.RedisKeyConstant;
 import com.online.taxi.listen.response.PreGrabResponse;
 import com.online.taxi.listen.service.ListenService;
 
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.Random;
 
 /**
  * @author oi
  */
 @Service
+@Transactional
 public class ListenServiceImpl implements ListenService {
 
     @Autowired
