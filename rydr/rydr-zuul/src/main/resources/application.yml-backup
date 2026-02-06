@@ -1,0 +1,92 @@
+server:
+  port: 9100
+
+spring:
+  application:
+    name: rydr-zuul
+
+  # Zipkin
+  zipkin:
+    base-url: http://localhost:9411/
+    # Sampling rate: 1 (8% sampling)
+  sleuth:
+    sampler:
+      rate: 1
+# Registry center
+eureka:
+  client:
+    # Set service registry center URL
+    service-url:
+      defaultZone: http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:admin}@eureka-7900:7900/eureka/
+  instance:
+    hostname: localhost
+    instance-id: rydr-zuul
+
+# -- Gateway load balancing strategy ------
+#api-driver:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+# ----------------------------------
+# Gateway
+# /** matches all subsequent paths
+zuul:
+#  prefix: /api
+  # Whether to strip the prefix after gateway transformation
+#  strip-prefix: true
+  routes:
+
+        # Configure via URL
+#    custom-zuul-name:
+#      path: /zuul-custom-name/**
+#      url: http://localhost:9002/
+#      strip-prefix: false
+
+        # Configure via serviceId
+#    custom-zuul-name2:
+#      path: /zuul-custom-name2/**
+#      service-id: api-driver
+#      strip-prefix: true
+
+    service-sms: /gate-way/sms/**
+    api-driver: /zuul-api-driver/**
+
+        # Ignore specific microservices
+#  ignored-services:
+#  - api-driver
+
+      # Ignore all
+#  ignored-services: '*'
+
+      # Ignore regex patterns
+#  ignored-patterns:
+#  - /*-driver/**
+
+    # Empty value below means: all request headers are passed through to downstream microservices.
+  sensitive-headers: token
+
+# ------------- Works with custom-zuul-name2 above ------------------
+#api-driver:
+#  ribbon:
+#    listOfServers: localhost:9003,localhost:9002
+#ribbon:
+#  eureka:
+#    enabled: false
+# -------------------------------
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      ## Default is never
+      show-details: ALWAYS
+      enabled: true
+    routes:
+      enabled: true
+
+logging:
+  level:
+    com.netflix: debug
+    org.springframework: DEBUG

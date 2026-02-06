@@ -1,0 +1,108 @@
+spring:
+#  security:
+#    user:
+#      name: ${EUREKA_USER:admin}
+#      password: ${EUREKA_PASSWORD:changeme}
+  application:
+    # Application name
+    name: service-sms
+    # Database connection configuration
+  datasource:
+    # Data source type
+    type: com.alibaba.druid.pool.DruidDataSource
+    # MySQL driver class
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # Database connection URL
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME_THREE:rydr-three}?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    # Database username
+    username: ${DB_USER:root}
+    # Database password
+    password: ${DB_PASSWORD:changeme}
+    # Database connection pool configuration
+    dbcp2:
+      # Initial number of connections
+      initial-size: 5
+      # Minimum idle connections
+      min-idle: 5
+      # Maximum number of connections
+      max-total: 5
+      # Maximum wait time for connection
+      max-wait-millis: 200
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+  # Zipkin distributed tracing
+  zipkin:
+    base-url: ${ZIPKIN_URL:http://localhost:9411/}
+    # Sampling rate: 1 = 100%
+  sleuth:
+    sampler:
+      rate: 1
+
+
+# MyBatis configuration
+mybatis:
+  # MyBatis config file path
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  # Package alias for entity classes
+  type-aliases-package: com.rydr.taxi.common
+  # Mapper XML file locations
+  mapper-locations:
+  - classpath:mybatis/mapper/*.xml
+
+
+# Service registry
+eureka:
+#  server:
+#    enable-self-preservation: false       # Disable self-preservation
+#    eviction-interval-timer-in-ms: 2000   # Eviction interval in milliseconds
+  client:
+    healthcheck:
+      enabled: true
+    # Set service registry URL
+    service-url:
+      # Single node registration
+      defaultZone: http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@${EUREKA_HOST:eureka-7900}:7900/eureka/
+    enabled: true
+
+      # Multi-node registration (commented out)
+#      defaultZone: http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@eureka-7901:7901/eureka/,http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@eureka-7902:7902/eureka/,http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@eureka-7903:7903/eureka/
+  instance:
+    virtual-host-name: service-sms
+    # Heartbeat interval in seconds
+    lease-renewal-interval-in-seconds: 1
+    # Service expiration time - instance removed if no heartbeat received within this period
+    lease-expiration-duration-in-seconds: 1
+
+    metadata-map:
+      user.name: ${EUREKA_USER:admin}
+      user.password: ${EUREKA_PASSWORD:changeme}
+
+# Admin monitoring
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+logging:
+  level:
+    root: info
+    org.springframework.web.servlet: debug
+---
+spring:
+  profiles: 8002
+server:
+  # Service port
+  port: 8002
+
+---
+spring:
+  profiles: 8003
+server:
+  # Service port
+  port: 8003

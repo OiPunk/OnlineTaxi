@@ -1,0 +1,21 @@
+#服务端口
+server: 
+  port: 6001
+
+#应用名称及验证账号
+spring: 
+  application: 
+    name: config-server
+    
+  cloud:
+    
+    config:
+      server:
+        git:
+        #https://github.com/oi/rydr-config-profile.git
+          uri: https://github.com/oi/rydr-config-profile
+          username: 
+          password: 
+          #默认是秒，因为git慢
+          timeout: 15
+              

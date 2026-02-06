@@ -1,0 +1,43 @@
+# Service port
+server:
+  port: 6001
+
+# Application name and authentication
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${CONFIG_GIT_URI:https://github.com/oi/rydr-config-profile}
+          username: ${CONFIG_GIT_USERNAME:}
+          password: ${CONFIG_GIT_PASSWORD:}
+          # Default is seconds; increased because git can be slow
+          timeout: 15
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+# Service registry
+eureka:
+  client:
+    # Set service registry URL
+    service-url:
+      defaultZone: http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@${EUREKA_HOST:eureka-7900}:7900/eureka/
+  instance:
+    hostname: localhost
+    instance-id: config-server
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # In YAML use double quotes; in properties files quotes are not needed
+        include: "*"
+logging:
+  level:
+    org.springframework.cloud: debug
+    org.springframework.boot: debug

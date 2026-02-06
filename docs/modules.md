@@ -2,14 +2,14 @@
 
 [Back to README](../README.md) | [Architecture](architecture.md)
 
-This document provides detailed descriptions of each module in the OnlineTaxi platform.
+This document provides detailed descriptions of each module in the Rydr platform.
 
 ---
 
 ## API Layer
 
 ### api-passenger
-**Port:** 9011 | **Path:** `online-taxi/api-passenger`
+**Port:** 9011 | **Path:** `rydr/api-passenger`
 
 Passenger-facing REST API providing endpoints for:
 - SMS verification and login (`/sms/send`, `/sms/verify`)
@@ -20,7 +20,7 @@ Passenger-facing REST API providing endpoints for:
 **Key Technologies:** Feign (service calls), Hystrix (circuit breaker), Sleuth (tracing)
 
 ### api-driver
-**Port:** 9002, 9003 | **Path:** `online-taxi/api-driver`
+**Port:** 9002, 9003 | **Path:** `rydr/api-driver`
 
 Driver-facing REST API providing endpoints for:
 - SMS verification and login
@@ -30,7 +30,7 @@ Driver-facing REST API providing endpoints for:
 **Key Technologies:** Ribbon (load balancing), RestTemplate, Hystrix, custom Ribbon rules
 
 ### api-listen-order
-**Port:** 8084 | **Path:** `online-taxi/api-listen-order`
+**Port:** 8084 | **Path:** `rydr/api-listen-order`
 
 Real-time order event service for drivers:
 - WebSocket-based order broadcasting
@@ -42,7 +42,7 @@ Real-time order event service for drivers:
 ## Service Layer
 
 ### service-order
-**Port:** 8004, 8005 | **Path:** `online-taxi/service-order`
+**Port:** 8004, 8005 | **Path:** `rydr/service-order`
 
 Core order management service featuring:
 - Order creation and lifecycle management
@@ -57,7 +57,7 @@ Core order management service featuring:
 **Key Technologies:** Redis, MyBatis, Druid, Redis Sentinel
 
 ### service-order-dispatch
-**Port:** 8005 | **Path:** `online-taxi/service-order-dispatch`
+**Port:** 8005 | **Path:** `rydr/service-order-dispatch`
 
 Driver-order matching and dispatch:
 - Intelligent order assignment algorithm
@@ -65,7 +65,7 @@ Driver-order matching and dispatch:
 - Async operation support
 
 ### service-passenger-user
-**Port:** 8012 | **Path:** `online-taxi/service-passenger-user`
+**Port:** 8012 | **Path:** `rydr/service-passenger-user`
 
 Passenger account management:
 - User registration and profile management
@@ -76,7 +76,7 @@ Passenger account management:
 **Key Technologies:** MyBatis, Druid, MySQL
 
 ### service-sms
-**Port:** 8002, 8003 | **Path:** `online-taxi/service-sms`
+**Port:** 8002, 8003 | **Path:** `rydr/service-sms`
 
 SMS notification service:
 - Template-based SMS delivery
@@ -86,7 +86,7 @@ SMS notification service:
 **Key Technologies:** MyBatis, Druid, Sleuth
 
 ### service-valuation
-**Port:** 8060, 8061 | **Path:** `online-taxi/service-valuation`
+**Port:** 8060, 8061 | **Path:** `rydr/service-valuation`
 
 Ride pricing engine:
 - Single and batch price forecasting
@@ -98,7 +98,7 @@ Ride pricing engine:
 **Key Technologies:** Spring Security, Redis caching, complex rule engine
 
 ### service-verification-code
-**Port:** 8011 | **Path:** `online-taxi/service-verification-code`
+**Port:** 8011 | **Path:** `rydr/service-verification-code`
 
 Login verification code service:
 - One-time code generation (6-digit)
@@ -106,7 +106,7 @@ Login verification code service:
 - Config center integration for dynamic settings
 
 ### service-wallet
-**Port:** 8006 | **Path:** `online-taxi/service-wallet`
+**Port:** 8006 | **Path:** `rydr/service-wallet`
 
 User wallet management:
 - Balance tracking
@@ -117,7 +117,7 @@ User wallet management:
 ## Infrastructure
 
 ### eureka
-**Port:** 7900 | **Path:** `online-taxi/eureka`
+**Port:** 7900 | **Path:** `rydr/eureka`
 
 Netflix Eureka service registry:
 - Basic auth protection (admin/changeme)
@@ -125,16 +125,16 @@ Netflix Eureka service registry:
 - 5-second eviction interval
 - CSRF protection disabled for peer communication
 
-### online-taxi-config-server
-**Port:** 6001 | **Path:** `online-taxi/online-taxi-config-server`
+### rydr-config-server
+**Port:** 6001 | **Path:** `rydr/rydr-config-server`
 
 Spring Cloud Config Server:
 - Git-based configuration repository
 - RabbitMQ bus for dynamic refresh
 - Environment-specific profile support
 
-### online-taxi-zuul
-**Port:** 9100 | **Path:** `online-taxi/online-taxi-zuul`
+### rydr-zuul
+**Port:** 9100 | **Path:** `rydr/rydr-zuul`
 
 Netflix Zuul API Gateway with custom filters:
 - **AuthFilter**: JWT token validation
@@ -145,7 +145,7 @@ Netflix Zuul API Gateway with custom filters:
 Includes 8 example configuration variants demonstrating different routing patterns.
 
 ### cloud-admin
-**Port:** 6010 | **Path:** `online-taxi/cloud-admin`
+**Port:** 6010 | **Path:** `rydr/cloud-admin`
 
 Spring Boot Admin monitoring dashboard:
 - Service health monitoring
@@ -153,7 +153,7 @@ Spring Boot Admin monitoring dashboard:
 - Custom event handling
 
 ### hystrix-dashboard
-**Port:** 6101 | **Path:** `online-taxi/hystrix-dashboard`
+**Port:** 6101 | **Path:** `rydr/hystrix-dashboard`
 
 Hystrix circuit breaker monitoring UI for visual monitoring of service health.
 
@@ -161,8 +161,8 @@ Hystrix circuit breaker monitoring UI for visual monitoring of service health.
 
 ## Shared Library
 
-### online-taxi-common
-**Path:** `online-taxi/online-taxi-common`
+### rydr-common
+**Path:** `rydr/rydr-common`
 
 Shared artifacts used across all services:
 - **DTOs**: ResponseResult, ShortMsgRequest, PriceResult, ForecastDetail
@@ -187,7 +187,7 @@ ActiveMQ integration examples:
 - Producer-consumer architecture
 - ActiveMQ configuration
 
-### online-taxi-demo-app
+### rydr-demo-app
 **Port:** 8083
 
 Full demo application with:

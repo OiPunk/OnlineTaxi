@@ -1,6 +1,6 @@
 <div align="center">
 
-# OnlineTaxi
+# Rydr
 
 **A Microservices-Based Ride-Hailing Platform Built with Spring Cloud**
 
@@ -34,7 +34,7 @@
 
 ## Overview
 
-OnlineTaxi is a complete online taxi ordering system demonstrating enterprise-grade **Spring Cloud microservices architecture**. The platform supports the full ride-hailing workflow:
+Rydr is a complete online taxi ordering system demonstrating enterprise-grade **Spring Cloud microservices architecture**. The platform supports the full ride-hailing workflow:
 
 - **Passenger**: Registration, ride ordering, real-time tracking, payment
 - **Driver**: Order listening, acceptance, dispatch, income tracking
@@ -102,8 +102,8 @@ The system follows a **three-layer microservices architecture**:
 | Module | Project Name | Port | Description |
 |--------|-------------|------|-------------|
 | Service Registry | `eureka` | 7900 | Netflix Eureka |
-| Config Server | `online-taxi-config-server` | 6001 | Centralized configuration |
-| API Gateway | `online-taxi-zuul` | 9100 | Zuul routing & filtering |
+| Config Server | `rydr-config-server` | 6001 | Centralized configuration |
+| API Gateway | `rydr-zuul` | 9100 | Zuul routing & filtering |
 | Circuit Breaker | `hystrix-dashboard` | 6101 | Hystrix monitoring |
 | Admin Monitor | `cloud-admin` | 6010 | Spring Boot Admin |
 
@@ -111,7 +111,7 @@ The system follows a **three-layer microservices architecture**:
 
 | Module | Project Name | Description |
 |--------|-------------|-------------|
-| Common | `online-taxi-common` | DTOs, constants, JWT utilities, validation |
+| Common | `rydr-common` | DTOs, constants, JWT utilities, validation |
 
 ## Tech Stack
 
@@ -147,8 +147,8 @@ The system follows a **three-layer microservices architecture**:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/OiPunk/OnlineTaxi.git
-cd OnlineTaxi
+git clone https://github.com/OiPunk/Rydr.git
+cd Rydr
 ```
 
 ### 2. Configure Environment Variables
@@ -176,7 +176,7 @@ Key variables:
 ### 3. Initialize the Database
 
 ```bash
-mysql -u root -p < online-taxi-sql.sql
+mysql -u root -p < rydr-sql.sql
 ```
 
 The SQL file creates **108 tables** covering orders, passengers, drivers, payments, configuration, and more.
@@ -185,24 +185,24 @@ The SQL file creates **108 tables** covering orders, passengers, drivers, paymen
 
 ```bash
 # 1. Service Registry
-cd online-taxi/eureka && mvn spring-boot:run -Dspring.profiles.active=7900
+cd rydr/eureka && mvn spring-boot:run -Dspring.profiles.active=7900
 
 # 2. Config Server (optional)
-cd online-taxi/online-taxi-config-server && mvn spring-boot:run
+cd rydr/rydr-config-server && mvn spring-boot:run
 
 # 3. Business Services
-cd online-taxi/service-passenger-user && mvn spring-boot:run
-cd online-taxi/service-sms && mvn spring-boot:run -Dspring.profiles.active=8002
-cd online-taxi/service-verification-code && mvn spring-boot:run
-cd online-taxi/service-order && mvn spring-boot:run -Dspring.profiles.active=8004
-cd online-taxi/service-valuation && mvn spring-boot:run -Dspring.profiles.active=8060
+cd rydr/service-passenger-user && mvn spring-boot:run
+cd rydr/service-sms && mvn spring-boot:run -Dspring.profiles.active=8002
+cd rydr/service-verification-code && mvn spring-boot:run
+cd rydr/service-order && mvn spring-boot:run -Dspring.profiles.active=8004
+cd rydr/service-valuation && mvn spring-boot:run -Dspring.profiles.active=8060
 
 # 4. API Layer
-cd online-taxi/api-passenger && mvn spring-boot:run
-cd online-taxi/api-driver && mvn spring-boot:run -Dspring.profiles.active=9002
+cd rydr/api-passenger && mvn spring-boot:run
+cd rydr/api-driver && mvn spring-boot:run -Dspring.profiles.active=9002
 
 # 5. API Gateway
-cd online-taxi/online-taxi-zuul && mvn spring-boot:run
+cd rydr/rydr-zuul && mvn spring-boot:run
 ```
 
 ### Service Ports
@@ -229,8 +229,8 @@ cd online-taxi/online-taxi-zuul && mvn spring-boot:run
 ## Project Structure
 
 ```
-OnlineTaxi/
-├── online-taxi/                        # Maven parent project
+Rydr/
+├── rydr/                        # Maven parent project
 │   ├── api-driver/                     # Driver API
 │   ├── api-listen-order/               # Order listener API
 │   ├── api-passenger/                  # Passenger API
@@ -239,10 +239,10 @@ OnlineTaxi/
 │   ├── config-client-diy/              # Custom config client
 │   ├── eureka/                         # Eureka service registry
 │   ├── hystrix-dashboard/              # Hystrix dashboard
-│   ├── online-taxi-common/             # Shared library
-│   ├── online-taxi-config-server/      # Config server
-│   ├── online-taxi-demo-app/           # Demo application
-│   ├── online-taxi-zuul/               # API gateway
+│   ├── rydr-common/             # Shared library
+│   ├── rydr-config-server/      # Config server
+│   ├── rydr-demo-app/           # Demo application
+│   ├── rydr-zuul/               # API gateway
 │   ├── service-jms-consumer/           # JMS consumer example
 │   ├── service-jms-produce/            # JMS producer example
 │   ├── service-order/                  # Order service
@@ -254,7 +254,7 @@ OnlineTaxi/
 │   └── service-wallet/                 # Wallet service
 ├── README/                             # Documentation images
 ├── docs/                               # Additional documentation
-├── online-taxi-sql.sql                 # Database schema (108 tables)
+├── rydr-sql.sql                 # Database schema (108 tables)
 ├── .env.example                        # Environment config template
 ├── .gitignore                          # Git ignore rules
 ├── CONTRIBUTING.md                     # Contribution guidelines

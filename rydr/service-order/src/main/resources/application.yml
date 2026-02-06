@@ -1,0 +1,82 @@
+# Service port
+#server:
+#  port: 8004
+
+# Application name and configuration
+spring:
+  application:
+    name: service-order
+  redis:
+    database: 0
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    timeout: 2000
+    password: ${REDIS_PASSWORD:}
+    # Database connection configuration
+  datasource:
+    # Data source type
+    type: com.alibaba.druid.pool.DruidDataSource
+    # MySQL driver class
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # Database connection URL
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:rydr}?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    # Database username
+    username: ${DB_USER:root}
+    # Database password
+    password: ${DB_PASSWORD:changeme}
+    # Database connection pool configuration
+    dbcp2:
+      # Initial number of connections
+      initial-size: 5
+      # Minimum idle connections
+      min-idle: 5
+      # Maximum number of connections
+      max-total: 5
+      # Maximum wait time for connection
+      max-wait-millis: 200
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+# Custom Redis Sentinel configuration
+sentinel:
+  address:
+    - ${SENTINEL_HOST_1:127.0.0.1}:${SENTINEL_PORT_1:26379}
+    - ${SENTINEL_HOST_2:127.0.0.1}:${SENTINEL_PORT_2:26479}
+    - ${SENTINEL_HOST_3:127.0.0.1}:${SENTINEL_PORT_3:26579}
+  masterName: ${SENTINEL_MASTER:mymaster}
+
+# Service registry
+eureka:
+
+  client:
+    enabled: true
+    # Set service registry URL
+    service-url:
+      defaultZone: http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@${EUREKA_HOST:eureka-7900}:7900/eureka/
+  instance:
+    hostname: localhost
+
+# MyBatis configuration
+mybatis:
+  # MyBatis config file path
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  # Package alias for entity classes
+  type-aliases-package: com.rydr.taxi.common
+  # Mapper XML file locations
+  mapper-locations:
+  - classpath:mybatis/mapper/*.xml
+
+
+---
+spring:
+  profiles: 8004
+# Service port
+server:
+  port: 8004
+---
+spring:
+  profiles: 8005
+# Service port
+server:
+  port: 8005

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/api-driver/api-driver.iml" filepath="$PROJECT_DIR$/api-driver/api-driver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-listen-order/api-listen-order.iml" filepath="$PROJECT_DIR$/api-listen-order/api-listen-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-passenger/api-passenger.iml" filepath="$PROJECT_DIR$/api-passenger/api-passenger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-admin/cloud-admin.iml" filepath="$PROJECT_DIR$/cloud-admin/cloud-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client/config-client.iml" filepath="$PROJECT_DIR$/config-client/config-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client-diy/config-client-diy.iml" filepath="$PROJECT_DIR$/config-client-diy/config-client-diy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka/eureka.iml" filepath="$PROJECT_DIR$/eureka/eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hystrix-dashboard/hystrix-dashboard.iml" filepath="$PROJECT_DIR$/hystrix-dashboard/hystrix-dashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-listen-order/src/main/main.iml" filepath="$PROJECT_DIR$/api-listen-order/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-driver/src/main/main1.iml" filepath="$PROJECT_DIR$/api-driver/src/main/main1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client/src/main/main10.iml" filepath="$PROJECT_DIR$/config-client/src/main/main10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-order-dispatch/src/main/main11.iml" filepath="$PROJECT_DIR$/service-order-dispatch/src/main/main11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-verification-code/src/main/main12.iml" filepath="$PROJECT_DIR$/service-verification-code/src/main/main12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client-diy/src/main/main13.iml" filepath="$PROJECT_DIR$/config-client-diy/src/main/main13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-valuation/src/main/main14.iml" filepath="$PROJECT_DIR$/service-valuation/src/main/main14.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-config-server/src/main/main15.iml" filepath="$PROJECT_DIR$/rydr-config-server/src/main/main15.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-app-update/src/main/main16.iml" filepath="$PROJECT_DIR$/service-app-update/src/main/main16.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka/src/main/main17.iml" filepath="$PROJECT_DIR$/eureka/src/main/main17.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-sms/src/main/main18.iml" filepath="$PROJECT_DIR$/service-sms/src/main/main18.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-demo-app/src/main/main19.iml" filepath="$PROJECT_DIR$/rydr-demo-app/src/main/main19.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-order/src/main/main2.iml" filepath="$PROJECT_DIR$/service-order/src/main/main2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-jms-consumer/src/main/main20.iml" filepath="$PROJECT_DIR$/service-jms-consumer/src/main/main20.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-passenger-user/src/main/main21.iml" filepath="$PROJECT_DIR$/service-passenger-user/src/main/main21.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-wallet/src/main/main22.iml" filepath="$PROJECT_DIR$/service-wallet/src/main/main22.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-admin/src/main/main3.iml" filepath="$PROJECT_DIR$/cloud-admin/src/main/main3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-demo/src/main/main4.iml" filepath="$PROJECT_DIR$/api-demo/src/main/main4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-passenger/src/main/main5.iml" filepath="$PROJECT_DIR$/api-passenger/src/main/main5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-zuul/src/main/main6.iml" filepath="$PROJECT_DIR$/rydr-zuul/src/main/main6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-common/src/main/main7.iml" filepath="$PROJECT_DIR$/rydr-common/src/main/main7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hystrix-dashboard/src/main/main8.iml" filepath="$PROJECT_DIR$/hystrix-dashboard/src/main/main8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-jms-produce/src/main/main9.iml" filepath="$PROJECT_DIR$/service-jms-produce/src/main/main9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-common/rydr-common.iml" filepath="$PROJECT_DIR$/rydr-common/rydr-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-config-server/rydr-config-server.iml" filepath="$PROJECT_DIR$/rydr-config-server/rydr-config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-demo-app/rydr-demo-app.iml" filepath="$PROJECT_DIR$/rydr-demo-app/rydr-demo-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-parent.iml" filepath="$PROJECT_DIR$/rydr-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-zuul/rydr-zuul.iml" filepath="$PROJECT_DIR$/rydr-zuul/rydr-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-jms-consumer/service-jms-consumer.iml" filepath="$PROJECT_DIR$/service-jms-consumer/service-jms-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-jms-produce/service-jms-produce.iml" filepath="$PROJECT_DIR$/service-jms-produce/service-jms-produce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-order/service-order.iml" filepath="$PROJECT_DIR$/service-order/service-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-order-dispatch/service-order-dispatch.iml" filepath="$PROJECT_DIR$/service-order-dispatch/service-order-dispatch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-passenger-user/service-passenger-user.iml" filepath="$PROJECT_DIR$/service-passenger-user/service-passenger-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-sms/service-sms.iml" filepath="$PROJECT_DIR$/service-sms/service-sms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-valuation/service-valuation.iml" filepath="$PROJECT_DIR$/service-valuation/service-valuation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-verification-code/service-verification-code.iml" filepath="$PROJECT_DIR$/service-verification-code/service-verification-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-wallet/service-wallet.iml" filepath="$PROJECT_DIR$/service-wallet/service-wallet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-app-update/src/test/test.iml" filepath="$PROJECT_DIR$/service-app-update/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-demo/src/test/test1.iml" filepath="$PROJECT_DIR$/api-demo/src/test/test1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-driver/src/test/test10.iml" filepath="$PROJECT_DIR$/api-driver/src/test/test10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-jms-produce/src/test/test11.iml" filepath="$PROJECT_DIR$/service-jms-produce/src/test/test11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-zuul/src/test/test12.iml" filepath="$PROJECT_DIR$/rydr-zuul/src/test/test12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client/src/test/test13.iml" filepath="$PROJECT_DIR$/config-client/src/test/test13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client-diy/src/test/test14.iml" filepath="$PROJECT_DIR$/config-client-diy/src/test/test14.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hystrix-dashboard/src/test/test15.iml" filepath="$PROJECT_DIR$/hystrix-dashboard/src/test/test15.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-order-dispatch/src/test/test16.iml" filepath="$PROJECT_DIR$/service-order-dispatch/src/test/test16.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-verification-code/src/test/test17.iml" filepath="$PROJECT_DIR$/service-verification-code/src/test/test17.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-passenger/src/test/test18.iml" filepath="$PROJECT_DIR$/api-passenger/src/test/test18.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-config-server/src/test/test2.iml" filepath="$PROJECT_DIR$/rydr-config-server/src/test/test2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-wallet/src/test/test3.iml" filepath="$PROJECT_DIR$/service-wallet/src/test/test3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rydr-demo-app/src/test/test4.iml" filepath="$PROJECT_DIR$/rydr-demo-app/src/test/test4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-jms-consumer/src/test/test5.iml" filepath="$PROJECT_DIR$/service-jms-consumer/src/test/test5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-passenger-user/src/test/test6.iml" filepath="$PROJECT_DIR$/service-passenger-user/src/test/test6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-order/src/test/test7.iml" filepath="$PROJECT_DIR$/service-order/src/test/test7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-sms/src/test/test8.iml" filepath="$PROJECT_DIR$/service-sms/src/test/test8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-admin/src/test/test9.iml" filepath="$PROJECT_DIR$/cloud-admin/src/test/test9.iml" />
+    </modules>
+  </component>
+</project>

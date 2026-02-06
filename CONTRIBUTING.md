@@ -1,12 +1,12 @@
-# Contributing to OnlineTaxi
+# Contributing to Rydr
 
-Thank you for your interest in contributing to OnlineTaxi! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to Rydr! This document provides guidelines and instructions for contributing.
 
 ## How to Contribute
 
 ### Reporting Issues
 
-- Use the [GitHub Issues](https://github.com/OiPunk/OnlineTaxi/issues) page
+- Use the [GitHub Issues](https://github.com/OiPunk/Rydr/issues) page
 - Include a clear title and description
 - Provide steps to reproduce the issue
 - Include relevant logs and screenshots

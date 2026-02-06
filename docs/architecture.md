@@ -4,7 +4,7 @@
 
 ## System Architecture
 
-OnlineTaxi follows a **three-layer microservices architecture** powered by Spring Cloud:
+Rydr follows a **three-layer microservices architecture** powered by Spring Cloud:
 
 ```
                         ┌─────────────┐
@@ -77,7 +77,7 @@ OnlineTaxi follows a **three-layer microservices architecture** powered by Sprin
 **WebSocket**
 - `api-listen-order` provides WebSocket endpoints
 - Drivers receive real-time order notifications
-- `online-taxi-demo-app` includes WebSocket client demo
+- `rydr-demo-app` includes WebSocket client demo
 
 ## Resilience Patterns
 
@@ -130,8 +130,8 @@ OnlineTaxi follows a **three-layer microservices architecture** powered by Sprin
 ## Database Architecture
 
 ### Dual Database Setup
-- `online-taxi`: Order and valuation data
-- `online-taxi-three`: Passenger and SMS data
+- `rydr`: Order and valuation data
+- `rydr-three`: Passenger and SMS data
 
 ### Key Design Decisions
 - MyBatis for flexible SQL mapping
