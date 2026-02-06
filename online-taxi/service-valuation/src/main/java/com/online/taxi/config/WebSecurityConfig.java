@@ -12,11 +12,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// 关闭csrf
+		// Disable CSRF
 		http.csrf().disable();
-		// 表示所有的访问都必须认证，认证处理后才可以正常进行
+		// All requests must be authenticated before they can be processed
 		http.httpBasic().and().authorizeRequests().anyRequest().fullyAuthenticated();
-		// 所有的rest服务一定要设置为无状态，以提升操作效率和性能
+		// All REST services should be set to stateless to improve efficiency and performance
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 }

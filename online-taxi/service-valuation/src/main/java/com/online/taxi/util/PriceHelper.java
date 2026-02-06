@@ -5,18 +5,18 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 
 /**
- * 价格计算帮助类
+ * Price calculation helper class
  *
  * @date 2018/10/29
  */
 public class PriceHelper {
 
     /**
-     * 加法运算
+     * Addition operation
      *
-     * @param a     数值a
-     * @param value 其他数值
-     * @return 和值
+     * @param a     value a
+     * @param value other values
+     * @return sum
      */
     public static BigDecimal add(BigDecimal a, BigDecimal... value) {
         BigDecimal result = null;
@@ -29,11 +29,11 @@ public class PriceHelper {
     }
 
     /**
-     * 减法运算
+     * Subtraction operation
      *
-     * @param a     数值a
-     * @param value 其他数值
-     * @return 差值
+     * @param a     value a
+     * @param value other values
+     * @return difference
      */
     public static BigDecimal subtract(BigDecimal a, BigDecimal... value) {
         BigDecimal result = null;
@@ -46,22 +46,22 @@ public class PriceHelper {
     }
 
     /**
-     * 减法运算
+     * Subtraction operation
      *
-     * @param a     数值a
-     * @param value 其他数值
-     * @return 差值
+     * @param a     value a
+     * @param value other values
+     * @return difference
      */
     public static BigDecimal subtract(double a, double... value) {
         return subtract(BigDecimal.valueOf(a), Arrays.stream(value).mapToObj(BigDecimal::valueOf).toArray(BigDecimal[]::new));
     }
 
     /**
-     * 乘法运算
+     * Multiplication operation
      *
-     * @param a 数值a
-     * @param b 数值n
-     * @return 乘积
+     * @param a value a
+     * @param b value b
+     * @return product
      */
     public static BigDecimal multiply(BigDecimal a, double b) {
         BigDecimal result = null;
@@ -74,21 +74,21 @@ public class PriceHelper {
     }
 
     /**
-     * 大小比较
+     * Minimum value comparison
      *
-     * @param a 数值a
-     * @param b 数值b
-     * @return a与b中较小的数值
+     * @param a value a
+     * @param b value b
+     * @return the smaller value between a and b
      */
     public static BigDecimal min(BigDecimal a, BigDecimal b) {
         return resetScale(a.min(b));
     }
 
     /**
-     * 精度设置
+     * Set precision
      *
-     * @param value 数值
-     * @return 精度设置后的数值
+     * @param value numeric value
+     * @return value after precision adjustment
      */
     public static BigDecimal resetScale(BigDecimal value) {
         BigDecimal result = null;

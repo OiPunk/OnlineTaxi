@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONObject;
 
 /**
- * 
+ *
  * @author oi
  *
  */
@@ -22,21 +22,21 @@ import net.sf.json.JSONObject;
 @RestController
 @RequestMapping("/forecast")
 public class ForecastController {
-	
+
 	@Value("${server.port}")
 	String port;
-	
+
 	@PostMapping("/single")
 	public ResponseResult forecast(@RequestBody ForecastRequest forecastRequest) {
 		JSONObject requestJson = JSONObject.fromObject(forecastRequest);
-		log.info("计价参数："+port+" "+requestJson);
-		
+		log.info("Valuation parameters: "+port+" "+requestJson);
+
 		ForecastResponse response = new ForecastResponse();
-		
+
 		Double price = 10.91;
 		response.setPrice(price);
 		return ResponseResult.success(response);
-		
+
 	}
-	
+
 }

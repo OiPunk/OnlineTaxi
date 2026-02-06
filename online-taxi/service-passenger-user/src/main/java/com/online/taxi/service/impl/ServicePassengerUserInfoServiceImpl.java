@@ -17,12 +17,12 @@ public class ServicePassengerUserInfoServiceImpl implements ServicePassengerUser
 
     @Override
     public ResponseResult<PassengerUserInfo> login(String  passengerPhone) {
-        // 根据手机号查询 用户信息
+        // Query user info by phone number
         PassengerUserInfo passengerUserInfo = passengerInfoMapperCustom.selectByPhoneNumber(passengerPhone);
         if (passengerUserInfo == null){
-            // 这块会有并发问题。可以通过 数据库唯一索引实现。也可以通过分布锁。
+            // There may be concurrency issues here. Can be resolved via database unique index or distributed lock.
 
-            // 如果没有 插入 return 1；
+            // If not found, insert and return 1
             passengerUserInfo = new PassengerUserInfo();
             passengerUserInfo.setPassengerPhone(passengerPhone);
             passengerUserInfo.setRegisterDate(new Date());
@@ -31,7 +31,7 @@ public class ServicePassengerUserInfoServiceImpl implements ServicePassengerUser
 
         }
 
-        // 记录登录时间
+        // Record login time
 
         return ResponseResult.success(passengerUserInfo);
     }

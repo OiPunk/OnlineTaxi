@@ -14,35 +14,34 @@ import org.springframework.stereotype.Component;
 
 import net.sf.json.JSONObject;
 /**
- * 
+ *
  * @author oi
- * @date 2019年1月27日 上午8:49:19
+ * @date 2019-01-27 08:49:19
  */
 @ServerEndpoint("/websocket/{sid}")
 @Component
 public class WebSocketServer {
 
-	// 静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
+	// Static variable to track the current number of online connections. Should be designed as thread-safe.
 	private static int onlineCount = 0;
-	// concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。
+	// Thread-safe Set from the concurrent package, used to store the WebSocket object for each client.
 	private static CopyOnWriteArraySet<WebSocketServer> webSocketSet = new CopyOnWriteArraySet<WebSocketServer>();
 
-	// 与某个客户端的连接会话，需要通过它来给客户端发送数据
+	// The connection session with a specific client, used to send data to the client
 	private Session session;
 
-	// 接收sid
+	// Receives sid
 	private String sid = "";
 
 	/**
-	 * 连接建立成功调用的方法
+	 * Method called when connection is successfully established
 	 */
 	@OnOpen
 	public void onOpen(Session session, @PathParam("sid") String sid) {
 		this.session = session;
-		webSocketSet.add(this); // 加入set中
-		addOnlineCount(); // 在线数加1
-		System.out.println("有新窗口开始监听:" + sid + ",当前在线人数为" + getOnlineCount());
-//		System.out.println("new window start listen:" + sid + ",online count:" + getOnlineCount());
+		webSocketSet.add(this); // Add to the set
+		addOnlineCount(); // Increment online count by 1
+		System.out.println("New window started listening: " + sid + ", current online count: " + getOnlineCount());
 		this.sid = sid;
 		try {
 			JSONObject j = new JSONObject();
@@ -50,31 +49,29 @@ public class WebSocketServer {
 			j.put("data", "{}");
 			sendMessage(j.toString());
 		} catch (IOException e) {
-			System.out.println("websocket IO异常");
+			System.out.println("WebSocket IO exception");
 		}
 	}
 
 	/**
-	 * 连接关闭调用的方法
+	 * Method called when connection is closed
 	 */
 	@OnClose
 	public void onClose() {
-		webSocketSet.remove(this); // 从set中删除
-		subOnlineCount(); // 在线数减1
-		System.out.println("有一连接关闭！当前在线人数为" + getOnlineCount());
-//		System.out.println("close one connect , online count:" + getOnlineCount());
+		webSocketSet.remove(this); // Remove from the set
+		subOnlineCount(); // Decrement online count by 1
+		System.out.println("A connection was closed! Current online count: " + getOnlineCount());
 	}
 
 	/**
-	 * 收到客户端消息后调用的方法
+	 * Method called when a message is received from the client
 	 *
-	 * @param message 客户端发送过来的消息
+	 * @param message Message sent from the client
 	 */
 	@OnMessage
 	public void onMessage(String message, Session session) {
-		System.out.println("收到来自窗口" + sid + "的信息:" + message);
-//		System.out.println("receive from window :" + sid + "msg :" + message);
-		// 群发消息
+		System.out.println("Received message from window " + sid + ": " + message);
+		// Broadcast message
 		for (WebSocketServer item : webSocketSet) {
 			try {
 				JSONObject m = JSONObject.fromObject(message);
@@ -91,35 +88,33 @@ public class WebSocketServer {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param session
 	 * @param error
 	 */
 	@OnError
 	public void onError(Session session, Throwable error) {
-		System.out.println("发生错误");
+		System.out.println("An error occurred");
 		error.printStackTrace();
 	}
 
 	/**
-	 * 实现服务器主动推送
+	 * Server-initiated push
 	 */
 	public void sendMessage(String message) throws IOException {
 		this.session.getBasicRemote().sendText(message);
 	}
 
 	/**
-	 * 群发自定义消息
+	 * Broadcast custom message
 	 */
 	public static void sendInfo(String message, @PathParam("sid") String sid) throws IOException {
-		System.out.println("推送消息到窗口" + sid + "，推送内容:" + message);
-//		System.out.println("push msg to window" + sid + "，msg:" + message);
+		System.out.println("Pushing message to window " + sid + ", content: " + message);
 		int count = 0;
 		for (WebSocketServer item : webSocketSet) {
-			System.out.println("发送次数："+count);
-//			System.out.println("push count："+count);
+			System.out.println("Send count: "+count);
 			try {
-				// 这里可以设定只推送给这个sid的，为null则全部推送
+				// Here you can set to push only to this specific sid; if null, push to all
 				if (sid == null) {
 					item.sendMessage(message);
 				} else if (item.sid.equals(sid)) {

@@ -25,21 +25,21 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
     @Override
     public ResponseResult generate(int identity , String phoneNumber){
 
-        //校验 发送时限
+        // Validate sending time limit
         checkSendCodeTimeLimit(phoneNumber);
 
-        //生成6位code
+        // Generate 6-digit code
         String code = String.valueOf((int)((Math.random()*9+1)*100000));
 
-        //生成redis key
+        // Generate Redis key
         String keyPre = generateKeyPreByIdentity(identity);
         String key = keyPre + phoneNumber;
-        //存redis，2分钟过期
+        // Store in Redis, expires in 2 minutes
         BoundValueOperations<String, String> codeRedis = redisTemplate.boundValueOps(key);
         codeRedis.set(code);
         codeRedis.expire(120, TimeUnit.SECONDS);
 
-        //返回
+        // Return result
         VerifyCodeResponse result = new VerifyCodeResponse();
         result.setCode(code);
         return ResponseResult.success(result);
@@ -47,10 +47,10 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
 
     @Override
     public ResponseResult verify(int identity,String phoneNumber,String code){
-        //三档验证
+        // Three-level verification
 
 
-        //生成redis key
+        // Generate Redis key
         String keyPre = generateKeyPreByIdentity(identity);
         String key = keyPre + phoneNumber;
         BoundValueOperations<String, String> codeRedis = redisTemplate.boundValueOps(key);
@@ -67,7 +67,7 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
     }
 
     /**
-     * 根据身份类型生成对应的缓存key
+     * Generate the corresponding cache key based on identity type
      * @param identity
      * @return
      */
@@ -82,24 +82,24 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
     }
 
     /**
-     * 判断此手机号发送时限限制
+     * Check the sending time limit for this phone number
      * @param phoneNumber
      * @return
      */
     private ResponseResult checkSendCodeTimeLimit(String phoneNumber){
-        //判断是否有 限制1分钟，10分钟，24小时。
+        // Check if there are limits for 1 minute, 10 minutes, or 24 hours.
 
         return ResponseResult.success("");
     }
 
     /**
-     * 三档验证校验
+     * Three-level verification check
      * @param phoneNumber
      * @param code
      * @return
      */
     private ResponseResult checkCodeThreeLimit(String phoneNumber,String code){
-        //看流程图
+        // See flowchart
 
         return ResponseResult.success("");
     }

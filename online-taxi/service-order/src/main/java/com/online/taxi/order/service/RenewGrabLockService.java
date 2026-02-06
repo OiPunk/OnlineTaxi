@@ -6,7 +6,7 @@ package com.online.taxi.order.service;
 public interface RenewGrabLockService {
 
     /**
-     * 续约
+     * Renew lock
      * @param key
      * @param value
      * @param time

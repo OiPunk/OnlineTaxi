@@ -1,36 +1,36 @@
 server:
   port: 6010
-spring: 
-  application: 
+spring:
+  application:
     name: cloud-admin
   security:
     user:
-      name: root
-      password: root
-  # 邮件设置
+      name: ${ADMIN_USER:admin}
+      password: ${ADMIN_PASSWORD:changeme}
+  # Email settings
   mail:
-    host: smtp.qq.com
-    username: 1399979641
-    password: btpkjrjjrhsvgaff
+    host: ${MAIL_SMTP_HOST:smtp.example.com}
+    username: ${MAIL_USERNAME:user@example.com}
+    password: ${MAIL_PASSWORD:changeme}
     properties:
-      mail: 
-        smpt: 
+      mail:
+        smpt:
           auth: true
-          starttls: 
+          starttls:
             enable: true
             required: true
-#收件邮箱
-spring.boot.admin.notify.mail.to: 2634982208@qq.com   
-# 发件邮箱
-spring.boot.admin.notify.mail.from: 1399979641@qq.com   
-      
-#注册中心
-eureka: 
+# Recipient email
+spring.boot.admin.notify.mail.to: ${MAIL_TO:admin@example.com}
+# Sender email
+spring.boot.admin.notify.mail.from: ${MAIL_FROM:noreply@example.com}
+
+# Service registry
+eureka:
   client:
-    #设置服务注册中心的URL
-    service-url:                      
-      defaultZone: http://root:root@eureka-7900:7900/eureka/
-  instance: 
+    # Set service registry URL
+    service-url:
+      defaultZone: http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@${EUREKA_HOST:eureka-7900}:7900/eureka/
+  instance:
     hostname: localhost
     lease-renewal-interval-in-seconds: 1
 
@@ -38,10 +38,10 @@ management:
   endpoints:
     web:
       exposure:
-        #yml加双引号，properties不用加
-        include: "*"    
+        # In YAML use double quotes; in properties files quotes are not needed
+        include: "*"
   endpoint:
     health:
-      ##默认是never
+      # Default is never
       show-details: ALWAYS
-      enabled: true   
+      enabled: true

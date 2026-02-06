@@ -10,7 +10,7 @@ import java.util.List;
 public interface DispatchService {
 
     /**
-     * 将指定订单拍给多个司机
+     * Dispatch a specified order to multiple drivers
      * @param orderId
      * @param driverIdList
      * @return

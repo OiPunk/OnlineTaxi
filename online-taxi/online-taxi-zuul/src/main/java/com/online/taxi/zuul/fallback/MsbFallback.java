@@ -17,30 +17,30 @@ import com.netflix.hystrix.exception.HystrixTimeoutException;
 public class MsbFallback implements FallbackProvider{
 
 	/**
-	 * 表明为哪个微服务提供回退
-	 * 服务Id ，若需要所有服务调用都支持回退，返回null 或者 * 即可
+	 * Specifies which microservice this fallback is for.
+	 * Service ID; if all service calls should support fallback, return null or *.
 	 */
 	@Override
 	public String getRoute() {
 		// TODO Auto-generated method stub
 //		return "*";
-		// 下面是单独的微服务
+		// Below is for a specific microservice
 		return "api-passenger";
 //		return "api-driver";
 	}
 
 	@Override
 	public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
-		
+
 		if (cause instanceof HystrixTimeoutException) {
             return response(HttpStatus.GATEWAY_TIMEOUT);
         } else {
             return response(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-		
-		
+
+
 	}
-	
+
 	private ClientHttpResponse response(final HttpStatus status) {
         return new ClientHttpResponse() {
             @Override
@@ -68,9 +68,9 @@ public class MsbFallback implements FallbackProvider{
 
             @Override
             public InputStream getBody() throws IOException {
-            	String msg = "{\"msg\":\"服务故障\"}";
+            	String msg = "{\"msg\":\"Service failure\"}";
             	return new ByteArrayInputStream(msg.getBytes());
-//                return new ByteArrayInputStream("服务故障，请稍后再试fallback:".getBytes());
+//                return new ByteArrayInputStream("Service failure, please try again later fallback:".getBytes());
             }
 
             @Override

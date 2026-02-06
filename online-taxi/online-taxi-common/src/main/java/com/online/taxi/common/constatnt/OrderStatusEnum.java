@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 功能描述
+ * Feature description
  *
  * @author yueyi2019
  * @date 2018/9/1
@@ -13,41 +13,41 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum OrderStatusEnum implements CodeEnum  {
     /**
-     * 预估订单
+     * Estimated order
      */
-    CALL_ORDER_FORECAST(0,"预估订单"),
+    CALL_ORDER_FORECAST(0,"Estimated order"),
     /**
-     * 订单开始
+     * Order started
      */
-    STATUS_ORDER_START(1, "订单开始"),
+    STATUS_ORDER_START(1, "Order started"),
     /**
-     * 司机接单
+     * Driver accepted order
      */
-    STATUS_DRIVER_ACCEPT(2, "司机接单"),
+    STATUS_DRIVER_ACCEPT(2, "Driver accepted order"),
     /**
-     * 去接乘客
+     * Going to pick up passenger
      */
-    STATUS_RESERVED_ORDER_TO_PICK_UP(3, "去接乘客"),
+    STATUS_RESERVED_ORDER_TO_PICK_UP(3, "Going to pick up passenger"),
     /**
-     * 司机到达乘客起点
+     * Driver arrived at passenger pickup point
      */
-    STATUS_DRIVER_ARRIVED(4, "司机到达乘客起点"),
+    STATUS_DRIVER_ARRIVED(4, "Driver arrived at passenger pickup point"),
     /**
-     * 乘客上车，司机开始行程
+     * Passenger boarded, driver started trip
      */
-    STATUS_DRIVER_TRAVEL_START(5, "乘客上车，司机开始行程"),
+    STATUS_DRIVER_TRAVEL_START(5, "Passenger boarded, driver started trip"),
     /**
-     * 到达目的地，行程结束，未支付
+     * Arrived at destination, trip ended, unpaid
      */
-    STATUS_DRIVER_TRAVEL_END(6, "到达目的地，行程结束，未支付"),
+    STATUS_DRIVER_TRAVEL_END(6, "Arrived at destination, trip ended, unpaid"),
     /**
-     * 发起收款
+     * Payment initiated
      */
-    STATUS_PAY_START(7, "发起收款"),
+    STATUS_PAY_START(7, "Payment initiated"),
     /**
-     * 支付完成
+     * Payment completed
      */
-    STATUS_PAY_END(8, "支付完成");
+    STATUS_PAY_END(8, "Payment completed");
 
     private int code;
     private String value;

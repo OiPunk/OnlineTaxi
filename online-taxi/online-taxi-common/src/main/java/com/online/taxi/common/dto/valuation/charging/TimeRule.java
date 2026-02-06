@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 import java.math.BigDecimal;
 
 /**
- * 分段计时规则
+ * Time-segmented billing rule
  *
  * @date 2018/8/14
  */
@@ -15,22 +15,22 @@ import java.math.BigDecimal;
 public class TimeRule {
 
     /**
-     * 计费时间段 - 开始时间点
+     * Billing time period - start time point
      */
     private Integer start;
 
     /**
-     * 计费时间段 - 结束时间点
+     * Billing time period - end time point
      */
     private Integer end;
 
     /**
-     * 超公里单价（元/公里）
+     * Extra distance unit price (yuan/km)
      */
     private BigDecimal perKiloPrice;
 
     /**
-     * 超时间单价（元/分钟）
+     * Extra time unit price (yuan/minute)
      */
     private BigDecimal perMinutePrice;
 }

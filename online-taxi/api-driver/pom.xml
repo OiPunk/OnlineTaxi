@@ -25,7 +25,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
-		<!-- eureka客户端 -->
+		<!-- Eureka client -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -35,20 +35,20 @@
 		
 		
 		
-		<!-- 测试 -->
+		<!-- Test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- 引入hystrix依赖 -->
+		<!-- Hystrix dependency -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
 		</dependency>
 		
-		<!-- 引入sleuth依赖 -->
+		<!-- Sleuth dependency -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-sleuth</artifactId>
@@ -60,7 +60,7 @@
 			<artifactId>spring-cloud-starter-zipkin</artifactId>
 		</dependency>
 		
-		<!-- 引用自定义通用组件 -->
+		<!-- Reference custom common component -->
 		<dependency>
 			<groupId>com.online.taxi</groupId>
 			<artifactId>online-taxi-common</artifactId>

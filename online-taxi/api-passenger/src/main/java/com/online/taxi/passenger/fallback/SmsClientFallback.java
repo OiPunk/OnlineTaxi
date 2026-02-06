@@ -13,23 +13,23 @@ public class SmsClientFallback implements SmsClient {
 
 //	@Autowired
 //	private StringRedisTemplate redisTemplate;
-	
+
 	@Override
 	public ResponseResult sendSms(SmsSendRequest smsSendRequest) throws Exception{
-		System.out.println("不好意思，我熔断了");
-		
+		System.out.println("Sorry, circuit breaker triggered");
+
 //		String key = "service-sms";
 //		String noticeString = redisTemplate.opsForValue().get(key);
 //		if(StringUtils.isBlank(noticeString)) {
-//			发送短信，或者调用电话接口
-//			System.out.println("通知别人我熔断了");
+//			Send SMS or call phone notification API
+//			System.out.println("Notify others that circuit breaker triggered");
 //			redisTemplate.opsForValue().set(key, "notice", 30, TimeUnit.SECONDS);
-//			
+//
 //		}else {
-//			System.out.println("通知过了，我先不通知了");
+//			System.out.println("Already notified, skipping notification for now");
 //		}
-		throw new RuntimeException("异常");
-//		return ResponseResult.fail(-3, "feign熔断");
+		throw new RuntimeException("Exception");
+//		return ResponseResult.fail(-3, "feign circuit breaker");
 	}
 
 }

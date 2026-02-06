@@ -23,7 +23,7 @@ public class BindExceptionHanlder {
     public ResponseResult handleBindException(HttpServletRequest request, Exception exception) {
 
         String exceptionClassName = exception.getClass().getName();
-        String message = "参数错误";
+        String message = "Parameter error";
         switch (exceptionClassName){
             case "org.springframework.validation.BindException":
                 BindException bindException = (BindException) exception;

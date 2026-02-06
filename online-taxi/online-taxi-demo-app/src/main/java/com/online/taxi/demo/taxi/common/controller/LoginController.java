@@ -12,21 +12,21 @@ import com.online.taxi.demo.taxi.common.request.LoginRequest;
 @RestController
 @RequestMapping("/login")
 public class LoginController {
-	
+
 	/**
-	 * 验证码登录
+	 * Verification code login
 	 * @return
 	 */
 	@PostMapping("/verify")
 	public LoginResponse login(@RequestBody LoginRequest bean) {
-		
+
 		LoginResponse response = new LoginResponse();
 		if(bean.getRoleCode().intValue() == IdentityConstant.PASSENGER) {
 			response.setId(""+IdentityConstant.PASSENGER);
-			response.setName("乘客张三");
+			response.setName("Passenger Zhang San");
 		}else if(bean.getRoleCode().intValue() == IdentityConstant.DRIVER) {
 			response.setId(""+IdentityConstant.DRIVER);
-			response.setName("司机张三");
+			response.setName("Driver Zhang San");
 			response.setWorkStatus(0);
 		}
 		response.setRoleCode(bean.getRoleCode());

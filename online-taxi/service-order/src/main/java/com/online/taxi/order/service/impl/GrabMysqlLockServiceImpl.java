@@ -17,39 +17,39 @@ public class GrabMysqlLockServiceImpl implements GrabService {
 
 	@Autowired
 	private MysqlLock lock;
-	
+
 	@Autowired
 	OrderService orderService;
-	
+
 	ThreadLocal<OrderLock> orderLock = new ThreadLocal<>();
-	
+
     @Override
     public ResponseResult grabOrder(int orderId , int driverId){
-        //生成key
+        //generate key
         OrderLock ol = new OrderLock();
         ol.setOrderId(orderId);
         ol.setDriverId(driverId);
-        
+
         orderLock.set(ol);
         lock.setOrderLockThreadLocal(orderLock);
         lock.lock();
-//        System.out.println("司机"+driverId+"加锁成功");
+//        System.out.println("Driver "+driverId+" locked successfully");
 
         try {
-			System.out.println("司机:"+driverId+" 执行抢单逻辑");
-			
+			System.out.println("Driver:"+driverId+" executing order grab logic");
+
             boolean b = orderService.grab(orderId, driverId);
             if(b) {
-            	System.out.println("司机:"+driverId+" 抢单成功");
+            	System.out.println("Driver:"+driverId+" grabbed order successfully");
             }else {
-            	System.out.println("司机:"+driverId+" 抢单失败");
+            	System.out.println("Driver:"+driverId+" failed to grab order");
             }
-            
+
         } finally {
-        	
+
             lock.unlock();
         }
-        
+
         return null;
     }
 }

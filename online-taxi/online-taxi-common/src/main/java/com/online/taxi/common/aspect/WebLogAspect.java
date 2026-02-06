@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 /**
- * 记录所有日志
+ * Log all requests
  * @author yueyi2019
  *
  */
@@ -27,11 +27,11 @@ public class WebLogAspect {
 
     @Before("logPointCut()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
-        // 接收到请求，记录请求内容
+        // Received request, log request content
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
 
-        // 记录下请求内容
+        // Log request content
         log.info("request:{url : " + request.getRequestURL().toString()+", token:"+request.getHeader("token")
                 +", method:"+request.getMethod()+", ip:"+request.getRemoteAddr()+", class method:"
                 +joinPoint.getSignature().getDeclaringTypeName() + "."+ joinPoint.getSignature().getName()
@@ -39,20 +39,20 @@ public class WebLogAspect {
 
     }
     /**
-     *  returning的值和doAfterReturning的参数名一致
-      */
+     * The value of returning must match the parameter name of doAfterReturning
+     */
     @AfterReturning(returning = "ret", pointcut = "logPointCut()")
     public void doAfterReturning(Object ret) throws Throwable {
-        // 处理完请求，返回内容
+        // Request processed, return content
         log.info("response : " + ret);
     }
 
     @Around("logPointCut()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
         long startTime = System.currentTimeMillis();
-        // ob 为方法的返回值
+        // ob is the return value of the method
         Object ob = pjp.proceed();
-        log.info("耗时 : " + (System.currentTimeMillis() - startTime));
+        log.info("Time elapsed : " + (System.currentTimeMillis() - startTime));
         return ob;
     }
 }

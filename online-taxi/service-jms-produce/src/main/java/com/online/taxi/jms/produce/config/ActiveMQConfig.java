@@ -14,28 +14,28 @@ import javax.jms.Topic;
 
 @Configuration
 public class ActiveMQConfig {
- 
+
     @Value("${spring.activemq.broker-url}")
     private  String brokerUrl;
- 
+
     @Bean
     public Queue queue() {
         return new ActiveMQQueue("ActiveMQQueue");
     }
- 
+
     @Bean
     public Topic topic(){
         return new ActiveMQTopic("ActiveMQTopic");
     }
- 
- 
+
+
     @Bean
     public ActiveMQConnectionFactory connectionFactory() {
         return new ActiveMQConnectionFactory(brokerUrl);
     }
 
     /**
-     *   Queue模式连接注入
+     * Queue mode connection injection
      */
     @Bean
     public JmsListenerContainerFactory<?> jmsListenerContainerQueue(ActiveMQConnectionFactory connectionFactory){
@@ -45,12 +45,12 @@ public class ActiveMQConfig {
     }
 
     /**
-     *Topic模式连接注入
+     * Topic mode connection injection
      */
     @Bean
     public JmsListenerContainerFactory<?> jmsListenerContainerTopic(ActiveMQConnectionFactory connectionFactory){
         DefaultJmsListenerContainerFactory bean = new DefaultJmsListenerContainerFactory();
-        //设置为发布订阅方式, 默认情况下使用的生产消费者方式
+        // Set to publish-subscribe mode, default is producer-consumer mode
         bean.setPubSubDomain(true);
         bean.setConnectionFactory(connectionFactory);
         return bean;

@@ -5,19 +5,19 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * 标签费用
+ * Tag fee
  *
  * @date 2018/10/16
  */
 @Data
 public class TagPrice {
     /**
-     * 标签名称
+     * Tag name
      */
     private String name;
 
     /**
-     * 标签费用
+     * Tag fee
      */
     private BigDecimal price;
 }

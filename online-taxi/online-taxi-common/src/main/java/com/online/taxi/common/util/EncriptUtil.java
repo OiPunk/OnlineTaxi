@@ -10,7 +10,7 @@ import javax.crypto.spec.IvParameterSpec;
 import java.io.UnsupportedEncodingException;
 
 /**
- * 密钥
+ * Encryption Utility
  *
  **/
 @Slf4j
@@ -18,7 +18,7 @@ public class EncriptUtil {
     private static final String KEY = "pio-tech";
 
     /**
-     * 解密数据
+     * Decrypt data
      */
     public static String decrypt(String message) {
         try {
@@ -38,7 +38,7 @@ public class EncriptUtil {
     }
 
     /**
-     * 加密数据
+     * Encrypt data
      */
     public static byte[] encrypt(String message) {
         try {
@@ -79,18 +79,18 @@ public class EncriptUtil {
     }
 
     /**
-     * 手机号加密
+     * Encrypt phone number
      *
      * @param phoneNumber
      * @return
      */
     public static String encryptionPhoneNumber(String phoneNumber) {
-        log.info("手机号===" + phoneNumber);
+        log.info("Phone number===" + phoneNumber);
         String passengerPhoneNum = null;
         try {
             String phoneNumbers = java.net.URLEncoder.encode(phoneNumber, "utf-8").toLowerCase();
             passengerPhoneNum = toHexString(EncriptUtil.encrypt(phoneNumbers)).toUpperCase();
-            log.info("加密手机号===" + passengerPhoneNum);
+            log.info("Encrypted phone number===" + passengerPhoneNum);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -98,20 +98,20 @@ public class EncriptUtil {
     }
 
     /**
-     * 手机号解密
+     * Decrypt phone number
      *
      * @param phoneNumber
      * @return
      */
     public static String decryptionPhoneNumber(String phoneNumber) {
-        log.info("加密的手机号===" + phoneNumber);
+        log.info("Encrypted phone number===" + phoneNumber);
         String phoneNumbers = null;
         try {
             phoneNumbers = java.net.URLDecoder.decode(decrypt(phoneNumber), "utf-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        log.info("解密后的手机号===" + phoneNumbers);
+        log.info("Decrypted phone number===" + phoneNumbers);
         return phoneNumbers;
     }
 

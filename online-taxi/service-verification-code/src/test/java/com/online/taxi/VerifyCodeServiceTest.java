@@ -24,7 +24,7 @@ public class VerifyCodeServiceTest {
     @Autowired
     VerifyCodeService verifyCodeService;
 
-    String phoneNumber = "13910733521";
+    String phoneNumber = "13800000001";
 
 
     @Test

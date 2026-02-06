@@ -8,7 +8,7 @@ import com.online.taxi.common.dto.sms.SmsSendRequest;
  */
 public interface AliService {
 	/**
-	 * 发送短信
+	 * Send SMS
 	 * @param request
 	 * @return
 	 */

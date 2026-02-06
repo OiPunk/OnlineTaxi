@@ -1,0 +1,50 @@
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+.vscode/
+*.swp
+*.swo
+*~
+.factorypath
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment & Secrets - NEVER commit these
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+secrets.yml
+secrets.yaml
+
+# Logs
+*.log
+logs/
+
+# Spring Boot
+spring-boot-devtools.properties

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 对订单价格进行缓存操作
+ * Cache operations for order prices
  *
  * @date 2018/10/18
  */
@@ -29,37 +29,37 @@ public class PriceCache {
     private ObjectMapper mapper = new ObjectMapper();
 
     /**
-     * 缓存计价对象
+     * Get cached price object
      *
-     * @param orderId 订单ID
-     * @return 计价对象
+     * @param orderId order ID
+     * @return price object
      */
     public PriceMeter get(Integer orderId) {
         PriceMeter priceMeter = null;
         String key = generateKey(orderId);
-        log.info("查找缓存orderId={}, PriceMeterInRedis={}", orderId, key);
+        log.info("Looking up cache orderId={}, PriceMeterInRedis={}", orderId, key);
         try {
             priceMeter = mapper.readValue(redisTemplate.opsForValue().get(key), PriceMeter.class);
-            log.info("获取缓存orderId={}, PriceMeterInRedis={}", orderId, key);
+            log.info("Retrieved cache orderId={}, PriceMeterInRedis={}", orderId, key);
         } catch (Exception e) {
             e.printStackTrace();
-            log.warn("orderId={}, Redis解析PriceMeter失败{}", orderId, key);
+            log.warn("orderId={}, Failed to parse PriceMeter from Redis {}", orderId, key);
         }
 
         return priceMeter;
     }
 
     /**
-     * 从缓存中获取计价对象
+     * Set price object in cache
      *
-     * @param orderId    订单ID
-     * @param priceMeter 计价对象
-     * @param timeout    过期时间
-     * @param unit       过期时间单位
+     * @param orderId    order ID
+     * @param priceMeter price object
+     * @param timeout    expiration time
+     * @param unit       expiration time unit
      */
     public void set(Integer orderId, PriceMeter priceMeter, long timeout, TimeUnit unit) {
         String key = generateKey(orderId);
-        log.info("设置缓存orderId={}, PriceMeterInRedis={}", orderId, key);
+        log.info("Setting cache orderId={}, PriceMeterInRedis={}", orderId, key);
         try {
             redisTemplate.opsForValue().set(key, mapper.writeValueAsString(priceMeter), timeout, unit);
         } catch (JsonProcessingException e) {
@@ -68,21 +68,21 @@ public class PriceCache {
     }
 
     /**
-     * 删除缓存
+     * Delete cache
      *
-     * @param orderId 订单ID
+     * @param orderId order ID
      */
     public void delete(Integer orderId) {
         String key = generateKey(orderId);
-        log.info("删除缓存orderId={}, RuleInRedis={}", orderId, key);
+        log.info("Deleting cache orderId={}, RuleInRedis={}", orderId, key);
         redisTemplate.delete(key);
     }
 
     /**
-     * 生成redis的key
+     * Generate Redis key
      *
-     * @param orderId 订单ID
-     * @return redis的key
+     * @param orderId order ID
+     * @return Redis key
      */
     private String generateKey(Integer orderId) {
         return String.format("%s:%s:%s", OrderRuleNames.PREFIX, OrderRuleNames.PRICE, orderId);

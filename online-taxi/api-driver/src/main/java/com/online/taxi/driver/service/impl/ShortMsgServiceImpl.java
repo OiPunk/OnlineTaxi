@@ -25,23 +25,23 @@ import net.sf.json.JSONObject;
 @Service
 @Slf4j
 public class ShortMsgServiceImpl implements ShortMsgService {
-	
+
 	@Autowired
-	private RestTemplateRequestService restTemplateRequestService; 
-	
+	private RestTemplateRequestService restTemplateRequestService;
+
 	@Override
 	public ResponseResult send(String phoneNumber, String code) {
-		
-		System.out.println("手机号和验证码："+phoneNumber+","+code);
+
+		System.out.println("Phone number and verification code: "+phoneNumber+","+code);
 		String http = "http://";
 		String serviceName = "SERVICE-SMS";
 		String uri = "/send/alisms-template";
-		
+
 		String url = http + serviceName + uri;
 		SmsSendRequest smsSendRequest = new SmsSendRequest();
 		String[] phoneNumbers = new String[] {phoneNumber};
 		smsSendRequest.setReceivers(phoneNumbers);
-		
+
 		List<SmsTemplateDto> data = new ArrayList<SmsTemplateDto>();
 		SmsTemplateDto dto = new SmsTemplateDto();
 		dto.setId("SMS_144145499");
@@ -50,35 +50,35 @@ public class ShortMsgServiceImpl implements ShortMsgService {
 		templateMap.put("code", code);
 		dto.setTemplateMap(templateMap);
 		data.add(dto);
-		
+
 		smsSendRequest.setData(data);
-		
-//		 正常 ribbon调用
+
+//		 Normal ribbon call
 		ResponseResult result =  restTemplateRequestService.smsSend(smsSendRequest);
-		
-		System.out.println("调用短信服务返回的结果"+JSONObject.fromObject(result));
+
+		System.out.println("Result returned from SMS service call: "+JSONObject.fromObject(result));
 		return result;
 	}
-	
+
 	/*
-	 *	下面代码手写ribbon 
+	 *	Code below is a manual ribbon implementation
 	 */
-	
+
 	@Autowired
 	DiscoveryClient discoveryClient;
-	
+
 	private ServiceInstance loadBalance(String serviceName) {
 		List<ServiceInstance> instances = discoveryClient.getInstances(serviceName);
 		ServiceInstance instance = instances.get(new Random().nextInt(instances.size()));
-		log.info("负载均衡 选出来的ip："+instance.getHost()+",端口："+instance.getPort());
-		
+		log.info("Load balancing selected IP: "+instance.getHost()+", port: "+instance.getPort());
+
 		Map<String, String> metadata = instance.getMetadata();
-		
+
 		return instance;
 	}
-	
+
 	/*
-	 *	上面代码手写ribbon 
+	 *	Code above is a manual ribbon implementation
 	 */
-	
+
 }

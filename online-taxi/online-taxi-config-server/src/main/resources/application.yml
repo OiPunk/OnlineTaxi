@@ -1,35 +1,33 @@
-#服务端口
-server: 
+# Service port
+server:
   port: 6001
 
-#应用名称及验证账号
-spring: 
-  application: 
+# Application name and authentication
+spring:
+  application:
     name: config-server
-    
+
   cloud:
     config:
       server:
-        
         git:
-        #https://github.com/oi/online-taxi-config-profile.git
-          uri: https://github.com/oi/online-taxi-config-profile
-          username: 
-          password: 
-                      #默认是秒，因为git慢
+          uri: ${CONFIG_GIT_URI:https://github.com/oi/online-taxi-config-profile}
+          username: ${CONFIG_GIT_USERNAME:}
+          password: ${CONFIG_GIT_PASSWORD:}
+          # Default is seconds; increased because git can be slow
           timeout: 15
   rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest    
-#注册中心
-eureka: 
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+# Service registry
+eureka:
   client:
-    #设置服务注册中心的URL
-    service-url:                      
-      defaultZone: http://root:root@eureka-7900:7900/eureka/
-  instance: 
+    # Set service registry URL
+    service-url:
+      defaultZone: http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@${EUREKA_HOST:eureka-7900}:7900/eureka/
+  instance:
     hostname: localhost
     instance-id: config-server
 
@@ -37,9 +35,9 @@ management:
   endpoints:
     web:
       exposure:
-        #yml加双引号，properties不用加
+        # In YAML use double quotes; in properties files quotes are not needed
         include: "*"
 logging:
   level:
     org.springframework.cloud: debug
-    org.springframework.boot: debug        
+    org.springframework.boot: debug

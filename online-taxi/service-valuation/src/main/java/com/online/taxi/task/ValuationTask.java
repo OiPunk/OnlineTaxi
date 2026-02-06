@@ -40,7 +40,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 /**
- * 计价服务异步任务
+ * Valuation service async task
  *
  * @date 2018/8/14
  */
@@ -62,17 +62,17 @@ public class ValuationTask {
     private DynamicDiscountRuleDao dynamicDiscountRuleDao;
 
     /**
-     * 计算基本价格
+     * Calculate base price
      *
-     * @param driveMeter 行驶信息
-     * @return 基本价格
+     * @param driveMeter driving information
+     * @return base price
      */
     @Async
     public CompletableFuture<OrderRulePrice> calcMasterPrice(DriveMeter driveMeter) {
         OrderRulePrice rulePrice = new OrderRulePrice();
         Rule rule = driveMeter.getRule();
 
-        //key信息
+        // Key information
         rulePrice.setOrderId(driveMeter.getOrder() != null ? driveMeter.getOrder().getId() : driveMeter.getCurrentPriceRequestDto().getOrderId());
         rulePrice.setCategory(driveMeter.getChargingCategoryEnum().getCodeAsString());
         rulePrice.setTotalDistance(UnitConverter.meterToKilo(driveMeter.getTotalDistance()));
@@ -86,7 +86,7 @@ public class ValuationTask {
         rulePrice.setCarLevelId(rule.getKeyRule().getCarLevelId());
         rulePrice.setCarLevelName(rule.getKeyRule().getCarLevelName());
 
-        //基础价格
+        // Base price
         rulePrice.setBasePrice(rule.getBasicRule().getBasePrice());
         rulePrice.setBaseKilo(rule.getBasicRule().getKilos());
         rulePrice.setBaseMinute(rule.getBasicRule().getMinutes());
@@ -94,7 +94,7 @@ public class ValuationTask {
         rulePrice.setPerKiloPrice(rule.getPriceRule().getPerKiloPrice());
         rulePrice.setPerMinutePrice(rule.getPriceRule().getPerMinutePrice());
 
-        //夜间价格
+        // Night price
         rulePrice.setNightTime(0D);
         rulePrice.setNightDistance(0D);
         rulePrice.setNightPrice(BigDecimal.ZERO);
@@ -104,7 +104,7 @@ public class ValuationTask {
             rulePrice.setNightPerKiloPrice(rule.getNightRule().getPerKiloPrice());
             rulePrice.setNightPerMinutePrice(rule.getNightRule().getPerMinutePrice());
 
-            //计算夜间价格
+            // Calculate night price
             TimeMeter.TimePriceUnit unit = generateTimePriceUnit(driveMeter);
             unit.setStart(UnitConverter.dateToLocalTime(rulePrice.getNightStart()));
             unit.setEnd(UnitConverter.dateToLocalTime(rulePrice.getNightEnd()));
@@ -116,7 +116,7 @@ public class ValuationTask {
             rulePrice.setNightPrice(PriceHelper.add(result.getDistancePrice(), result.getTimePrice()));
         }
 
-        //远途价格
+        // Long-distance price
         rulePrice.setBeyondStartKilo(rule.getBeyondRule().getStartKilo());
         rulePrice.setBeyondPerKiloPrice(rule.getBeyondRule().getPerKiloPrice());
         rulePrice.setBeyondDistance(PriceHelper.subtract(rulePrice.getTotalDistance(), rulePrice.getBeyondStartKilo()).doubleValue());
@@ -126,17 +126,17 @@ public class ValuationTask {
     }
 
     /**
-     * 计算分段计时价格
+     * Calculate segmented time-based price
      *
-     * @param driveMeter 行驶信息
-     * @return 分段计时价格
+     * @param driveMeter driving information
+     * @return segmented time-based price
      */
     @Async
     public CompletableFuture<List<OrderRulePriceDetail>> calcDetailPrice(DriveMeter driveMeter) {
-        //行驶开始到结束的时间片
+        // Time slice from driving start to end
         TimeSlice totalSlice = generateTimeSlice(driveMeter);
 
-        //根据时间段计算价格
+        // Calculate price based on time periods
         List<OrderRulePriceDetail> details = Optional.ofNullable(driveMeter.getRule().getPriceRule().getTimeRules()).orElse(new ArrayList<>()).stream().map(r -> {
             OrderRulePriceDetail detail = new OrderRulePriceDetail();
             detail.setOrderId(driveMeter.getOrder() != null ? driveMeter.getOrder().getId() : driveMeter.getCurrentPriceRequestDto().getOrderId());
@@ -146,14 +146,14 @@ public class ValuationTask {
             detail.setPerKiloPrice(r.getPerKiloPrice());
             detail.setPerMinutePrice(r.getPerMinutePrice());
 
-            //设置计算用参数
+            // Set calculation parameters
             TimeMeter.TimePriceUnit unit = generateTimePriceUnit(driveMeter);
             unit.setStart(LocalTime.of(detail.getStartHour(), 0, 0));
             unit.setEnd(LocalTime.of(detail.getEndHour(), 0, 0).minusSeconds(1));
             unit.setPerMeterPrice(UnitConverter.kiloToMeterPrice(detail.getPerKiloPrice()));
             unit.setPerSecondPrice(UnitConverter.minuteToSecondPrice(detail.getPerMinutePrice()));
 
-            //获取计算结果
+            // Get calculation result
             TimeMeter.TimePriceResult result = TimeMeter.measure(totalSlice, unit);
             detail.setDuration(UnitConverter.secondToMinute(result.getDuration()));
             detail.setTimePrice(PriceHelper.resetScale(result.getTimePrice()));
@@ -167,14 +167,14 @@ public class ValuationTask {
     }
 
     /**
-     * 计算其他价格
+     * Calculate other prices
      *
-     * @param driveMeter 驾驶参数
-     * @param master     基础计价任务结果
-     * @param details    分段计价任务结果
+     * @param driveMeter driving parameters
+     * @param master     base pricing task result
+     * @param details    segmented pricing task result
      */
     public void calcOtherPrice(DriveMeter driveMeter, OrderRulePrice master, List<OrderRulePriceDetail> details) {
-        //是否采用基础套餐的计费规则
+        // Whether to use base package charging rules
         if (driveMeter.getRule().getBasicRule().isBasicCharging()) {
             master.setRestDistance(0D);
             master.setRestDistancePrice(BigDecimal.ZERO);
@@ -186,7 +186,7 @@ public class ValuationTask {
             master.setDuration(PriceHelper.subtract(master.getTotalTime(), master.getBaseMinute()).doubleValue());
             master.setDurationPrice(PriceHelper.multiply(master.getPerMinutePrice(), master.getDuration()));
         } else {
-            //计算时间段外的价格
+            // Calculate price outside time periods
             master.setRestDistance(PriceHelper.subtract(master.getTotalDistance(), details.stream().mapToDouble(OrderRulePriceDetail::getDistance).sum()).doubleValue());
             master.setRestDistancePrice(PriceHelper.multiply(master.getPerKiloPrice(), master.getRestDistance()));
             master.setRestDuration(PriceHelper.subtract(master.getTotalTime(), details.stream().mapToDouble(OrderRulePriceDetail::getDuration).sum()).doubleValue());
@@ -201,10 +201,10 @@ public class ValuationTask {
     }
 
     /**
-     * 计算动态调价
+     * Calculate dynamic pricing adjustment
      *
-     * @param driveMeter 行驶信息
-     * @return 动态调价的结果
+     * @param driveMeter driving information
+     * @return dynamic pricing adjustment result
      */
     public DiscountPrice calcDiscount(DriveMeter driveMeter) {
         KeyRule keyRule = driveMeter.getRule().getKeyRule();
@@ -222,14 +222,14 @@ public class ValuationTask {
     }
 
     /**
-     * 计算标签价格
+     * Calculate tag price
      *
-     * @param driveMeter 驾驶参数
-     * @return 标签价格
+     * @param driveMeter driving parameters
+     * @return tag price
      */
     public BigDecimal calcTagPrice(DriveMeter driveMeter) {
         BigDecimal totalPrice = BigDecimal.ZERO;
-        //计算标签价格
+        // Calculate tag price
         if (driveMeter.getRule().getTagPrices() != null) {
             totalPrice = driveMeter.getRule().getTagPrices().stream().map(TagPrice::getPrice).reduce(totalPrice, BigDecimal::add);
         }
@@ -237,10 +237,10 @@ public class ValuationTask {
     }
 
     /**
-     * 更新数据库
+     * Update database
      *
-     * @param chargingCategory 计价规则种类
-     * @param priceMeter       价格集合类DTO
+     * @param chargingCategory charging rule category
+     * @param priceMeter       price collection DTO
      */
     @Transactional(rollbackFor = Exception.class)
     public void updateToDb(ChargingCategoryEnum chargingCategory, PriceMeter priceMeter) {
@@ -257,20 +257,20 @@ public class ValuationTask {
         orderRulePriceDetailDao.deleteByOrderIdAndCategory(orderId, chargingCategory);
         orderRulePriceTagDao.deleteByOrderIdAndCategory(orderId, chargingCategory);
 
-        //添加创建时间
+        // Add creation time
         Date now = new Date();
         master.setCreateTime(now);
 
-        //更新计费明细表
+        // Update charging detail table
         orderRulePriceDao.insert(master);
 
-        //更新分段计时计费明细表
+        // Update segmented time-based charging detail table
         if (details != null && !details.isEmpty()) {
             details.forEach(detail -> detail.setCreateTime(now));
             orderRulePriceDetailDao.insert(details);
         }
 
-        //更新标签计费明细表
+        // Update tag charging detail table
         if (tagPrices != null && !tagPrices.isEmpty()) {
             List<OrderRulePriceTag> priceTags = tagPrices.stream().map(tagPrice -> {
                 OrderRulePriceTag orderRulePriceTag = new OrderRulePriceTag();
@@ -286,10 +286,10 @@ public class ValuationTask {
     }
 
     /**
-     * 行驶开始到结束的时间片
+     * Time slice from driving start to end
      *
-     * @param driveMeter 行驶信息
-     * @return 时间片
+     * @param driveMeter driving information
+     * @return time slice
      */
     private TimeSlice generateTimeSlice(DriveMeter driveMeter) {
         TimeSlice totalSlice = new TimeSlice();
@@ -299,10 +299,10 @@ public class ValuationTask {
     }
 
     /**
-     * 生成计算用参数
+     * Generate calculation parameters
      *
-     * @param driveMeter 行驶信息
-     * @return 计算用参数实例
+     * @param driveMeter driving information
+     * @return calculation parameter instance
      */
     private TimeMeter.TimePriceUnit generateTimePriceUnit(DriveMeter driveMeter) {
         TimeMeter.TimePriceUnit unit = null;

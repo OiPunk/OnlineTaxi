@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * 	手机号工具类
+ * Phone Number Utility Class
  * @author oi
  *
  */
@@ -14,16 +14,16 @@ public class PhoneUtil {
 
 	private static final int PHONE_LENGTH = 11;
 	/**
-	 	中国电信号段 133、149、153、173、177、180、181、189、199
-		中国联通号段 130、131、132、145、155、156、166、175、176、185、186
-		中国移动号段 134(0-8)、135、136、137、138、139、147、150、151、152、157、158、159、178、182、183、184、187、188、198
-		其他号段
-		14号段以前为上网卡专属号段，如中国联通的是145，中国移动的是147等等。
-		虚拟运营商
-		电信：1700、1701、1702
-		移动：1703、1705、1706
-		联通：1704、1707、1708、1709、171
-		卫星通信：1349
+	 	China Telecom number segments: 133, 149, 153, 173, 177, 180, 181, 189, 199
+		China Unicom number segments: 130, 131, 132, 145, 155, 156, 166, 175, 176, 185, 186
+		China Mobile number segments: 134(0-8), 135, 136, 137, 138, 139, 147, 150, 151, 152, 157, 158, 159, 178, 182, 183, 184, 187, 188, 198
+		Other number segments
+		14x segments were previously exclusive for data cards, e.g., China Unicom uses 145, China Mobile uses 147, etc.
+		Virtual operators
+		Telecom: 1700, 1701, 1702
+		Mobile: 1703, 1705, 1706
+		Unicom: 1704, 1707, 1708, 1709, 171
+		Satellite communication: 1349
 	 */
 	private static final String PHONE_REGEX = "^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(166)|(17[0,1,3,5,6,7,8])|(18[0-9])|(19[8|9]))\\d{8}$";
 	

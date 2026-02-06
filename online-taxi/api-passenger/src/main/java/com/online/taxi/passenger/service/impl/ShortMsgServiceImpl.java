@@ -21,20 +21,20 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class ShortMsgServiceImpl implements ShortMsgService {
-	
+
 	@Autowired
 	private SmsClient smsClient;
-	
+
 	@Override
 //    @Transactional(rollbackFor = Exception.class)
 	public ResponseResult send(String phoneNumber, String code) {
-		System.out.println("手机号和验证码："+phoneNumber+","+code);
+		System.out.println("Phone number and verification code: "+phoneNumber+","+code);
 		String serviceName = "SERVICE-SMS";
 		String url = "http://"+serviceName+"/send/alisms-template";
 		SmsSendRequest smsSendRequest = new SmsSendRequest();
 		String[] phoneNumbers = new String[] {phoneNumber};
 		smsSendRequest.setReceivers(phoneNumbers);
-		
+
 		List<SmsTemplateDto> data = new ArrayList<SmsTemplateDto>();
 		SmsTemplateDto dto = new SmsTemplateDto();
 		dto.setId("SMS_144145499");
@@ -43,19 +43,19 @@ public class ShortMsgServiceImpl implements ShortMsgService {
 		templateMap.put("code", code);
 		dto.setTemplateMap(templateMap);
 		data.add(dto);
-		
+
 		smsSendRequest.setData(data);
-		
-		//feign调用
+
+		// Feign call
         ResponseResult result = null;
         try {
             result = smsClient.sendSms(smsSendRequest);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("feign 异常");
+            throw new RuntimeException("feign exception");
         }
 
-        System.out.println("调用短信服务返回的结果"+JSONObject.fromObject(result));
+        System.out.println("Result returned from SMS service call: "+JSONObject.fromObject(result));
 		return result;
 	}
 

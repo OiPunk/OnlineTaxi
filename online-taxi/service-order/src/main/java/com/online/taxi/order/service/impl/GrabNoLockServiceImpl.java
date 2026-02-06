@@ -9,28 +9,28 @@ import com.online.taxi.order.service.OrderService;
 
 @Service("grabNoLockService")
 public class GrabNoLockServiceImpl implements GrabService {
-	
+
 	@Autowired
 	OrderService orderService;
-	
+
 	@Override
 	public ResponseResult grabOrder(int orderId, int driverId) {
-		
+
 		try {
-			System.out.println("司机:"+driverId+" 执行抢单逻辑");
-			
+			System.out.println("Driver:"+driverId+" executing order grab logic");
+
             boolean b = orderService.grab(orderId, driverId);
             if(b) {
-            	System.out.println("司机:"+driverId+" 抢单成功");
+            	System.out.println("Driver:"+driverId+" grabbed order successfully");
             }else {
-            	System.out.println("司机:"+driverId+" 抢单失败");
+            	System.out.println("Driver:"+driverId+" failed to grab order");
             }
-            
+
         } finally {
-        	
-            
+
+
         }
-		
+
 		return null;
 	}
 

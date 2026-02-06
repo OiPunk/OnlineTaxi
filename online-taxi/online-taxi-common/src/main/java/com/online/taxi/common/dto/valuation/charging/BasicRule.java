@@ -7,36 +7,36 @@ import org.springframework.util.ObjectUtils;
 import java.math.BigDecimal;
 
 /**
- * 基础计费
+ * Basic charging
  *
  * @date 2018/8/14
  */
 @Data
 public class BasicRule {
     /**
-     * 基础价
+     * Minimum price
      */
     private BigDecimal lowestPrice;
 
     /**
-     * 起步价
+     * Base price
      */
     private BigDecimal basePrice;
 
     /**
-     * 包含公里数（公里）
+     * Included distance (km)
      */
     private Double kilos;
 
     /**
-     * 包含时长数（分钟）
+     * Included duration (minutes)
      */
     private Double minutes;
 
     /**
-     * 是否采用基础套餐的计费规则
+     * Whether to use the basic package charging rule
      *
-     * @return 采用基础套餐的计费规则为true，否则为false
+     * @return true if using the basic package charging rule, false otherwise
      */
     @JsonIgnore
     public boolean isBasicCharging() {

@@ -5,92 +5,92 @@ import lombok.Getter;
 
 /**
  * @author yueyi2019
- * 订单状态
+ * Order status
  */
 @Getter
 @AllArgsConstructor
 public enum OrderEnum implements CodeEnum {
 
     /**
-     * 行程已超260公里，如需用车请联系客服
+     * Trip exceeds 260 km, please contact customer service if you need a ride
      */
-    TOO_FAR_AWAY(501, "您的行程已超260公里，如需用车请联系客服"), /**
-     * 行程太近，请确认您的上下车地址
+    TOO_FAR_AWAY(501, "Your trip exceeds 260 km, please contact customer service if you need a ride"), /**
+     * Trip is too short, please confirm your pickup and drop-off addresses
      */
-    TOO_CLOSE(502, "您的行程太近，请确认您的上下车地址"), /**
-     * 城市不存在
+    TOO_CLOSE(502, "Your trip is too short, please confirm your pickup and drop-off addresses"), /**
+     * City does not exist
      */
-    CITIES_DON_EXIST(503, "该城市不存在"), /**
-     * 城市示启用
+    CITIES_DON_EXIST(503, "This city does not exist"), /**
+     * City is not enabled
      */
-    CITIES_IS_NOT_ENABLED(504, "该城市未启用"),
+    CITIES_IS_NOT_ENABLED(504, "This city is not enabled"),
 
     /**
-     * 服务类型不存在
+     * Service type does not exist
      */
-    SERVICE_TYPE_IS_NO(505, "服务类型不存在"), /**
-     * 服务类型未启用
+    SERVICE_TYPE_IS_NO(505, "Service type does not exist"), /**
+     * Service type is not enabled
      */
-    SERVICE_TYPE_IS_NOT_ENABLED(506, "该服务类型未启用"),
+    SERVICE_TYPE_IS_NOT_ENABLED(506, "This service type is not enabled"),
 
     /**
-     * 渠道不存在
+     * Channel does not exist
      */
-    CHANNEL_IS_NO(507, "该渠道不存在"),
+    CHANNEL_IS_NO(507, "This channel does not exist"),
 
     /**
-     * 渠道未启用
+     * Channel is not enabled
      */
-    CHANNEL_IS_NOT_ENABLED(508, "该渠道未启用"),
+    CHANNEL_IS_NOT_ENABLED(508, "This channel is not enabled"),
 
     /**
-     * 车辆级别无
+     * Vehicle level does not exist
      */
-    CAR_LEVEL_IS_NO(509, "车辆级别不存在"), /**
-     * 该车辆级别未启用
+    CAR_LEVEL_IS_NO(509, "Vehicle level does not exist"), /**
+     * This vehicle level is not enabled
      */
-    CAR_LEVEL_IS_NOT_ENABLED(510, "该车辆级别未启用"),
+    CAR_LEVEL_IS_NOT_ENABLED(510, "This vehicle level is not enabled"),
 
     /**
-     * 它人订单
+     * Order for another person
      */
-    ORDER_TYPE_OTHER(2, "他人订单"),
+    ORDER_TYPE_OTHER(2, "Order for another person"),
 
     /**
-     * 订单取消
+     * Order cancelled
      */
-    IS_CANCEL(1, "订单取消"),
+    IS_CANCEL(1, "Order cancelled"),
 
     /**
-     * 已支付
+     * Paid
      */
-    IS_PAY(1, "已支付"), /**
-     * 未支付
+    IS_PAY(1, "Paid"), /**
+     * Unpaid
      */
-    NOT_PAY(0, "未支付"),
+    NOT_PAY(0, "Unpaid"),
 
     /**
-     * 已评价
+     * Reviewed
      */
-    IS_EVALUATE(1, "已评价"), /**
-     * 未评价
+    IS_EVALUATE(1, "Reviewed"), /**
+     * Not reviewed
      */
-    NOT_EVALUATE(0, "未评价"),
+    NOT_EVALUATE(0, "Not reviewed"),
 
     /**
-     * 人工派单,原无司机
+     * Manual dispatch, originally no driver assigned
      */
-    ORDER_IS_MANUAL_FLAG1(1, "人工派单,原无司机"),
+    ORDER_IS_MANUAL_FLAG1(1, "Manual dispatch, originally no driver assigned"),
 
     /**
-     *实时订单
+     * Real-time order
      */
-    SERVICE_TYPE(1,"实时订单"),
+    SERVICE_TYPE(1,"Real-time order"),
 
     /**
-     * 订单改派,原有司机
+     * Order reassigned, originally had a driver
      */
-    ORDER_IS_MANUAL_FLAG2(2, "订单改派,原有司机");
+    ORDER_IS_MANUAL_FLAG2(2, "Order reassigned, originally had a driver");
 
     private int code;
     private String value;

@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class AddressController {
 
     /**
-     * 根据乘客id和地址类型获取地址信息
+     * Get address information by passenger ID and address type
      * @param passengerId
      * @param type
      * @return
      */
     @GetMapping("/get-address/{passengerId}/{type}")
     public ResponseResult getAddress(@PathVariable("passengerId") int passengerId,@PathVariable("type") int type){
-        //获取乘客地址信息
+        // Get passenger address information
         return null;
     }
 }

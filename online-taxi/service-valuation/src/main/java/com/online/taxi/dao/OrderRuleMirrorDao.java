@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 /**
- * 订单计费规则镜像操作DAO
+ * Order charging rule mirror DAO
  *
  * @date 2018/8/14
  */
@@ -19,10 +19,10 @@ public class OrderRuleMirrorDao {
     private OrderRuleMirrorMapper orderRuleMirrorMapper;
 
     /**
-     * 根据订单ID查询计费规则镜像
+     * Query charging rule mirror by order ID
      *
-     * @param orderId 订单ID
-     * @return 计费规则镜像
+     * @param orderId order ID
+     * @return charging rule mirror
      */
     public OrderRuleMirror selectByOrderId(Integer orderId) {
         return orderRuleMirrorMapper.selectByOrderId(orderId);

@@ -1,65 +1,61 @@
-#服务端口
-server: 
+# Service port
+server:
   port: 9011
 
-#应用名称及验证账号
-spring: 
-  application: 
+# Application name and authentication
+spring:
+  application:
     name: api-passenger
     admin:
       enabled: true
   redis:
     database: 0
-    host: 127.0.0.1
-    port: 6379
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
     timeout: 2000
 
-  #zipkin
+  # Zipkin distributed tracing
   zipkin:
-    base-url: http://localhost:9411/
-    #采样比例1，百分之八采样
+    base-url: ${ZIPKIN_URL:http://localhost:9411/}
+    # Sampling rate: 1 = 100%
   sleuth:
     sampler:
-      rate: 1  
-#注册中心
-eureka: 
+      rate: 1
+# Service registry
+eureka:
   client:
-    #设置服务注册中心的URL
-    service-url:                      
-      defaultZone: http://root:root@eureka-7900:7900/eureka/
+    # Set service registry URL
+    service-url:
+      defaultZone: http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@${EUREKA_HOST:eureka-7900}:7900/eureka/
     enabled: false
-  instance: 
+  instance:
     hostname: localhost
     instance-id: api-passenger
-      
-    
+
 feign:
   compression:
     request:
       mime-types:
       - text/xml
       min-request-size: 2048
-  #开启feignhystrix
+  # Enable Feign Hystrix circuit breaker
   hystrix:
-    enabled: true  
-   
-    
+    enabled: true
 
-  client: 
-    config:  
-      service-valuation: 
-        
+  client:
+    config:
+      service-valuation:
 #        request-interceptors:
 #        - com.online.taxi.passenger.feign.interceptor.MyBasicAuthRequestInterceptor
         connect-timeout: 5000
         read-timeout: 5000
         logger-level: basic
-        
-#service-sms: 
-#  ribbon: 
+
+#service-sms:
+#  ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-service-valuation: 
-  ribbon: 
+service-valuation:
+  ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 ribbon:
   eager-load:
@@ -68,7 +64,7 @@ ribbon:
     - SERVICE-SMS
 
 
-#Admin监控
+# Admin monitoring
 management:
   endpoints:
     web:
@@ -76,10 +72,10 @@ management:
         include: "*"
   endpoint:
     health:
-      ##默认是never
+      # Default is never
       show-details: ALWAYS
       enabled: true
-          
+
 logging:
   level:
     org.springframework: DEBUG

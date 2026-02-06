@@ -3,7 +3,7 @@ package com.online.taxi.dto.phone.response;
 import lombok.Data;
 
 /**
- * 功能描述
+ * OSS base response
  *
  * @date 2018/8/20
  */

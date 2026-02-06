@@ -8,7 +8,7 @@ import javax.jms.Destination;
 public interface ProduceService {
 
     /**
-     * 向指定队列发送消息
+     * Send message to specified queue
      * @param destination
      * @param message
      */

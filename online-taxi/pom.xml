@@ -15,12 +15,12 @@
 	
     <modules>
 		
-		<!--业务层-->
+		<!-- Business layer -->
         <module>api-driver</module>
 		<module>api-listen-order</module>
 		<module>api-passenger</module>
 		
-		<!--能力层-->
+		<!-- Service layer -->
 		<module>service-app-update</module>
 		<module>service-order</module>
 		<module>service-order-dispatch</module>
@@ -30,18 +30,18 @@
 		<module>service-verification-code</module>
 		<module>service-wallet</module>
 
-		<!--基础服务层-->
+		<!-- Infrastructure layer -->
 		<module>eureka</module>
 		<module>online-taxi-config-server</module>
 		<module>online-taxi-zuul</module>
         <module>hystrix-dashboard</module>
         <module>cloud-admin</module>
 
-		<!--通用层-->
+		<!-- Common layer -->
 		<module>online-taxi-common</module>
 
 
-		<!--示例层-->
+		<!-- Example layer -->
 		<module>config-client</module>
 		<module>online-taxi-demo-app</module>
 		<module>service-jms-consumer</module>

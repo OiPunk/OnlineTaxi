@@ -1,7 +1,7 @@
 package com.online.taxi.exception;
 
 /**
- * 接口请求异常
+ * API request exception
  *
  * @date 2018/8/17
  */

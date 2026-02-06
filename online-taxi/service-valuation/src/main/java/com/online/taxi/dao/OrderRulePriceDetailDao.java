@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * 订单计费规则明细操作DAO
+ * Order charging rule detail DAO
  *
  * @date 2018/8/14
  */
@@ -22,31 +22,31 @@ public class OrderRulePriceDetailDao {
     private OrderRulePriceDetailMapper orderRulePriceDetailMapper;
 
     /**
-     * 新增一条订单计费规则明细的记录
+     * Insert a single order charging rule detail record
      *
-     * @param orderRulePriceDetail 一条订单计费规则明细
-     * @return 影响的记录数
+     * @param orderRulePriceDetail a single order charging rule detail
+     * @return number of affected records
      */
     public int insert(OrderRulePriceDetail orderRulePriceDetail) {
         return orderRulePriceDetailMapper.insertSelective(orderRulePriceDetail);
     }
 
     /**
-     * 新增一组订单计费规则明细的记录
+     * Insert a batch of order charging rule detail records
      *
-     * @param orderRulePriceDetails 一组订单计费规则明细
-     * @return 影响的记录数
+     * @param orderRulePriceDetails a batch of order charging rule details
+     * @return number of affected records
      */
     public int insert(List<OrderRulePriceDetail> orderRulePriceDetails) {
         return orderRulePriceDetailMapper.insertList(orderRulePriceDetails);
     }
 
     /**
-     * 删除指定订单ID和类型的订单
+     * Delete records by order ID and category
      *
-     * @param orderId          订单ID
-     * @param chargingCategory 订单类型
-     * @return 影响的记录数
+     * @param orderId          order ID
+     * @param chargingCategory order category
+     * @return number of affected records
      */
     public int deleteByOrderIdAndCategory(int orderId, ChargingCategoryEnum chargingCategory) {
         return orderRulePriceDetailMapper.deleteByOrderIdAndCategory(orderId, chargingCategory.getCode());

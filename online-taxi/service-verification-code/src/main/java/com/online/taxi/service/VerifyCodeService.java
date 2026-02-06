@@ -8,7 +8,7 @@ import com.online.taxi.common.dto.verificationcode.VerifyCodeResponse;
 public interface VerifyCodeService {
 
     /**
-     * 根据身份和手机号生成验证码
+     * Generate verification code based on identity and phone number
      * @param identity
      * @param phoneNumber
      * @return
@@ -16,7 +16,7 @@ public interface VerifyCodeService {
     public ResponseResult<VerifyCodeResponse> generate(int identity , String phoneNumber);
 
     /**
-     * 校验身份，手机号，验证码的合法性
+     * Verify the validity of identity, phone number, and verification code
      * @param identity
      * @param phoneNumber
      * @param code

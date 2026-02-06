@@ -14,23 +14,23 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * 自定义手机号校验注解
- * 注:当没有指定默认值时，那么在使用此注解时，就必须输入对应的属性值
+ * Custom phone number validation annotation
+ * Note: When no default value is specified, the corresponding attribute value must be provided when using this annotation
  */
 @Documented
-// 指定此注解的实现，即:验证器
+// Specify the implementation of this annotation, i.e., the validator
 @Constraint(validatedBy = PhoneNumberValidator.class)
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RUNTIME)
 public @interface PhoneNumberValidation {
 
-    // 当验证不通过时的提示信息
-    String message() default "手机号格式不正确";
+    // Message displayed when validation fails
+    String message() default "Phone number format is incorrect";
 
-    // 约束注解在验证时所属的组别
+    // Groups to which this constraint belongs during validation
     Class<?>[] groups() default {};
 
-    // 负载
+    // Payload
     Class<? extends Payload>[] payload() default {};
 
     @Target({PARAMETER, ANNOTATION_TYPE})

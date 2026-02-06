@@ -29,13 +29,13 @@
 
 	<dependencies>
 	       
-		<!-- eureka 服务端 -->
+		<!-- Eureka server -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 
-		<!-- 安全认证 -->
+		<!-- Security authentication -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>

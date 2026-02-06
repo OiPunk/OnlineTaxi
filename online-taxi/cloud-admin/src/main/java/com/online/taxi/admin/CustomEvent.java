@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustomEvent {
-	
+
 	@EventListener
 	public void listen(HeartbeatEvent e) {
-		System.out.println(e.getSource()+"  admin 监控");
-		//发送邮件，短信，电话。
+		System.out.println(e.getSource()+"  admin monitoring");
+		// Send email, SMS, or phone call.
 	}
 }

@@ -9,7 +9,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
- * 时间片
+ * Time slice
  *
  * @date 2018/8/14
  */
@@ -23,36 +23,36 @@ public class TimeSlice {
     private LocalDateTime y;
 
     /**
-     * 判断两个时间段是否有交集
+     * Determine whether two time periods overlap
      *
-     * @param m 指定时间段
-     * @return 有交集返回true，否则返回false
+     * @param m specified time period
+     * @return true if overlapping, false otherwise
      */
     public boolean isTimeOverlapped(TimeSlice m) {
         return isTimeOverlapped(m.getX(), m.getY());
     }
 
     /**
-     * 判断两个时间段是否有交集
+     * Determine whether two time periods overlap
      *
-     * @param a 指定时间段的起始时间
-     * @param b 指定时间段的结束时间
-     * @return 有交集返回true，否则返回false
+     * @param a start time of the specified time period
+     * @param b end time of the specified time period
+     * @return true if overlapping, false otherwise
      */
     public boolean isTimeOverlapped(LocalDateTime a, LocalDateTime b) {
         if (a.isAfter(b) || x.isAfter(y)) {
-            throw new RuntimeException("时间段的起始时间大于结束时间错误");
+            throw new RuntimeException("Error: start time of the time period is greater than end time");
         }
 
         return !(y.isBefore(a) || b.isBefore(x));
     }
 
     /**
-     * 获取两个时间段的间隔
+     * Get the overlapping duration between two time periods
      *
-     * @param a 指定时间段的起始时间
-     * @param b 指定时间段的结束时间
-     * @return 时间段的间隔
+     * @param a start time of the specified time period
+     * @param b end time of the specified time period
+     * @return overlapping duration of the time periods
      */
     public Duration until(LocalDateTime a, LocalDateTime b) {
         if (!isTimeOverlapped(a, b)) {
@@ -65,10 +65,10 @@ public class TimeSlice {
     }
 
     /**
-     * 获取两个时间段的间隔
+     * Get the overlapping duration between two time periods
      *
-     * @param m 指定时间段
-     * @return 时间段的间隔
+     * @param m specified time period
+     * @return overlapping duration of the time periods
      */
     public Duration until(TimeSlice m) {
         return until(m.getX(), m.getY());

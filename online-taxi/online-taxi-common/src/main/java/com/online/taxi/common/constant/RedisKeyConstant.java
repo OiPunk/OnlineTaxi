@@ -6,12 +6,12 @@ package com.online.taxi.common.constant;
 public class RedisKeyConstant {
 
     /**
-     * 抢单key前缀
+     * Order grabbing lock key prefix
      */
     public static final String GRAB_LOCK_ORDER_KEY_PRE = "lock_";
 
     /**
-     * 司机抢单前缀
+     * Driver order grabbing prefix
      */
     public static final String DRIVER_LISTEN_ORDER_PRE = "driver_order_list_";
 }

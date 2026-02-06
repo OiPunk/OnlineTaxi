@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 电话号码加密解密DTO
+ * Phone number encryption/decryption DTO
  *
  * @date 2018/8/29
  */

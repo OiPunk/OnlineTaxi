@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 计费规则
+ * Charging rule
  *
  * @date 2018/8/14
  */
@@ -13,37 +13,37 @@ import java.util.List;
 public class Rule {
 
     /**
-     * 主键
+     * Primary key
      */
     private Integer id;
 
     /**
-     * 计费规则主键类
+     * Charging rule key class
      */
     private KeyRule keyRule;
 
     /**
-     * 基础计费
+     * Basic charging
      */
     private BasicRule basicRule;
 
     /**
-     * 计费方法
+     * Pricing method
      */
     private PriceRule priceRule;
 
     /**
-     * 远途服务费
+     * Long-distance service fee
      */
     private BeyondRule beyondRule;
 
     /**
-     * 夜间服务费
+     * Night service fee
      */
     private NightRule nightRule;
 
     /**
-     * 标签费用
+     * Tag fees
      */
     private List<TagPrice> tagPrices;
 

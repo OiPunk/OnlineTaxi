@@ -21,7 +21,7 @@ public class ListenController {
     @RequestMapping(value = "/driver/{driverId}",produces = "text/event-stream;charset=utf-8")
     public String getData(@PathVariable("driverId") int driverId){
 
-        System.out.println("方法进来了"+Math.random());
+        System.out.println("Method entered "+Math.random());
         PreGrabResponse preGrabResponse = listenService.listen(driverId);
 
         return "data:"+ JSONObject.fromObject(preGrabResponse)+"\n\n";

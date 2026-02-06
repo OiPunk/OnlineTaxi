@@ -11,14 +11,14 @@ import java.util.Date;
 public class TokenServiceImpl implements TokenService {
 
     /**
-     * 生成token
+     * Generate token
      * @param subject
      * @return
      */
     @Override
     public String createToken(String subject) {
         String jwtStr = JwtUtil.createToken(subject,new Date());
-        //存缓存，设置过期时间
+        // Store in cache, set expiration time
         return null;
     }
 }

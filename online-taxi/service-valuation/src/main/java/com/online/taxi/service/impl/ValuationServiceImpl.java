@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
- * 计价服务
+ * Valuation service
  *
  * @date 2018/8/14
  */
@@ -63,46 +63,46 @@ public class ValuationServiceImpl implements ValuationService {
 
     @Override
     public BigDecimal calcForecastPrice(Integer orderId) {
-        //设置驾驶参数
+        // Set driving parameters
         DriveMeter driveMeter = generateDriveMeter(orderId, ChargingCategoryEnum.Forecast);
 
         Rule rule = driveMeter.getRule();
         PriceMeter priceMeter = priceCache.get(orderId);
         if (priceMeter == null || rule == null || !ObjectUtils.nullSafeEquals(rule.getId(), priceMeter.getRuleId())) {
-            //计算价格
+            // Calculate price
             priceMeter = generatePriceMeter(driveMeter);
         }
 
-        //更新缓存
+        // Update cache
         priceMeter.setTagPrices(rule != null ? rule.getTagPrices() : null);
 
-        //计算标签价格
+        // Calculate tag price
         BigDecimal totalPrice = PriceHelper.add(priceMeter.getBasicPriceValue(), valuationTask.calcTagPrice(driveMeter));
         priceMeter.setTotalPriceValue(totalPrice);
 
-        //缓存结果
+        // Cache result
         priceCache.set(orderId, priceMeter, 1, TimeUnit.HOURS);
 
         //TODO
         doneForecast(orderId);
 
-        //返回价格
+        // Return price
         return totalPrice;
     }
 
     @Override
     public void doneForecast(Integer orderId) {
-        //获取缓存
+        // Get cache
         PriceMeter priceMeter = priceCache.get(orderId);
 
         if (priceMeter == null) {
             throw new RuntimeException(ERR_EXPIRE_FORECAST);
         }
 
-        //更新标签价格
+        // Update tag price
         priceMeter.getRulePrice().setTotalPrice(priceMeter.getTotalPriceValue());
 
-        //更新DB
+        // Update DB
         valuationTask.updateToDb(ChargingCategoryEnum.Forecast, priceMeter);
     }
 
@@ -164,14 +164,14 @@ public class ValuationServiceImpl implements ValuationService {
         driveMeter.setCurrentPriceRequestDto(dto);
         driveMeter.setDistance(requestTask.requestDistance(dto.getCarId(), driveMeter.getRule().getKeyRule().getCityCode(), start, end));
 
-        //获取价格
+        // Get price
         PriceMeter priceMeter = generatePriceMeter(driveMeter);
 
-        //计算标签价格
+        // Calculate tag price
         BigDecimal totalPrice = PriceHelper.add(priceMeter.getBasicPriceValue(), valuationTask.calcTagPrice(driveMeter));
         priceMeter.getRulePrice().setTotalPrice(totalPrice);
 
-        //返回价格
+        // Return price
         CurrentPriceResponseDto currentPriceResponseDto = new CurrentPriceResponseDto();
         currentPriceResponseDto.setDistance(driveMeter.getDistance().getDistance()).setPrice(totalPrice);
         return currentPriceResponseDto;
@@ -179,33 +179,33 @@ public class ValuationServiceImpl implements ValuationService {
 
     @Override
     public BigDecimal calcSettlementPrice(Integer orderId) {
-        //设置驾驶参数
+        // Set driving parameters
         DriveMeter driveMeter = generateDriveMeter(orderId, ChargingCategoryEnum.Settlement);
 
-        //获取价格
+        // Get price
         PriceMeter priceMeter = generatePriceMeter(driveMeter);
 
-        //计算标签价格
+        // Calculate tag price
         BigDecimal totalPrice = PriceHelper.add(priceMeter.getBasicPriceValue(), valuationTask.calcTagPrice(driveMeter));
         priceMeter.getRulePrice().setTotalPrice(totalPrice);
 
-        //更新DB
+        // Update DB
         valuationTask.updateToDb(ChargingCategoryEnum.Settlement, priceMeter);
 
-        //删除缓存
+        // Delete cache
         ruleCache.delete(orderId);
         priceCache.delete(orderId);
 
-        //返回价格
+        // Return price
         return priceMeter.getRulePrice().getTotalPrice();
     }
 
     /**
-     * 定义驾驶参数
+     * Define driving parameters
      *
-     * @param orderId          订单ID
-     * @param chargingCategory 计价规则种类
-     * @return 封装行驶计价相关的请求参数的对象
+     * @param orderId          order ID
+     * @param chargingCategory charging rule category
+     * @return object encapsulating driving valuation related request parameters
      */
     @SneakyThrows
     private DriveMeter generateDriveMeter(Integer orderId, ChargingCategoryEnum chargingCategory) {
@@ -232,35 +232,35 @@ public class ValuationServiceImpl implements ValuationService {
     }
 
     /**
-     * 计算价格
+     * Calculate price
      *
-     * @param driveMeter 驾驶参数
-     * @return 价格
+     * @param driveMeter driving parameters
+     * @return price
      */
     @SneakyThrows
     private PriceMeter generatePriceMeter(DriveMeter driveMeter) {
-        //分段计价任务
+        // Segmented pricing task
         CompletableFuture<List<OrderRulePriceDetail>> calcPriceDetailFuture = valuationTask.calcDetailPrice(driveMeter);
 
-        //基础计价任务
+        // Base pricing task
         CompletableFuture<OrderRulePrice> calcPriceFuture = valuationTask.calcMasterPrice(driveMeter);
 
-        //计算最终价格
+        // Calculate final price
         BigDecimal price = calcPriceDetailFuture.thenCombine(calcPriceFuture, (details, master) -> {
-            //计算其他价格
+            // Calculate other prices
             valuationTask.calcOtherPrice(driveMeter, master, details);
 
-            //计算价格合计
+            // Calculate total price
             BigDecimal totalPrice = PriceHelper.add(master.getBasePrice(), master.getNightPrice(), master.getBeyondPrice(), master.getPathPrice(), master.getDurationPrice());
 
-            //最低消费补足
+            // Minimum fare supplement
             master.setSupplementPrice(BigDecimal.ZERO);
             if (totalPrice.compareTo(master.getLowestPrice()) < 0) {
                 master.setSupplementPrice(PriceHelper.subtract(master.getLowestPrice(), totalPrice));
                 totalPrice = master.getLowestPrice();
             }
 
-            //动态调价
+            // Dynamic pricing adjustment
             DiscountPrice discount = valuationTask.calcDiscount(driveMeter);
             master.setDynamicDiscount(BigDecimal.ZERO);
             master.setDynamicDiscountRate(0D);
@@ -278,7 +278,7 @@ public class ValuationServiceImpl implements ValuationService {
             return master.getTotalPrice();
         }).join();
 
-        //设置计算结果
+        // Set calculation result
         PriceMeter priceMeter = new PriceMeter();
         priceMeter.setRulePrice(calcPriceFuture.join()).setRulePriceDetails(calcPriceDetailFuture.join())
                 .setTagPrices(driveMeter.getRule().getTagPrices()).setBasicPriceValue(price).setRuleId(driveMeter.getRule().getId());

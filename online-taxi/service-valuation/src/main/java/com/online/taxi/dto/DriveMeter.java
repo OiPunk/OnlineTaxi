@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.Optional;
 
 /**
- * 行驶计价相关的请求参数
+ * Driving valuation related request parameters
  *
  * @date 2018/8/14
  */
@@ -29,49 +29,49 @@ import java.util.Optional;
 public class DriveMeter {
 
     /**
-     * 订单
+     * Order
      */
     private Order order;
 
     /**
-     * 计价规则
+     * Charging rule
      */
     private Rule rule;
 
     /**
-     * 预估时距离测量结果
+     * Distance measurement result for forecast
      *
      * @see ChargingCategoryEnum
      */
     private Route route;
 
     /**
-     * 实际轨迹里程
+     * Actual trajectory mileage
      *
      * @see ChargingCategoryEnum
      */
     private Distance distance;
 
     /**
-     * 实时价格请求DTO
+     * Real-time price request DTO
      */
     private CurrentPriceRequestDto currentPriceRequestDto;
 
     /**
-     * 计价服务请求任务实体类
+     * Valuation service request task entity
      */
     private ValuationRequestTask requestTask;
 
     /**
-     * 计价规则种类枚举
+     * Charging category enum
      */
     @NonNull
     private ChargingCategoryEnum chargingCategoryEnum;
 
     /**
-     * 返回行驶距离（米）
+     * Return travel distance (meters)
      *
-     * @return 行驶距离
+     * @return travel distance
      */
     public double getTotalDistance() {
         Double meters = 0D;
@@ -90,9 +90,9 @@ public class DriveMeter {
     }
 
     /**
-     * 返回行驶时间（秒）
+     * Return travel time (seconds)
      *
-     * @return 行驶时间
+     * @return travel time
      */
     public double getTotalTime() {
         double seconds = 0;
@@ -113,9 +113,9 @@ public class DriveMeter {
     }
 
     /**
-     * 返回订单开始时间
+     * Return order start time
      *
-     * @return 订单开始时间
+     * @return order start time
      */
     public LocalDateTime getStartDateTime() {
         Date startDate = new Date();

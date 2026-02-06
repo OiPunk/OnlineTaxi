@@ -7,51 +7,51 @@ import com.online.taxi.dto.response.CurrentPriceResponseDto;
 import java.math.BigDecimal;
 
 /**
- * 计价服务
+ * Valuation service
  *
  * @date 2018/8/14
  */
 public interface ValuationService {
 
-    String ERR_DISCOUNT_RATE_RANGE = "动态调价的折扣取值范围不在0-1内";
-    String ERR_EXPIRE_FORECAST = "预估超过有效期限";
+    String ERR_DISCOUNT_RATE_RANGE = "Dynamic pricing discount value is not within the 0-1 range";
+    String ERR_EXPIRE_FORECAST = "Forecast has exceeded the validity period";
 
     /**
-     * 计算预估价格
+     * Calculate forecast price
      *
-     * @param orderId 订单id
-     * @return 预估价格
+     * @param orderId order ID
+     * @return forecast price
      */
     BigDecimal calcForecastPrice(Integer orderId);
 
     /**
-     * 结束预估，写入数据库
+     * Finish forecast and write to database
      *
-     * @param orderId 订单id
+     * @param orderId order ID
      */
     void doneForecast(Integer orderId);
 
     /**
-     * 请求预估明细
+     * Request forecast details
      *
-     * @param orderId 订单id
-     * @return 预估明细DTO
+     * @param orderId order ID
+     * @return forecast detail DTO
      */
     ForecastDetail requestForecastDetail(Integer orderId);
 
     /**
-     * 请求计算当前价格
+     * Request to calculate current price
      *
-     * @param dto 请求当前价格DTO
-     * @return 订单价格
+     * @param dto current price request DTO
+     * @return order price
      */
     CurrentPriceResponseDto calcCurrentPrice(CurrentPriceRequestDto dto);
 
     /**
-     * 结算订单价格
+     * Settle order price
      *
-     * @param orderId 订单id
-     * @return 价格
+     * @param orderId order ID
+     * @return price
      */
     BigDecimal calcSettlementPrice(Integer orderId);
 }

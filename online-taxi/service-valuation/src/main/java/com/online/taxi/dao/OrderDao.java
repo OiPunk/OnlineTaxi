@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 /**
- * 订单操作DAO
+ * Order DAO
  *
  * @date 2018/8/14
  */
@@ -19,10 +19,10 @@ public class OrderDao {
     private OrderMapper orderMapper;
 
     /**
-     * 根据订单ID查询订单
+     * Query order by order ID
      *
-     * @param id 订单ID
-     * @return 订单
+     * @param id order ID
+     * @return order
      */
     public Order selectByOrderId(Integer id) {
         return orderMapper.selectByPrimaryKey(id);

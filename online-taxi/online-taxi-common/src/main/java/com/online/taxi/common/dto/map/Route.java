@@ -3,19 +3,19 @@ package com.online.taxi.dto.map;
 import lombok.Data;
 
 /**
- * 距离测量结果
+ * Distance measurement result
  *
  */
 @Data
 public class Route {
 
     /**
-     * 行驶距离（米）
+     * Travel distance (meters)
      */
     private Double distance;
 
     /**
-     * 行驶时间（秒）
+     * Travel time (seconds)
      */
     private Double duration;
 }

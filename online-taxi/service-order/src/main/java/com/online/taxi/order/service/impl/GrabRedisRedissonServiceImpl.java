@@ -24,30 +24,30 @@ public class GrabRedisRedissonServiceImpl implements GrabService {
 
 	@Autowired
 	RedissonClient redissonClient;
-	
+
 	@Autowired
 	OrderService orderService;
-	
+
     @Override
     public ResponseResult grabOrder(int orderId , int driverId){
-        //生成key
+        //generate key
     	String lock = "order_"+(orderId+"");
-    	
+
     	RLock rlock = redissonClient.getLock(lock.intern());
-    	
-    	
+
+
     	try {
-    		// 此代码默认 设置key 超时时间30秒，过10秒，再延时
+    		// This code by default sets key timeout to 30 seconds, and renews after 10 seconds
     		rlock.lock();
-			System.out.println("司机:"+driverId+" 执行抢单逻辑");
-			
+			System.out.println("Driver:"+driverId+" executing order grab logic");
+
             boolean b = orderService.grab(orderId, driverId);
             if(b) {
-            	System.out.println("司机:"+driverId+" 抢单成功");
+            	System.out.println("Driver:"+driverId+" grabbed order successfully");
             }else {
-            	System.out.println("司机:"+driverId+" 抢单失败");
+            	System.out.println("Driver:"+driverId+" failed to grab order");
             }
-            
+
         } finally {
         	rlock.unlock();
         }

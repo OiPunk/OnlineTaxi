@@ -26,7 +26,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public ResponseResult auth(String passengerPhone, String code) {
-        // 校验验证码
+        // Verify the verification code
         CodeVerifyRequest codeVerifyRequest = new CodeVerifyRequest();
         codeVerifyRequest.setPhoneNumber(passengerPhone);
         codeVerifyRequest.setCode(code);
@@ -37,7 +37,7 @@ public class AuthServiceImpl implements AuthService {
             return ResponseResult.fail(responseResult.getCode(),responseResult.getMessage());
         }
 
-        // 乘客用户登录
+        // Passenger user login
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setPassengerPhone(passengerPhone);
         ResponseResult<PassengerUserInfo> passengerUserInfoResponseResult = servicePassengerUserFeignClient.login(loginRequest);
@@ -46,9 +46,9 @@ public class AuthServiceImpl implements AuthService {
         }
         PassengerUserInfo passengerUserInfo = passengerUserInfoResponseResult.getData();
 
-        // 分发token
+        // Distribute token
         long passengerId = passengerUserInfo.getId();
-        //生成通过jwt 生成 token，以后需要登录认证的接口，都需要带上token，还有签名规则
+        // Generate token via JWT; all endpoints requiring login authentication need to include the token and signature rules
         String subject = IdentityConstant.PASSENGER +"_"+passengerPhone+"_"+passengerId;
         String token = JwtUtil.createToken(subject,new Date());
         UserAuthResponse response = new UserAuthResponse();

@@ -1,7 +1,7 @@
 package com.online.taxi.controller;
 
 public class test {
-	
+
 	static void testJoin() {
 	    Object o = new Object();
 
@@ -19,9 +19,9 @@ public class test {
 	        }
 	    });
 	    Thread t2 = new Thread(() -> {
-	        System.out.println("t2我启动了");
+	        System.out.println("t2 I have started");
 	        synchronized (o) {
-	            System.out.println("t2我获取锁了");
+	            System.out.println("t2 I have acquired the lock");
 	            try {
 	                Thread.sleep(500);
 	                t1.join();
@@ -48,7 +48,7 @@ public class test {
 //	    }
 	    t1.start();
 	}
-	
+
 	public static void main(String[] args) {
 		testJoin();
 	}

@@ -24,8 +24,8 @@ public class ListenServiceImpl implements ListenService {
         PreGrabResponse preGrabResponse = new PreGrabResponse();
 //        try {
 //            if (StringUtils.isNotBlank(orderId)){
-                preGrabResponse.setEndAddress("终点"+new Random().nextInt());
-                preGrabResponse.setStartAddress("起点"+new Random().nextInt());
+                preGrabResponse.setEndAddress("Destination"+new Random().nextInt());
+                preGrabResponse.setStartAddress("Origin"+new Random().nextInt());
 //                preGrabResponse.setOrderId(Integer.parseInt(orderId));
 //            }
 //        }catch (Exception e){

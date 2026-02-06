@@ -1,7 +1,7 @@
 package com.online.taxi.exception;
 
 /**
- * 参数异常
+ * Parameter exception
  *
  */
 public class ParameterException extends RuntimeException {

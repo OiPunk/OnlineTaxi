@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.*;
 public class GrabOrderController {
 
     @Autowired
-    // 无锁
+    // no lock
 //    @Qualifier("grabNoLockService")
-    // jvm锁
+    // JVM lock
 //    @Qualifier("grabJvmLockService")
-    // mysql锁
+    // MySQL lock
 //    @Qualifier("grabMysqlLockService")
-    //单个redisson
-    @Qualifier("grabRedisRedissonService")    
-    // 红锁
+    // single Redisson
+    @Qualifier("grabRedisRedissonService")
+    // red lock
 //    @Qualifier("grabRedisRedissonRedLockLockService")
     private GrabService grabService;
-    
-    
+
+
     @GetMapping("/do/{orderId}")
     public String grab(@PathVariable("orderId") int orderId, int driverId){
         grabService.grabOrder(orderId,driverId);

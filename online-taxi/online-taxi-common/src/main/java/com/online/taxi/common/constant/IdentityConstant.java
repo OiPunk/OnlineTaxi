@@ -5,12 +5,12 @@ package com.online.taxi.common.constant;
  */
 public class IdentityConstant {
     /**
-     * 乘客标识
+     * Passenger identifier
      */
     public static final int PASSENGER = 1;
 
     /**
-     * 司机标识
+     * Driver identifier
      */
     public static final int DRIVER = 2;
 }

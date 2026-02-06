@@ -16,16 +16,16 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/test")
 @Slf4j
 public class TestController {
-	
+
 	@Value("${server.port}")
 	String port;
-	
+
 	@RequestMapping("/hello")
 	public String hello(@RequestParam String name, @RequestParam  Integer age) {
-		log.info("api driver 参数：name：{},age:{}",name,age);
+		log.info("api driver parameters: name: {}, age: {}",name,age);
 		return "api-driver-hello:"+port;
 	}
-	
+
 	@RequestMapping("/admin")
 	public String admin() {
 	    StringBuilder b = new StringBuilder();
@@ -44,21 +44,21 @@ public class TestController {
         }
         return "api-driver-admin:"+port;
 	}
-	
+
 	@RequestMapping("/token")
 	public String cookie(HttpServletRequest req) {
 		String token = req.getHeader("token");
 		System.out.println("token:"+token);
-		
+
 		return "api-driver-token:"+token;
 	}
-	
+
 	@RequestMapping("/auth")
 	public String auth(HttpServletRequest req) {
 		String token = req.getHeader("token");
 		System.out.println("auth token:"+token);
-		
+
 		return "api-driver-auth:"+token;
 	}
-	
+
 }

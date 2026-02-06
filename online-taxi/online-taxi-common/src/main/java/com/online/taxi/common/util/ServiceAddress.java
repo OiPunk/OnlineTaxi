@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 调用服务接口地址
+ * Service Interface Addresses
  *
  * @date 2018/08/14
  */
@@ -28,55 +28,55 @@ public class ServiceAddress {
 
 
     /**
-     * 获取服务接口地址
+     * Get service interface address
      *
-     * @param key 接口名
-     * @return 地址
+     * @param key interface name
+     * @return address
      */
     public String get(String key) {
         return address.stream().filter(m -> m.containsKey(key)).findFirst().orElse(new HashMap<>(0)).get(key);
     }
 
     /**
-     * 获取账号服务地址
+     * Get account service address
      *
-     * @return 账号服务地址
+     * @return account service address
      */
     public String getAccountAddress() {
         return get(ACCOUNT_SERVER_URL);
     }
 
     /**
-     * 获取地图服务接口地址
+     * Get map service interface address
      *
-     * @return 地图服务接口地址
+     * @return map service interface address
      */
     public String getMapAddress() {
         return get(MAP_SERVER_URL);
     }
 
     /**
-     * 获取订单服务接口地址
+     * Get order service interface address
      *
-     * @return 订单服务接口地址
+     * @return order service interface address
      */
     public String getOrderAddress() {
         return get(ORDER_SERVER_URL);
     }
 
     /**
-     * 获取消息服务接口地址
+     * Get message service interface address
      *
-     * @return 消息服务接口地址
+     * @return message service interface address
      */
     public String getMessageAddress() {
         return get(MESSAGE_SERVER_URL);
     }
 
     /**
-     * 获取支付服务接口地址
+     * Get payment service interface address
      *
-     * @return 支付服务接口地址
+     * @return payment service interface address
      */
     public String getPayAddress() {
         return get(PAY_SERVER_URL);

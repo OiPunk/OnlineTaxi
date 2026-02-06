@@ -6,19 +6,19 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * 密文黑名单
- * 此例子中用set，实际应该用redis，多个网关共享此信息。用redis中的set
+ * Ciphertext blacklist
+ * This example uses a Set; in production, Redis should be used so that multiple gateways can share this information. Use a Redis Set.
  * @author oi
  *
  */
 public class CiphertextBlackList {
-	
+
 	public static Set<String> blackList = new HashSet<>();
-	
+
 	public boolean add(String cipher) {
 		return blackList.add(cipher);
 	}
-	
+
 	public boolean check(String cipher) {
 		if(!blackList.contains(cipher)) {
 			return true;

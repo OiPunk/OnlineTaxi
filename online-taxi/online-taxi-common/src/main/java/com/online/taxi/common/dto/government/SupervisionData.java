@@ -10,7 +10,7 @@ import java.io.Serializable;
 import com.online.taxi.constatnt.CodeEnum;
 
 /**
- * 上报对象DTO
+ * Supervision report DTO
  *
  * @date 2018/8/23
  */
@@ -22,15 +22,15 @@ public class SupervisionData<T> implements Serializable {
     @AllArgsConstructor
     public enum OperationType implements CodeEnum {
         /**
-         * 插入操作
+         * Insert operation
          */
         INSERT(0, "insert"),
         /**
-         * 更新操作
+         * Update operation
          */
         UPDATE(1, "update"),
         /**
-         * 删除操作
+         * Delete operation
          */
         DELETE(2, "delete");
 

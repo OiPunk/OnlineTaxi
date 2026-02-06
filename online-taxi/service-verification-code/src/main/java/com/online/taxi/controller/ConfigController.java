@@ -7,7 +7,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-/**测试获取属性的类
+/**Class for testing property retrieval
  * @author oi
  */
 @RefreshScope
@@ -25,7 +25,7 @@ public class ConfigController {
 	public String env() {
 		return gitConfig.getEnv();
 	}
-	
+
 	@GetMapping("/env1")
 	public String env1() {
 

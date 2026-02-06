@@ -3,13 +3,13 @@ package com.online.taxi.passenger.service;
 import com.online.taxi.common.dto.order.ForecastRequest;
 
 /**
- * 
+ *
  * @author oi
  *
  */
 public interface OrderService {
 	/**
-	 * 根据起止经纬度计算预估价格
+	 * Calculate estimated price based on start and end coordinates
 	 * @param forecastRequest
 	 * @return
 	 */

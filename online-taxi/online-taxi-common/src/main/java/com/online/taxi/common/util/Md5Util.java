@@ -5,7 +5,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class Md5Util {
 	
 	/**
-	 * 生成32位md5
+	 * Generate 32-bit MD5 hash
 	 * @param src
 	 * @return
 	 */
@@ -14,6 +14,6 @@ public class Md5Util {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(getMd5("我"));
+		System.out.println(getMd5("test"));
 	}
 }

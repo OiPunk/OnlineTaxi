@@ -10,14 +10,14 @@ import java.util.Date;
 import java.util.Optional;
 
 /**
- * 单位转换工具类
+ * Unit conversion utility class
  *
  * @date 2018/08/15
  */
 public class UnitConverter {
 
     /**
-     * 将Date转换为LocalDateTime
+     * Convert Date to LocalDateTime
      *
      * @param date Date
      * @return LocalDateTime
@@ -27,7 +27,7 @@ public class UnitConverter {
     }
 
     /**
-     * 将Date转换为LocalDate
+     * Convert Date to LocalDate
      *
      * @param date Date
      * @return LocalDate
@@ -37,7 +37,7 @@ public class UnitConverter {
     }
 
     /**
-     * 将Date转换为LocalTime
+     * Convert Date to LocalTime
      *
      * @param date Date
      * @return LocalTime
@@ -47,40 +47,40 @@ public class UnitConverter {
     }
 
     /**
-     * 将每公里价格转换为每米价格
+     * Convert per-kilometer price to per-meter price
      *
-     * @param price 每公里价格
-     * @return 每米价格
+     * @param price per-kilometer price
+     * @return per-meter price
      */
     public static BigDecimal kiloToMeterPrice(BigDecimal price) {
         return price.divide(new BigDecimal("1000"), 5, RoundingMode.DOWN);
     }
 
     /**
-     * 将每分钟价格转换为每秒价格
+     * Convert per-minute price to per-second price
      *
-     * @param price 每分钟价格
-     * @return 每秒价格
+     * @param price per-minute price
+     * @return per-second price
      */
     public static BigDecimal minuteToSecondPrice(BigDecimal price) {
         return price.divide(new BigDecimal("60"), 5, RoundingMode.DOWN);
     }
 
     /**
-     * 秒数转为分钟数
+     * Convert seconds to minutes
      *
-     * @param seconds 秒数
-     * @return 分钟数
+     * @param seconds number of seconds
+     * @return number of minutes
      */
     public static double secondToMinute(Double seconds) {
         return BigDecimal.valueOf(Optional.ofNullable(seconds).orElse(0D)).divide(BigDecimal.valueOf(60), 2, RoundingMode.HALF_DOWN).doubleValue();
     }
 
     /**
-     * 将米数转为公里数
+     * Convert meters to kilometers
      *
-     * @param meters 米数
-     * @return 公里数
+     * @param meters number of meters
+     * @return number of kilometers
      */
     public static double meterToKilo(Double meters) {
         return BigDecimal.valueOf(Optional.ofNullable(meters).orElse(0D)).divide(BigDecimal.valueOf(1000), 2, RoundingMode.HALF_DOWN).doubleValue();

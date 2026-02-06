@@ -9,37 +9,37 @@ import lombok.Data;
 public class DiscountCondition {
 
     /**
-     * 城市编码
+     * City code
      */
     private String cityCode;
 
     /**
-     * 服务类型id
+     * Service type ID
      */
     private Integer serviceTypeId;
 
     /**
-     * 车辆级别id
+     * Vehicle level ID
      */
     private Integer carLevelId;
 
     /**
-     * 行驶总里程（公里）
+     * Total travel distance (km)
      */
     private Double totalDistance;
 
     /**
-     * 开始时间点的小时
+     * Hour of the start time
      */
     private Integer startHour;
 
     /**
-     * 开始时间点的日期（yyyy-MM-dd）
+     * Date of the start time (yyyy-MM-dd)
      */
     private String startDate;
 
     /**
-     * 开始时间点的星期几（Monday：1 - Sunday：7）
+     * Day of the week of the start time (Monday: 1 - Sunday: 7)
      */
     private Integer startWeekDay;
 }

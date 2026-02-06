@@ -17,37 +17,37 @@ import com.netflix.zuul.exception.ZuulException;
  */
 @Component
 public class RateFilter extends ZuulFilter {
-	
+
 	private static int count = 0;
 	/**
-	 * 如果是1，表示每秒1个令牌，实际通过压测获得
-	 * 
-	 * 1、创建一个稳定输出令牌的RateLimiter，保证了平均每秒不超过permitsPerSecond个请求
-	 * 2、当请求到来的速度超过了permitsPerSecond，保证每秒只处理permitsPerSecond个请求
-	 * 3、当这个RateLimiter使用不足(即请求到来速度小于permitsPerSecond)，
-	 * 		会囤积最多permitsPerSecond个请求
+	 * If set to 1, it means 1 token per second; the actual value should be obtained through stress testing.
+	 *
+	 * 1. Creates a RateLimiter with a stable token output rate, ensuring no more than permitsPerSecond requests per second on average.
+	 * 2. When request arrival rate exceeds permitsPerSecond, ensures only permitsPerSecond requests are processed per second.
+	 * 3. When this RateLimiter is underutilized (i.e., request arrival rate is less than permitsPerSecond),
+	 * 		it will accumulate up to permitsPerSecond tokens.
 	*/
 	private static final RateLimiter RATE_LIMITER  = RateLimiter.create(5);
-	
+
 	@Override
 	public boolean shouldFilter() {
-		// 此处可以写判断地址
+		// Address-based filtering can be added here
 		return false;
 	}
 
 	@Override
 	public Object run() throws ZuulException {
-		//获取上下文
+		// Get the context
 		RequestContext requestContext = RequestContext.getCurrentContext();
 		HttpServletRequest request = requestContext.getRequest();
-				
+
 		requestContext.set("f", false);
 		/**
-		 * 拿不到令牌马上返回。尝试获取桶里的令牌，如果有，则返回true，
-		 *并且，总的令牌数减1。没有则返回false。
+		 * Returns immediately if no token is available. Attempts to acquire a token from the bucket;
+		 * if available, returns true and decrements the total token count by 1. Otherwise returns false.
 		 */
 //		if(!RATE_LIMITER.tryAcquire()) {
-			System.out.println("rate filter 拿不到令牌，被限流了"+count++);
+			System.out.println("rate filter cannot acquire token, rate limited "+count++);
 			requestContext.setSendZuulResponse(false);
 			requestContext.setResponseStatusCode(HttpStatus.TOO_MANY_REQUESTS.value());
 //		}
@@ -58,9 +58,9 @@ public class RateFilter extends ZuulFilter {
 	public String filterType() {
 		return FilterConstants.PRE_TYPE;
 	}
-	
+
 	/**
-	 * 限流要最早
+	 * Rate limiting should have the highest priority
 	 */
 	@Override
 	public int filterOrder() {

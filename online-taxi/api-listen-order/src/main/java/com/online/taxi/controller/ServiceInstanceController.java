@@ -17,20 +17,20 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/service-instance")
 public class ServiceInstanceController {
-	
+
 	@Autowired
 	private DiscoveryClient discoveryClient;
-	
+
 	@GetMapping("/query-by-application-name/{applicationName}")
 	public List<ServiceInstance> getInstance(@PathVariable String applicationName){
 		List<ServiceInstance> instances =  discoveryClient.getInstances(applicationName);
 		for (ServiceInstance serviceInstance : instances) {
 			Map<String, String> metadata = serviceInstance.getMetadata();
 			String metaValue = metadata.get("yueyi");
-			log.info("元数据："+metaValue);
+			log.info("Metadata: "+metaValue);
 		}
 		return instances;
-		
+
 	}
 
 }

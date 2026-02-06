@@ -1,0 +1,5 @@
+Demo Application
+http://localhost:8084/index.html
+
+Query service instance metadata by service name:
+http://localhost:8084/service-instance/query-by-application-name/eureka

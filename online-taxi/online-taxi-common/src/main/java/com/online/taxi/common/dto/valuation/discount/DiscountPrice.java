@@ -5,7 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * 动态调价
+ * Dynamic price adjustment
  *
  * @date 2018/8/20
  */

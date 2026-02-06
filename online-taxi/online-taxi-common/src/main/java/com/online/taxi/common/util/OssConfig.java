@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 功能描述
+ * OSS Configuration
  *
  * @date 2018/8/20
  */

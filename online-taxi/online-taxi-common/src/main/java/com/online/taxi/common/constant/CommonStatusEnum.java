@@ -6,50 +6,50 @@ import lombok.Getter;
  * @author oi
  */
 public enum CommonStatusEnum {
-	
-	/**短信验证码服务	10001-10099*/
-	VERIFY_CODE_ERROR(10001,"短信验证码验证失败"),
+
+	/** SMS verification code service 10001-10099 */
+	VERIFY_CODE_ERROR(10001,"SMS verification code validation failed"),
 
     /**
-     * 一分钟内相同验证码错误达3次，请1分钟后登录
+     * Same incorrect verification code entered 3 times within one minute, please try again after 1 minute
      */
-    VERIFICATION_ONE_MIN_ERROR(10002,"您同一个错误验证码点击登录的次数过多,请 1分钟后再重试"),
+    VERIFICATION_ONE_MIN_ERROR(10002,"You have entered the same incorrect verification code too many times, please try again after 1 minute"),
     /**
-     * 一小时内验证码错误达3次，请10分钟后登录
+     * Verification code errors reached 3 times within one hour, please try again after 10 minutes
      */
-    VERIFICATION_TEN_MIN_ERROR(10003,"您登录失败的次数过多,请 10分钟后再重试"),
+    VERIFICATION_TEN_MIN_ERROR(10003,"You have failed to log in too many times, please try again after 10 minutes"),
     /**
-     * 一小时内验证码错误达5次，请24小时后登录
+     * Verification code errors reached 5 times within one hour, please try again after 24 hours
      */
-    VERIFICATION_ONE_HOUR_ERROR(10004,"您今天登录失败的次数过多,请 24小时后再重试"),
-	
-	
-	/**api-passenger 乘客api  10101-10199*/
-	PHONENUMBER_EMPTY(10101,"手机号为空"),
-	PHONENUMBER_ERROR(10102,"手机号格式不正确"),
-	
-	
+    VERIFICATION_ONE_HOUR_ERROR(10004,"You have failed to log in too many times today, please try again after 24 hours"),
+
+
+	/** api-passenger Passenger API 10101-10199 */
+	PHONENUMBER_EMPTY(10101,"Phone number is empty"),
+	PHONENUMBER_ERROR(10102,"Phone number format is incorrect"),
+
+
 	/**
-     * 	操作成功
+     * 	Operation successful
      */
     SUCCESS(1, "success"),
-    
+
     /**
-     * 	操作异常
+     * 	Operation exception
      */
     INTERNAL_SERVER_EXCEPTION(0, "exception"),
-	
+
     /**
-     * 	操作失败
+     * 	Operation failed
      */
     FAIL(0, "fail");
-	
+
 	@Getter
 	private final int code;
-	
+
 	@Getter
     private final String value;
-    
+
     private CommonStatusEnum(int code, String value) {
         this.code = code;
         this.value = value;

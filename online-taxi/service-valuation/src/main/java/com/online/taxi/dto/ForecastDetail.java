@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 import java.util.List;
 
 /**
- * 订单明细DTO
+ * Order detail DTO
  *
  * @date 2018/10/24
  */

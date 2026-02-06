@@ -24,22 +24,22 @@ public class GrabRedisRedissonRedLockLockServiceImpl implements GrabService {
     private RedissonClient redissonRed2;
     @Autowired
     private RedissonClient redissonRed3;
-    
+
     @Autowired
 	OrderService orderService;
 
     @Override
     public ResponseResult grabOrder(int orderId , int driverId){
-        //生成key
+        //generate key
         String lockKey = (RedisKeyConstant.GRAB_LOCK_ORDER_KEY_PRE + orderId).intern();
-        //redisson锁 哨兵
+        //redisson lock - sentinel
 //        RLock rLock = redisson.getLock(lockKey);
 //        rLock.lock();
 
-        //redisson锁 单节点
+        //redisson lock - single node
 //        RLock rLock = redissonRed1.getLock(lockKey);
 
-        //红锁
+        //red lock
         RLock rLock1 = redissonRed1.getLock(lockKey);
         RLock rLock2 = redissonRed2.getLock(lockKey);
         RLock rLock3 = redissonRed2.getLock(lockKey);
@@ -48,16 +48,16 @@ public class GrabRedisRedissonRedLockLockServiceImpl implements GrabService {
         rLock.lock();
 
         try {
-    		// 此代码默认 设置key 超时时间30秒，过10秒，再延时
-			System.out.println("司机:"+driverId+" 执行抢单逻辑");
-			
+    		// This code by default sets key timeout to 30 seconds, and renews after 10 seconds
+			System.out.println("Driver:"+driverId+" executing order grab logic");
+
             boolean b = orderService.grab(orderId, driverId);
             if(b) {
-            	System.out.println("司机:"+driverId+" 抢单成功");
+            	System.out.println("Driver:"+driverId+" grabbed order successfully");
             }else {
-            	System.out.println("司机:"+driverId+" 抢单失败");
+            	System.out.println("Driver:"+driverId+" failed to grab order");
             }
-            
+
         } finally {
         	rLock.unlock();
         }

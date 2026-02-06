@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 /**
- * 动态调价DAO
+ * Dynamic pricing DAO
  *
  * @date 2018/8/20
  */
@@ -20,9 +20,9 @@ public class DynamicDiscountRuleDao {
     private DynamicDiscountRuleMapper dynamicDiscountRuleMapper;
 
     /**
-     * 根据检索条件查询调价信息
-     * @param condition 检索条件
-     * @return 调价信息
+     * Query pricing adjustment information by search conditions
+     * @param condition search conditions
+     * @return pricing adjustment information
      */
     public DiscountPrice findDiscountByCondition(DiscountCondition condition){
         return dynamicDiscountRuleMapper.findDiscountByCondition(condition);

@@ -6,12 +6,12 @@ import com.online.taxi.common.dto.ResponseResult;
  */
 public interface ShortMsgService {
 	/**
-	 * 发送验证码
+	 * Send verification code
 	 * @param phonenumber
 	 * @param code
 	 * @return
 	 */
 	ResponseResult send(String phonenumber,String code);
-	
-	
+
+
 }

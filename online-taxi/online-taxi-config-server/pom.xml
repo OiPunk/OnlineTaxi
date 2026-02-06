@@ -24,7 +24,7 @@
 	</properties>
 
 	<dependencies>
-		<!-- 配置中心服务端：config-server -->
+		<!-- Config center server: config-server -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-server</artifactId>
@@ -40,12 +40,12 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- 服务监控开启refresh 端口 -->
+		<!-- Service monitoring: enable refresh endpoint -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <!-- 总线 -->
+        <!-- Message bus -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>

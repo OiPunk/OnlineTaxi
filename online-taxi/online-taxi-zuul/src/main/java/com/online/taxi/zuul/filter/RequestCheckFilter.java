@@ -14,62 +14,62 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 /**
- * 	请求合法check
+ * 	Request legitimacy check
  * @author oi
  */
 @Component
 public class RequestCheckFilter extends ZuulFilter {
-	
-	private String secret = "7yuijhyt45de2";
+
+	private String secret = "${ZUUL_SECRET:default-secret}";
 
 	/**
-	 * 	该过滤器是否生效
+	 * 	Whether this filter is active
 	 */
 	@Override
 	public boolean shouldFilter() {
 		return true;
 	}
-	
+
 	/**
-	 * 	拦截后的具体业务逻辑
+	 * 	Specific business logic after interception
 	 */
 	@Override
 	public Object run() throws ZuulException {
-		System.out.println("request check 拦截");
-		//获取上下文（重要，贯穿 所有filter，包含所有参数）
+		System.out.println("request check intercepted");
+		// Get the context (important, spans all filters, contains all parameters)
 		RequestContext requestContext = RequestContext.getCurrentContext();
 		HttpServletRequest request = requestContext.getRequest();
-		
+
 		Long timestamp = Long.valueOf(request.getHeader("timestamp"));
 		String token = request.getHeader("token");
 		String sign = request.getHeader("sign");
-		
+
 		String localSign = DigestUtils.sha1Hex(token + timestamp + secret);
 		boolean flag = true;
-		// 判断时间戳是不是在1分钟以内
+		// Check if the timestamp is within 1 second
 		Long now = Calendar.getInstance().getTimeInMillis();
 		if(!(flag && (now - timestamp < 1 * 1000))) {
 			flag = false;
 		}
-		
+
 		if(!(flag && (localSign.trim().equals(sign)))) {
 			flag = false;
 		}
-		
+
 		if(flag) {
-			System.out.println("请求合法");
+			System.out.println("Request is legitimate");
 		}else {
 			requestContext.setSendZuulResponse(false);
 			requestContext.setResponseStatusCode(444);
-			requestContext.setResponseBody("非法请求");
-			System.out.println("请求非法");
+			requestContext.setResponseBody("Illegal request");
+			System.out.println("Request is illegal");
 		}
-		
-		
+
+
 		return null;
 	}
 	/**
-	 * 拦截类型，4中类型。
+	 * Interception type, 4 types available.
 	 */
 	@Override
 	public String filterType() {
@@ -78,14 +78,14 @@ public class RequestCheckFilter extends ZuulFilter {
 	}
 
 	/**
-	 * 	值越小，越在前
+	 * 	The smaller the value, the higher the priority
 	 */
 	@Override
 	public int filterOrder() {
 		// TODO Auto-generated method stub
 		return 4;
 	}
-	
-	
+
+
 
 }

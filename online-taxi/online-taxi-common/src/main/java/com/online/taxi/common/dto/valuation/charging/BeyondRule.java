@@ -5,7 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * 远途服务费
+ * Long-distance service fee
  *
  * @date 2018/8/14
  */
@@ -13,12 +13,12 @@ import java.math.BigDecimal;
 public class BeyondRule {
 
     /**
-     * 远途起算公里（公里）
+     * Long-distance starting kilometer threshold (km)
      */
     private Double startKilo;
 
     /**
-     * 远途单价（元/公里）
+     * Long-distance unit price (yuan/km)
      */
     private BigDecimal perKiloPrice;
 }

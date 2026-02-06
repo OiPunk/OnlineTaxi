@@ -8,21 +8,21 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 
 /**
- * 消息消費者(Queue模式)
+ * Message consumer (Queue mode)
  */
 @Component
 public class ConsumerQueue {
     /**
-     * 	使用JmsListener配置消费者监听的队列，其中text是接收到的消息
+     * Use JmsListener to configure the queue monitored by the consumer, where text is the received message
      * @param text
      */
    @JmsListener(destination = "1",containerFactory = "jmsListenerContainerQueue")
    public void receiveQueue1(TextMessage text, Session session) throws JMSException {
        try {
 //           int i = 1/0;
-           System.out.println("消費者收到的queue1报文为:"+text.getText());
-           
-           //提交完事务后，再确认。因为哪怕下次有事件再来，插库会失败。
+           System.out.println("Consumer received queue1 message: "+text.getText());
+
+           // Acknowledge after committing the transaction. Because even if an event comes again next time, the database insert will fail.
            text.acknowledge();
 
        }catch (Exception e){
@@ -32,15 +32,15 @@ public class ConsumerQueue {
            } catch (InterruptedException e1) {
                e1.printStackTrace();
            }
-           System.out.println("异常了");
+           System.out.println("Exception occurred");
        }finally {
-           
+
        }
 
    }
 
 //    @JmsListener(destination = "ActiveMQQueue")
 //    public void receiveQueue2(String text) {
-//        System.out.println("消費者收到的queue2报文为:"+text);
+//        System.out.println("Consumer received queue2 message: "+text);
 //    }
 }

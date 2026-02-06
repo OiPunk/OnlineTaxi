@@ -29,21 +29,21 @@
 	<build>
 		<finalName>online-taxi-demo-app</finalName>
 		<plugins>
-			<!-- 该插件的主要功能是进行项目的打包发布处理 -->
+			<!-- This plugin handles project packaging and deployment -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!-- 指定文件编码，即可解决  -->
+				<!-- Specify file encoding to resolve encoding issues -->
 				<configuration>
 					<arguments>-Dfile.encoding=UTF-8</arguments>
-					<!-- spring-boot:run 中文乱码解决 -->
+					<!-- Fix Chinese character encoding issue for spring-boot:run -->
 					<jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
-	<!-- SpringClould配置 -->
+	<!-- Spring Cloud configuration -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -56,7 +56,7 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<!-- +++++++++++++++++++++++++++++++相关依赖-以下+++++++++++++++++++++++++++++++ -->
+	<!-- +++++++++++++++++++++++++++++++Dependencies - Start+++++++++++++++++++++++++++++++ -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,12 +71,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- jstl JSP标准标签库 -->
+		<!-- JSTL: JSP Standard Tag Library -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-		<!-- 返回jsp页面还需要这个依赖 -->
+		<!-- This dependency is required for returning JSP pages -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
@@ -94,5 +94,5 @@
 		</dependency>
 
 	</dependencies>
-	<!-- +++++++++++++++++++++++++++++++相关依赖-以上+++++++++++++++++++++++++++++++ -->
+	<!-- +++++++++++++++++++++++++++++++Dependencies - End+++++++++++++++++++++++++++++++ -->
 </project>

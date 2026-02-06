@@ -3,7 +3,7 @@ package com.online.taxi.dto.phone;
 import lombok.Data;
 
 /**
- *绑定手机号
+ * Bound phone number
  * @date 2018/9/7
  */
 @Data

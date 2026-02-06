@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 订单服务类型
+ * Order service type
  * @author yueyi2019
  * @date 2018/10/22
  */
@@ -13,33 +13,33 @@ import lombok.Getter;
 public enum OrderServiceTypeEnum implements CodeEnum  {
 
     /**
-     * 实时订单
+     * Real-time order
      */
-    REAL_TIME(1,"实时订单"),
+    REAL_TIME(1,"Real-time order"),
 
     /**
-     * 预约订单
+     * Reservation order
      */
-    MAKE_AN_APPOINTMENT(2,"预约订单"),
+    MAKE_AN_APPOINTMENT(2,"Reservation order"),
 
     /**
-     * 接机
+     * Airport pickup
      */
-    PICK_UP(3,"接机"),
+    PICK_UP(3,"Airport pickup"),
 
     /**
-     * 送机
+     * Airport drop-off
      */
-    SEND_MACHINE(4,"送机"),
+    SEND_MACHINE(4,"Airport drop-off"),
 
     /**
-     * 半日租
+     * Half-day rental
      */
-    CHARTERED_CAR(5,"半日租"),
+    CHARTERED_CAR(5,"Half-day rental"),
     /**
-     * 全日租
+     * Full-day rental
      */
-    THROUGHOUT_THE_DAY(6,"全日租");
+    THROUGHOUT_THE_DAY(6,"Full-day rental");
 
     private int code;
     private String value;

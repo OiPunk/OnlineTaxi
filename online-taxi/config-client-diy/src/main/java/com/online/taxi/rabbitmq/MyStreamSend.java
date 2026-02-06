@@ -22,7 +22,7 @@ public class MyStreamSend {
 
     @PostMapping("/send")
     public String sendTestData(@RequestBody String content) {
-        this.output.send(MessageBuilder.withPayload(content).build());  // 发出消息
-        return "发送成功";
+        this.output.send(MessageBuilder.withPayload(content).build());  // Send message
+        return "Send successful";
     }
 }

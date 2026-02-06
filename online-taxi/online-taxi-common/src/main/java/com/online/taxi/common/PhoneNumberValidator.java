@@ -8,40 +8,41 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
-        * ConstraintsJustryDeng注解 校验器 实现
+        * ConstraintValidator implementation for the PhoneNumberValidation annotation
         * <p>
-        * 注:验证器需要实现ConstraintValidator<U, V>, 其中 U为对应的注解类， V为被该注解标记的字段的类型(或其父类型)
+        * Note: The validator must implement ConstraintValidator<U, V>, where U is the corresponding
+        *       annotation class, and V is the type (or parent type) of the field marked with that annotation.
         *
-        * 注: 当项目启动后，会(懒加载)创建ConstraintValidator实例，在创建实例后会初始化调
-        *     用{@link ConstraintValidator#initialize}方法。
-        *     所以， 只有在第一次请求时，会走initialize方法， 后面的请求是不会走initialize方法的。
+        * Note: After the project starts, a ConstraintValidator instance is created (lazily), and the
+        *       {@link ConstraintValidator#initialize} method is called after creation.
+        *       Therefore, the initialize method is only invoked on the first request; subsequent requests
+        *       will not trigger it.
         *
-        * 注: (懒加载)创建ConstraintValidator实例时， 会走缓存; 如果缓存中有，则直接使用相
-        *     同的ConstraintValidator实例； 如果缓存中没有，那么会创建新的ConstraintValidator实例。
-        *     由于缓存的key是能唯一定位的， 且 ConstraintValidator的实例属性只有在
-        *     {@link ConstraintValidator#initialize}方法中才会写；在{@link ConstraintValidator#isValid}
-        *     方法中只是读。
-        *     所以不用担心线程安全问题。
+        * Note: When (lazily) creating a ConstraintValidator instance, caching is used. If one exists in
+        *       the cache, the same ConstraintValidator instance is reused; otherwise a new instance is created.
+        *       Since the cache key is uniquely identifiable, and instance properties of ConstraintValidator
+        *       are only written in the {@link ConstraintValidator#initialize} method and only read in the
+        *       {@link ConstraintValidator#isValid} method, there is no need to worry about thread safety.
         *
         */
 public class PhoneNumberValidator implements ConstraintValidator<PhoneNumberValidation,String> {
 
     private static final int PHONE_LENGTH = 11;
     /**
-     中国电信号段 133、149、153、173、177、180、181、189、199
-     中国联通号段 130、131、132、145、155、156、166、175、176、185、186
-     中国移动号段 134(0-8)、135、136、137、138、139、147、150、151、152、157、158、159、178、182、183、184、187、188、198
-     其他号段
-     14号段以前为上网卡专属号段，如中国联通的是145，中国移动的是147等等。
-     虚拟运营商
-     电信：1700、1701、1702
-     移动：1703、1705、1706
-     联通：1704、1707、1708、1709、171
-     卫星通信：1349
+     China Telecom number segments: 133, 149, 153, 173, 177, 180, 181, 189, 199
+     China Unicom number segments: 130, 131, 132, 145, 155, 156, 166, 175, 176, 185, 186
+     China Mobile number segments: 134(0-8), 135, 136, 137, 138, 139, 147, 150, 151, 152, 157, 158, 159, 178, 182, 183, 184, 187, 188, 198
+     Other number segments:
+     The 14x segment was previously exclusive to data cards, e.g., China Unicom uses 145, China Mobile uses 147, etc.
+     Virtual operators:
+     Telecom: 1700, 1701, 1702
+     Mobile: 1703, 1705, 1706
+     Unicom: 1704, 1707, 1708, 1709, 171
+     Satellite communication: 1349
      */
     private static final String PHONE_REGEX = "^((13[0-9])|(14[5,7,9])|(15([0-3]|[5-9]))|(166)|(17[0,1,3,5,6,7,8])|(18[0-9])|(19[8|9]))\\d{8}$";
 
-    /** 错误提示信息 */
+    /** Error message */
     private String contains;
 
     @Override
@@ -65,11 +66,12 @@ public class PhoneNumberValidator implements ConstraintValidator<PhoneNumberVali
     }
 
     /**
-     * 初始化方法， 在(懒加载)创建一个当前类实例后，会马上执行此方法
+     * Initialization method, executed immediately after (lazily) creating an instance of this class
      *
-     * 注: 此方法只会执行一次，即:创建实例后马上执行。
+     * Note: This method is only executed once, i.e., immediately after instance creation.
      *
-     * 注解信息模型，可以从该模型中获取注解类中定义的一些信息，如默认值等
+     * The annotation information model, from which some information defined in the annotation class
+     * can be obtained, such as default values, etc.
      *
      */
     @Override

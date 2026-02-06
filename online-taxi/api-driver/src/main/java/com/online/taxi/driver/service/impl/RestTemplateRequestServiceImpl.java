@@ -17,7 +17,7 @@ public class RestTemplateRequestServiceImpl implements RestTemplateRequestServic
 
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	@Override
 //	@HystrixCommand(fallbackMethod = "sendFail")
 //	@HystrixCommand(fallbackMethod = "sendFail",ignoreExceptions = {HystrixIgnoreException.class},
@@ -26,38 +26,38 @@ public class RestTemplateRequestServiceImpl implements RestTemplateRequestServic
 //			@HystrixProperty(name = "circuitBreaker.forceOpen",value = "false")
 //	})
 	public ResponseResult smsSend(SmsSendRequest smsSendRequest) {
-		
-		// 下面是故意跑出异常代码
+
+		// The code below intentionally throws an exception
 //		try {
 //			int i = 1/0;
 //		} catch (Exception e) {
 //			// TODO: handle exception
-//			throw new BusinessException("熔断忽略的异常，继承HystrixBadRequestException");
-////			throw new HystrixIgnoreException("熔断忽略的异常，忽略属性设置");
+//			throw new BusinessException("Circuit breaker ignored exception, extends HystrixBadRequestException");
+////			throw new HystrixIgnoreException("Circuit breaker ignored exception, ignore property setting");
 //		}
-		
+
 		String url = HttpUrlConstants.SERVICE_SMS_URL + "/send/alisms-template";
 		return restTemplate.postForEntity(url, smsSendRequest, ResponseResult.class).getBody();
 	}
-	
+
 //	private ResponseResult sendFail(SmsSendRequest smsSendRequest) {
-//		//备用逻辑
-//		return ResponseResult.fail(-3, "resttemplate熔断");
+//		// Fallback logic
+//		return ResponseResult.fail(-3, "resttemplate circuit breaker");
 //	}
-	
+
 	private ResponseResult sendFail(SmsSendRequest smsSendRequest ,Throwable throwable) {
-		log.info("异常信息："+throwable);
-		//备用逻辑
-		
-		return ResponseResult.fail(-3, "restTemplate熔断");
+		log.info("Exception info: "+throwable);
+		// Fallback logic
+
+		return ResponseResult.fail(-3, "restTemplate circuit breaker");
 	}
-	
-	// 都是请求底层服务的。
-	
+
+	// All requests to underlying services.
+
 	public String grabOrder(int orderId, int driverId) {
-		
+
 		String url = HttpUrlConstants.SERVICE_ORDER_URL + "/grab/do/"+orderId+"?driverId="+driverId;
-		
+
 		return restTemplate.getForEntity(url, String.class).getBody();
 	}
 

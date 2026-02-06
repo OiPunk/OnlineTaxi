@@ -20,7 +20,7 @@ import com.online.taxi.order.dao.OrderLockMapper;
 
 import lombok.Data;
 /**
- * 例子中暂时不用
+ * Not used in the current example
  * @author oi
  *
  */
@@ -30,55 +30,55 @@ public class RedisLock implements Lock {
 
 	@Resource
 	private RedisTemplate<Integer, Integer> redisTemplate;
-	
+
 	private OrderLock orderLock;
-	
+
 	@Override
 	public void lock() {
-		// 1、尝试加锁
+		// 1. Try to acquire the lock
 		if(tryLock()) {
 			return;
 		}
-		// 2.休眠
+		// 2. Sleep
 		try {
 			Thread.sleep(10);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		// 3.递归再次调用
+		// 3. Recursively call again
 		lock();
 	}
-	
+
 	/**
-	 * 	非阻塞式加锁，成功，就成功，失败就失败。直接返回
+	 * Non-blocking lock attempt: succeeds or fails immediately and returns directly
 	 */
 	@Override
 	public boolean tryLock() {
-		
+
 		int orderId = orderLock.getOrderId();
 		int driverId = orderLock.getDriverId();
-		
+
 		Boolean b = redisTemplate.opsForValue().setIfAbsent(orderId, driverId, 50, TimeUnit.SECONDS);
 		if(b) {
 			return true;
 		}
 		return false;
-		
+
 	}
-	
+
 	@Override
 	public void unlock() {
-		
+
 		DefaultRedisScript<List> getRedisScript = new DefaultRedisScript<List>();
         getRedisScript.setResultType(List.class);
         getRedisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("luascript/lock.lua")));
-        
+
 		redisTemplate.execute(getRedisScript, Arrays.asList(orderLock.getOrderId()), Arrays.asList(orderLock.getDriverId()));
 	}
 
 	@Override
 	public void lockInterruptibly() throws InterruptedException {
-		
+
 	}
 
 	@Override

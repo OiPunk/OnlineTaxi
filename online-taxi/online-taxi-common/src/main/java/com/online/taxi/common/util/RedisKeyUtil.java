@@ -5,7 +5,7 @@ import com.online.taxi.common.constant.RedisKeyPrefixConstant;
 
 public class RedisKeyUtil {
     /**
-     * 根据身份类型生成对应的缓存key
+     * Generate the corresponding cache key based on identity type
      * @param identity
      * @return
      */

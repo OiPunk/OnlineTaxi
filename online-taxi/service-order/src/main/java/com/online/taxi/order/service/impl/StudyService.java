@@ -13,7 +13,7 @@ public class StudyService {
     public static void main(String[] args) {
 
 
-        //业务
+        //business logic
 
 
     }

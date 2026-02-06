@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * 计价服务请求任务
+ * Valuation service request task
  *
  * @date 2018/8/14
  */
@@ -49,10 +49,10 @@ public class ValuationRequestTask {
     private ServiceAddress serviceAddress;
 
     /**
-     * 将Json解析为Rule
+     * Parse JSON into Rule
      *
-     * @param orderId 订单id
-     * @return rule实例
+     * @param orderId order ID
+     * @return Rule instance
      */
     @SneakyThrows
     public Rule requestRule(Integer orderId) {
@@ -72,7 +72,7 @@ public class ValuationRequestTask {
             ruleCache.set(orderId, rule);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("orderId={}, 解析RuleJson错误:", orderId, e);
+            log.error("orderId={}, Error parsing RuleJson:", orderId, e);
             throw e;
         }
 
@@ -80,10 +80,10 @@ public class ValuationRequestTask {
     }
 
     /**
-     * 获取路途长度和行驶时间
+     * Get route distance and travel time
      *
-     * @param driveMeter 行驶信息
-     * @return 行驶信息
+     * @param driveMeter driving information
+     * @return driving information
      */
     @SneakyThrows
     public Route requestRoute(DriveMeter driveMeter) {
@@ -99,16 +99,16 @@ public class ValuationRequestTask {
             String param = map.keySet().stream().map(k -> k + "={" + k + "}").collect(Collectors.joining("&"));
             String url = serviceAddress.getMapAddress() + "/distance?" + param;
             ResponseResult result = restTemplate.getForObject(url, ResponseResult.class, map);
-            log.info("调用接口Route返回{}", result);
+            log.info("Route API call returned {}", result);
             route = RestTemplateHepler.parse(result, Route.class);
 
             if (null == route.getDuration() || null == route.getDistance()) {
-                throw new Exception("Route内容为空：" + route);
+                throw new Exception("Route content is empty: " + route);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("orderId={}, 调用接口Route错误:driveMeter={}", driveMeter.getOrder().getId(), driveMeter, e);
+            log.error("orderId={}, Error calling Route API: driveMeter={}", driveMeter.getOrder().getId(), driveMeter, e);
             throw e;
         }
 
@@ -116,10 +116,10 @@ public class ValuationRequestTask {
     }
 
     /**
-     * 获取路途长度
+     * Get route distance
      *
-     * @param driveMeter 行驶信息
-     * @return 行驶信息
+     * @param driveMeter driving information
+     * @return driving information
      */
     @SneakyThrows
     public Distance requestDistance(DriveMeter driveMeter) {
@@ -133,19 +133,19 @@ public class ValuationRequestTask {
             return requestDistance(carId, cityCode, startTime, endTime);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("orderId={}, 调用接口Distance错误:driveMeter={}", driveMeter.getOrder().getId(), driveMeter, e);
+            log.error("orderId={}, Error calling Distance API: driveMeter={}", driveMeter.getOrder().getId(), driveMeter, e);
             throw e;
         }
     }
 
     /**
-     * 获取路途长度
+     * Get route distance
      *
-     * @param carId     车辆ID
-     * @param cityCode  城市编码
-     * @param startTime 开始时间点
-     * @param endTime   结束时间点
-     * @return 距离
+     * @param carId     vehicle ID
+     * @param cityCode  city code
+     * @param startTime start time
+     * @param endTime   end time
+     * @return distance
      */
     @SneakyThrows
     public Distance requestDistance(int carId, String cityCode, LocalDateTime startTime, LocalDateTime endTime) {
@@ -155,11 +155,11 @@ public class ValuationRequestTask {
         result.setDistance(0D);
 
         try {
-            //按天分割计算
+            // Split calculation by day
             long totalSeconds = Duration.between(startTime, endTime).toMillis();
             long intervalSeconds = Duration.ofDays(1).minusSeconds(1).toMillis();
 
-            //计算次数
+            // Calculate number of iterations
             int times = (int) Math.ceil(1.0 * totalSeconds / intervalSeconds);
             for (int i = 0; i < times; i++) {
                 long startSecond = startTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() + (i * intervalSeconds);
@@ -178,14 +178,14 @@ public class ValuationRequestTask {
                 Distance distance = RestTemplateHepler.parse(responseResult, Distance.class);
 
                 if (null == distance || null == distance.getDistance()) {
-                    throw new Exception("distance内容为空：" + result);
+                    throw new Exception("Distance content is empty: " + result);
                 }
 
                 result.setDistance(result.getDistance() + distance.getDistance());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("调用接口Route Distance错误:carId={},cityCode={},startTime={},endTime={}", carId, cityCode, startTime, endTime, e);
+            log.error("Error calling Route Distance API: carId={}, cityCode={}, startTime={}, endTime={}", carId, cityCode, startTime, endTime, e);
             throw e;
         }
 

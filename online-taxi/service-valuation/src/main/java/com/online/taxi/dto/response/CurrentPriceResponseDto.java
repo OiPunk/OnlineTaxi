@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 import java.math.BigDecimal;
 
 /**
- * 实时价格DTO
+ * Real-time price DTO
  *
  * @date 2018/11/1
  */
@@ -14,12 +14,12 @@ import java.math.BigDecimal;
 @Accessors(chain = true)
 public class CurrentPriceResponseDto {
     /**
-     * 行驶距离（单位：米）
+     * Travel distance (unit: meters)
      */
     private double distance;
 
     /**
-     * 价格
+     * Price
      */
     private BigDecimal price;
 }

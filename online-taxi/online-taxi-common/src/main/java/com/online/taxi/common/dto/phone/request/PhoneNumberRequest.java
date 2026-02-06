@@ -4,34 +4,34 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 手机号绑定参数
+ * Phone number binding parameters
  * @date 2018/8/27
  */
 @Data
 public class PhoneNumberRequest {
     /**
-     * 司机电话
+     * Driver phone number
      */
     private String driverPhone;
 
     /**
-     * 乘客电话
+     * Passenger phone number
      */
     private String passengerPhone;
 
     /**
-     * 订单开始时间
-     * 绑定关系对应的失效时间-不能早于当前系统时间
+     * Order start time
+     * Expiration time of the binding relationship - must not be earlier than the current system time
      */
     private String expiration;
 
     /**
-     * 绑定手机号ID
+     * Bound phone number ID
      */
     private String subsId;
 
     /**
-     * 绑定的手机号
+     * Bound phone number
      */
     private String secretNo;
 }

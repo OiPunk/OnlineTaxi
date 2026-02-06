@@ -16,21 +16,21 @@ import javax.jms.Topic;
 
 @Configuration
 public class ActiveMQConfig {
- 
+
     @Value("${spring.activemq.broker-url}")
     private  String brokerUrl;
- 
+
     @Bean
     public Queue queue() {
         return new ActiveMQQueue("ActiveMQQueue");
     }
- 
+
     @Bean
     public Topic topic(){
         return new ActiveMQTopic("ActiveMQTopic");
     }
- 
- 
+
+
     @Bean
     public ActiveMQConnectionFactory connectionFactory(RedeliveryPolicy redeliveryPolicy) {
 
@@ -44,7 +44,7 @@ public class ActiveMQConfig {
     }
 
     /**
-     * Queue模式连接注入
+     * Queue mode connection injection
      */
     @Bean
     public JmsListenerContainerFactory<?> jmsListenerContainerQueue(ActiveMQConnectionFactory connectionFactory){
@@ -53,24 +53,24 @@ public class ActiveMQConfig {
 
         bean.setConnectionFactory(connectionFactory);
         /**
-         * 客户端手动确认，这就意味着AcitveMQ将不会自动ACK任何消息。
-         * 如果一个conmuser在消费结束前没有调用message.acknowledge()确认一个消息，
-         * 之后调用其他conmuser时会再次消费它，因为对于broker而言，那些尚未真正ACK的消息被视为未消费，
-         * 直到它被确认。
+         * Client manual acknowledgment, which means ActiveMQ will not automatically ACK any messages.
+         * If a consumer does not call message.acknowledge() to acknowledge a message before consumption ends,
+         * other consumers will consume it again when called, because for the broker, messages that have not
+         * been truly ACKed are considered unconsumed until they are acknowledged.
          */
         bean.setSessionAcknowledgeMode(2);
         return bean;
     }
 
     /**
-     * Topic模式连接注入
+     * Topic mode connection injection
      * @param connectionFactory
      * @return
      */
     @Bean
     public JmsListenerContainerFactory<?> jmsListenerContainerTopic(ActiveMQConnectionFactory connectionFactory){
         DefaultJmsListenerContainerFactory bean = new DefaultJmsListenerContainerFactory();
-        //设置为发布订阅方式, 默认情况下使用的生产消费者方式
+        // Set to publish-subscribe mode, default is producer-consumer mode
         bean.setPubSubDomain(true);
         bean.setConnectionFactory(connectionFactory);
         return bean;
@@ -79,17 +79,17 @@ public class ActiveMQConfig {
     @Bean
     public RedeliveryPolicy redeliveryPolicy(){
         RedeliveryPolicy  redeliveryPolicy=   new RedeliveryPolicy();
-//        //是否在每次尝试重新发送失败后,增长这个等待时间
+//        // Whether to increase the wait time after each failed redelivery attempt
 //        redeliveryPolicy.setUseExponentialBackOff(true);
-//        //重发次数,默认为6次   这里设置为10次
+//        // Number of redelivery attempts, default is 6, set to 10 here
 //        redeliveryPolicy.setMaximumRedeliveries(10);
-//        //重发时间间隔,默认为1秒
+//        // Redelivery time interval, default is 1 second
 //        redeliveryPolicy.setInitialRedeliveryDelay(1);
-//        //第一次失败后重新发送之前等待500毫秒,第二次失败再等待500 * 2毫秒,这里的2就是value
+//        // Wait 500ms before resending after first failure, wait 500 * 2ms after second failure, where 2 is the value
 //        redeliveryPolicy.setBackOffMultiplier(2);
-//        //是否避免消息碰撞
+//        // Whether to avoid message collision
 //        redeliveryPolicy.setUseCollisionAvoidance(false);
-//        //设置重发最大拖延时间-1 表示没有拖延只有UseExponentialBackOff(true)为true时生效
+//        // Set maximum redelivery delay, -1 means no delay, only effective when UseExponentialBackOff(true) is true
 //        redeliveryPolicy.setMaximumRedeliveryDelay(-1);
         return redeliveryPolicy;
     }
@@ -97,10 +97,10 @@ public class ActiveMQConfig {
     @Bean
     public JmsTemplate jmsTemplate(ActiveMQConnectionFactory activeMQConnectionFactory, Queue queue){
         JmsTemplate jmsTemplate=new JmsTemplate();
-        jmsTemplate.setDeliveryMode(2);//进行持久化配置 1表示非持久化，2表示持久化
+        jmsTemplate.setDeliveryMode(2);// Configure persistence: 1 means non-persistent, 2 means persistent
         jmsTemplate.setConnectionFactory(activeMQConnectionFactory);
-        jmsTemplate.setDefaultDestination(queue); //此处可不设置默认，在发送消息时也可设置队列
-        jmsTemplate.setSessionAcknowledgeMode(4);//客户端签收模式
+        jmsTemplate.setDefaultDestination(queue); // Default destination can be omitted here, can also be set when sending messages
+        jmsTemplate.setSessionAcknowledgeMode(4);// Client acknowledgment mode
         return jmsTemplate;
     }
 

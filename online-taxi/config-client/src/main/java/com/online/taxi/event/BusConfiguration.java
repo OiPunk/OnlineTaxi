@@ -10,6 +10,6 @@ public class BusConfiguration {
 
 	@EventListener
 	public void onUserRemoteApplicationEvent(CustomRemoteApplicationEvent event) {
-		System.out.println("原始服务："+event.getOriginService()+",内容："+event.getSource());
+		System.out.println("Origin service: "+event.getOriginService()+", content: "+event.getSource());
 	}
 }

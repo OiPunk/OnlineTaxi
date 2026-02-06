@@ -1,82 +1,82 @@
-#服务端口
-#server: 
+# Service port
+#server:
 #  port: 8004
 
-#应用名称及验证账号
-spring: 
-  application: 
+# Application name and configuration
+spring:
+  application:
     name: service-order
   redis:
     database: 0
-    host: 127.0.0.1
-    port: 6379
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
     timeout: 2000
-    password:
-    #数据库连接配置
-  datasource: 
-         #配置当前使用的数据源的操作类型
-    type: com.alibaba.druid.pool.DruidDataSource                          
-         #配置MySQL的驱动程序类
-    driver-class-name: com.mysql.cj.jdbc.Driver                             
-         #数据库连接地址
-    url: jdbc:mysql://localhost:3306/online-taxi?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-         #数据库连接用户名
-    username: root                                                        
-         #数据库连接密码
-    password: root                                                        
-         #进行数据库连接池的配置
-    dbcp2:          
-             #初始化提供的连接数                                                      
-      initial-size: 5    
-             #数据库连接池的最小维持连接数                                                 
-      min-idle: 5          
-             #最大的连接数                                               
-      max-total: 5 
-             #等待连接获取的最大超时时间                                                       
-      max-wait-millis: 200                                                
+    password: ${REDIS_PASSWORD:}
+    # Database connection configuration
+  datasource:
+    # Data source type
+    type: com.alibaba.druid.pool.DruidDataSource
+    # MySQL driver class
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # Database connection URL
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:online-taxi}?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    # Database username
+    username: ${DB_USER:root}
+    # Database password
+    password: ${DB_PASSWORD:changeme}
+    # Database connection pool configuration
+    dbcp2:
+      # Initial number of connections
+      initial-size: 5
+      # Minimum idle connections
+      min-idle: 5
+      # Maximum number of connections
+      max-total: 5
+      # Maximum wait time for connection
+      max-wait-millis: 200
       validation-query: SELECT 1
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
-#自定义哨兵
+# Custom Redis Sentinel configuration
 sentinel:
   address:
-    - 127.0.0.1:26379
-    - 127.0.0.1:26479
-    - 127.0.0.1:26579
-  masterName: mymaster
+    - ${SENTINEL_HOST_1:127.0.0.1}:${SENTINEL_PORT_1:26379}
+    - ${SENTINEL_HOST_2:127.0.0.1}:${SENTINEL_PORT_2:26479}
+    - ${SENTINEL_HOST_3:127.0.0.1}:${SENTINEL_PORT_3:26579}
+  masterName: ${SENTINEL_MASTER:mymaster}
 
-#注册中心
-eureka: 
-  
+# Service registry
+eureka:
+
   client:
     enabled: true
-        #设置服务注册中心的URL
-    service-url:                      
-      defaultZone: http://root:root@eureka-7900:7900/eureka/
-  instance: 
+    # Set service registry URL
+    service-url:
+      defaultZone: http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@${EUREKA_HOST:eureka-7900}:7900/eureka/
+  instance:
     hostname: localhost
 
-#mybatis配置
+# MyBatis configuration
 mybatis:
-  #mybatis配置文件所在路径
-  config-location: classpath:mybatis/mybatis.cfg.xml 
-    #定义所有操作类的别名所在包
+  # MyBatis config file path
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  # Package alias for entity classes
   type-aliases-package: com.online.taxi.common
-    #所有的mapper映射文件  
-  mapper-locations:             
-  - classpath:mybatis/mapper/*.xml      
+  # Mapper XML file locations
+  mapper-locations:
+  - classpath:mybatis/mapper/*.xml
 
-  
+
 ---
 spring:
   profiles: 8004
-#服务端口
-server: 
+# Service port
+server:
   port: 8004
 ---
 spring:
   profiles: 8005
-#服务端口
-server: 
-  port: 8005    
+# Service port
+server:
+  port: 8005

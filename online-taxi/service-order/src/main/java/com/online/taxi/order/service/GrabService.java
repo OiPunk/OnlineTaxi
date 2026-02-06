@@ -8,7 +8,7 @@ import com.online.taxi.common.dto.ResponseResult;
 public interface GrabService {
 
     /**
-     * 司机抢单
+     * Driver grabs an order
      * @param orderId
      * @param driverId
      * @return

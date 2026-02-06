@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 import java.util.Optional;
 
 /**
- * 计价规则控制器
+ * Valuation rule controller
  *
  * @date 2018/8/14
  */
@@ -29,19 +29,19 @@ import java.util.Optional;
 @RequestMapping("/valuation")
 public class ValuationController {
 
-    private static final String ERR_CALC_FORECAST_PRICE = "订单预估价格计算错误";
-    private static final String ERR_DONE_FORECAST = "订单结束预估错误";
-    private static final String ERR_CALC_CURRENT_PRICE = "计算订单价格错误";
-    private static final String ERR_CALC_SETTLEMENT_PRICE = "订单结算价格计算错误";
+    private static final String ERR_CALC_FORECAST_PRICE = "Error calculating order forecast price";
+    private static final String ERR_DONE_FORECAST = "Error finishing order forecast";
+    private static final String ERR_CALC_CURRENT_PRICE = "Error calculating order price";
+    private static final String ERR_CALC_SETTLEMENT_PRICE = "Error calculating order settlement price";
 
     @NonNull
     private ValuationService valuationService;
 
     /**
-     * 订单预估价格计算
+     * Calculate order forecast price
      *
-     * @param orderId 订单ID
-     * @return 预估价格
+     * @param orderId order ID
+     * @return forecast price
      */
     @GetMapping("/forecast/{orderId}")
     public ResponseResult forecast(@PathVariable(value = "orderId") Integer orderId) {
@@ -50,7 +50,7 @@ public class ValuationController {
             price = valuationService.calcForecastPrice(orderId);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("{}：orderId={}", ERR_CALC_FORECAST_PRICE, orderId, e);
+            log.error("{}: orderId={}", ERR_CALC_FORECAST_PRICE, orderId, e);
             return ResponseResult.fail(BusinessInterfaceStatus.FAIL.getCode(), ERR_CALC_FORECAST_PRICE);
         }
 
@@ -58,10 +58,10 @@ public class ValuationController {
     }
 
     /**
-     * 结束预估，写入数据库
+     * Finish forecast and write to database
      *
-     * @param orderId 订单ID
-     * @return ResponseResult实例
+     * @param orderId order ID
+     * @return ResponseResult instance
      */
     @GetMapping("/forecast/done/{orderId}")
     public ResponseResult forecastDone(@PathVariable(value = "orderId") Integer orderId) {
@@ -69,7 +69,7 @@ public class ValuationController {
             valuationService.doneForecast(orderId);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("{}：orderId={}", ERR_DONE_FORECAST, orderId, e);
+            log.error("{}: orderId={}", ERR_DONE_FORECAST, orderId, e);
             return ResponseResult.fail(BusinessInterfaceStatus.FAIL.getCode(), ERR_DONE_FORECAST);
         }
 
@@ -83,7 +83,7 @@ public class ValuationController {
             detail = valuationService.requestForecastDetail(orderId);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("{}：orderId={}", ERR_DONE_FORECAST, orderId, e);
+            log.error("{}: orderId={}", ERR_DONE_FORECAST, orderId, e);
             return ResponseResult.fail(BusinessInterfaceStatus.FAIL.getCode(), ERR_DONE_FORECAST);
         }
 
@@ -97,7 +97,7 @@ public class ValuationController {
             result = valuationService.calcCurrentPrice(dto);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("{}：orderId={}", ERR_CALC_CURRENT_PRICE, dto.getOrderId(), e);
+            log.error("{}: orderId={}", ERR_CALC_CURRENT_PRICE, dto.getOrderId(), e);
             return ResponseResult.fail(BusinessInterfaceStatus.FAIL.getCode(), ERR_CALC_CURRENT_PRICE);
         }
 
@@ -105,10 +105,10 @@ public class ValuationController {
     }
 
     /**
-     * 订单结算价格计算
+     * Calculate order settlement price
      *
-     * @param orderId 订单ID
-     * @return 结算价格
+     * @param orderId order ID
+     * @return settlement price
      */
     @GetMapping("/settlement/{orderId}")
     public ResponseResult settlement(@PathVariable(value = "orderId") Integer orderId) {
@@ -117,7 +117,7 @@ public class ValuationController {
             price = valuationService.calcSettlementPrice(orderId);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("{}：orderId={}", ERR_CALC_SETTLEMENT_PRICE, orderId, e);
+            log.error("{}: orderId={}", ERR_CALC_SETTLEMENT_PRICE, orderId, e);
             return ResponseResult.fail(BusinessInterfaceStatus.FAIL.getCode(), ERR_CALC_SETTLEMENT_PRICE);
         }
 

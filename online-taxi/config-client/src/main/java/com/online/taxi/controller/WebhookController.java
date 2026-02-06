@@ -18,20 +18,20 @@ import com.sun.org.apache.regexp.internal.recompile;
 @RestController
 @RequestMapping("/git-webhook")
 public class WebhookController {
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	@PostMapping("/bus-refresh")
 	public String refresh() {
-		
+
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_TYPE,"application/json");
         HttpEntity<String> request = new HttpEntity<>(httpHeaders);
         ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost/actuator/bus-refresh",
                 request, String.class);
 
-		
-		return "webhook刷新成功";
+
+		return "Webhook refresh successful";
 	}
 }

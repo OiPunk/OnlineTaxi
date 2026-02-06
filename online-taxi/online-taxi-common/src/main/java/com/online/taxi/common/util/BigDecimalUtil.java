@@ -5,16 +5,16 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 /**
- * 
- * @description 金额计算工具类 PS:BigDecimal构造方法参数必须为String,否则某些特定的魔法数字会缺失精度
+ *
+ * @description Currency calculation utility class. PS: BigDecimal constructor parameter must be String, otherwise certain magic numbers will lose precision
  * @version
- * @date 2017年6月16日
+ * @date 2017-06-16
  */
 public class BigDecimalUtil {
 
     /**
-     * double转String
-     * 
+     * Convert double to String
+     *
      * @param value
      * @return
      */
@@ -25,13 +25,13 @@ public class BigDecimalUtil {
     }
 
     /**
-     * 加法计算的add方法
-     * 
+     * Addition method
+     *
      * @param valueOne
-     *            被加数
+     *            augend
      * @param valueTwo
-     *            加数
-     * @return 两个参数的和
+     *            addend
+     * @return the sum of the two parameters
      */
     public static double add(String valueOne, String valueTwo) {
         BigDecimal bOne = new BigDecimal(valueOne);
@@ -40,13 +40,13 @@ public class BigDecimalUtil {
     }
 
     /**
-     * 减法运算的sub方法
-     * 
+     * Subtraction method
+     *
      * @param valueOne
-     *            被减数
+     *            minuend
      * @param valueTwo
-     *            减数
-     * @return 两个参数的差
+     *            subtrahend
+     * @return the difference of the two parameters
      */
     public static double sub(String valueOne, String valueTwo) {
         BigDecimal bOne = new BigDecimal(valueOne);
@@ -55,13 +55,13 @@ public class BigDecimalUtil {
     }
 
     /**
-     * 乘法运算
-     * 
+     * Multiplication method
+     *
      * @param valueOne
-     *            被乘数
+     *            multiplicand
      * @param valueTwo
-     *            乘数
-     * @return 两个参数的积
+     *            multiplier
+     * @return the product of the two parameters
      */
     public static double mul(String valueOne, String valueTwo) {
         BigDecimal bOne = new BigDecimal(valueOne);
@@ -70,19 +70,19 @@ public class BigDecimalUtil {
     }
 
     /**
-     * 除法运算方法
-     * 
+     * Division method
+     *
      * @param valueOne
-     *            被除数
+     *            dividend
      * @param valueTwo
-     *            除数
+     *            divisor
      * @param scale
-     *            精确范围
-     * @return 两个参数的商
+     *            precision scale
+     * @return the quotient of the two parameters
      * @throws IllegalAccessException
      */
     public static double div(String valueOne, String valueTwo, int scale) {
-        // 如果精确范围小于0，抛出异常信息
+        // If precision scale is less than 0, reset to 0
         if (scale < 0) {
             scale = 0;
         }

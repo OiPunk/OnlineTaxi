@@ -9,7 +9,7 @@ import org.apache.commons.lang.StringUtils;
 public class Sha1Util {
 
     /**
-     * 将输入源 转换成 密文
+     * Convert input source to ciphertext
      * @param src
      * @return
      */
@@ -23,6 +23,6 @@ public class Sha1Util {
     }
     
     public static void main(String[] args) {
-		System.out.println(encode("我"));
+		System.out.println(encode("test"));
 	}
 }

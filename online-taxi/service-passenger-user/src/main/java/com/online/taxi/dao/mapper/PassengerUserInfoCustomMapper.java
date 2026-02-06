@@ -3,9 +3,9 @@ package com.online.taxi.dao.mapper;
 import com.online.taxi.dao.entity.PassengerUserInfo;
 import org.apache.ibatis.annotations.Mapper;
 /**
- * 添加了@Mapper注解之后这个接口在编译时会生成相应的实现类
- * 需要注意的是：这个接口中不可以定义同名的方法，因为会生成相同的id
- * 也就是说这个接口是不支持重载的
+ * After adding the @Mapper annotation, this interface will generate the corresponding implementation class at compile time.
+ * Note: methods with the same name cannot be defined in this interface, as they would generate the same id.
+ * In other words, this interface does not support overloading.
  *
  * @author oi
  */
@@ -13,7 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface PassengerUserInfoCustomMapper extends PassengerUserInfoMapper{
 
     /**
-     * 根据手机号查询乘客信息
+     * Query passenger info by phone number
      * @param passengerPhone
      * @return
      */

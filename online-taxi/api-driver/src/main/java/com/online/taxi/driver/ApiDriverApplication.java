@@ -23,14 +23,14 @@ import com.online.taxi.driver.ribbonconfig.RibbonConfiguration;
 @SpringBootApplication
 @EnableCircuitBreaker
 //@EnableHystrix
-// 扫描不包括 注解修饰的类
+// Scan excludes classes annotated with the specified annotation
 @ComponentScan(
         basePackages = {"com.online.taxi"},
         excludeFilters = {
 		    @ComponentScan.Filter(type = FilterType.ANNOTATION,value=ExcudeRibbonConfig.class)
         }
  )
-// 下面是让所有client都实现随机策略
+// Below enables random strategy for all clients
 //@RibbonClients(defaultConfiguration = RibbonConfiguration.class)
 //@RibbonClient(name = "service-sms",configuration = RibbonConfiguration.class)
 public class ApiDriverApplication {
@@ -38,21 +38,21 @@ public class ApiDriverApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiDriverApplication.class, args);
 	}
-	
-	
+
+
 	@Bean
 	@LoadBalanced
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-	
+
 	/**
-	 * 手写简单ribbon
+	 * Simple manual ribbon implementation
 	 * @return
 	 */
 //	@Bean
 //	public RestTemplate restTemplate() {
 //		return new RestTemplate();
 //	}
-	
+
 }

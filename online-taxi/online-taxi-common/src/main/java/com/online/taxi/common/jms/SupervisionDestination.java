@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import com.online.taxi.constatnt.QueueNames;
 
 /**
- * 消息队列
+ * Message queue configuration
  *
  * @date 2018/8/24
  */
@@ -15,9 +15,9 @@ import com.online.taxi.constatnt.QueueNames;
 public class SupervisionDestination {
 
     /**
-     * 上报队列
+     * Reporting queue
      *
-     * @return 队列
+     * @return queue
      */
     @Bean
     public ActiveMQQueue generalQueue() {
@@ -25,9 +25,9 @@ public class SupervisionDestination {
     }
 
     /**
-     * 行驶轨迹队列
+     * Driving trajectory queue
      *
-     * @return 队列
+     * @return queue
      */
     @Bean
     public ActiveMQQueue positionQueue() {
@@ -35,9 +35,9 @@ public class SupervisionDestination {
     }
 
     /**
-     * 缓冲队列
+     * Buffer queue
      *
-     * @return 队列
+     * @return queue
      */
     @Bean
     public ActiveMQQueue bufferQueue() {

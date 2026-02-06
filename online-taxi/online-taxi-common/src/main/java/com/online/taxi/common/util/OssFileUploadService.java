@@ -14,7 +14,7 @@ import org.springframework.util.DigestUtils;
 import java.io.*;
 
 /**
- * OSS文件上传
+ * OSS File Upload Service
  * @date 2018/8/20
  */
 @Service
@@ -30,7 +30,7 @@ public class OssFileUploadService {
         ByteArrayInputStream byteArrayInput = null;
         OSSClient client = null;
         try{
-            // 文件为空错误
+            // File is null error
             if (null == input){
                 response.setStatus(1);
                 return response;
@@ -55,7 +55,7 @@ public class OssFileUploadService {
             client = new OSSClient(ossConfig.getEndpoint(), ossConfig.getAccessid(), ossConfig.getAccesskey());
             String prefix = DigestUtils.md5DigestAsHex(decodeInput);
             String key = (folder == null ? "" : (folder + "/")) + prefix + imgType;
-            // 判断文件是否存在，文件存在直接返回文件URL
+            // Check if the file exists; if it exists, return the file URL directly
             if (client.doesObjectExist(ossConfig.getBucket(), key)){
                 fileUrl = ossConfig.getEndpointUpload() + "/" + key;
             }else {
@@ -120,15 +120,15 @@ public class OssFileUploadService {
     }
 
     /**
-     * @Descriptionmap 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+     * @Descriptionmap Convert image file to byte array string and perform Base64 encoding
      * @author temdy
      * @Date 2015-01-26
-     * @param path 图片路径
+     * @param path image file path
      * @return
      */
     public static String imageToBase64(String path) {
         byte[] data = null;
-        // 读取图片字节数组
+        // Read image byte array
         try {
             InputStream in = new FileInputStream(path);
             data = new byte[in.available()];
@@ -142,11 +142,11 @@ public class OssFileUploadService {
     }
 
     /**
-     * @Descriptionmap 对字节数组字符串进行Base64解码并生成图片
+     * @Descriptionmap Decode Base64 byte array string and generate image
      * @author temdy
      * @Date 2015-01-26
-     * @param base64 图片Base64数据
-     * @param path 图片路径
+     * @param base64 image Base64 data
+     * @param path image file path
      * @return
      */
     public static boolean base64ToImage(String base64, String path) {
@@ -160,7 +160,7 @@ public class OssFileUploadService {
                     bytes[i] += 256;
                 }
             }
-            // 生成jpeg图片
+            // Generate JPEG image
             OutputStream out = new FileOutputStream(path);
             out.write(bytes);
             out.flush();
@@ -172,9 +172,9 @@ public class OssFileUploadService {
     }
 
     /**
-     * @param targetFile   需要上传OSS文件服务器上生成的目标文件路径
-     * @param fileNamePath 当前生成文件路径
-     * @param filename     当前生成文件全名
+     * @param targetFile   target file path to be generated on the OSS file server
+     * @param fileNamePath current generated file path
+     * @param filename     current generated file full name
      */
     public OssBaseResponse uploadFileToOss(String targetFile, File fileNamePath, String filename) {
         OssBaseResponse response = new OssBaseResponse();

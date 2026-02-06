@@ -11,13 +11,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// 关闭csrf
-//		http.csrf().disable(); 
+		// Disable CSRF
+//		http.csrf().disable();
 		/*
-		 * 默认情况下添加SpringSecurity依赖的应用每个请求都需要添加CSRF token才能访问，Eureka客户端注册时并不会添加，所以需要配置/eureka/**路径不需要CSRF token。
+		 * By default, applications with SpringSecurity dependency require a CSRF token for every request. Eureka clients do not add one during registration, so the /eureka/** path needs to be configured to not require a CSRF token.
 		 */
 		http.csrf().ignoringAntMatchers("/eureka/**");
-		// 开启认证支持HttpBasic
-		http.authorizeRequests().anyRequest().authenticated().and().httpBasic(); 
+		// Enable authentication with HttpBasic support
+		http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
 	}
 }

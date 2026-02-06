@@ -2,20 +2,20 @@ package com.online.taxi.passenger.service;
 
 import com.online.taxi.common.dto.ResponseResult;
 /**
- * 	验证码服务
+ * 	Verification code service
  * @author oi
  *
  */
 public interface VerificationCodeService {
 	/**
-	 * 	获取验证码
+	 * 	Get verification code
 	 * @param phonenumber
 	 * @return
 	 */
 	public String getCode(String phonenumber);
-	
+
 	/**
-	 * 	校验验证码
+	 * 	Validate verification code
 	 * @param phonenumber
 	 * @param code
 	 * @return

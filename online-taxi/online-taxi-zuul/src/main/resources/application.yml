@@ -1,11 +1,11 @@
-# 基础
-# 演示功能：
-# 1、默认。
-# 2、网关负载均衡。
-# 3、路由端点
+# Basic gateway configuration
+# Features:
+# 1. Default routing
+# 2. Gateway load balancing
+# 3. Route endpoints
 
-#api-driver: 
-#  ribbon: 
+#api-driver:
+#  ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 
 server:
@@ -15,15 +15,15 @@ spring:
   application:
     name: online-taxi-zuul
 
-#注册中心
-eureka: 
+# Service registry
+eureka:
   client:
-    #设置服务注册中心的URL
-    service-url:                      
-      defaultZone: http://root:root@eureka-7900:7900/eureka/
-  instance: 
+    # Set service registry URL
+    service-url:
+      defaultZone: http://${EUREKA_USER:admin}:${EUREKA_PASSWORD:changeme}@${EUREKA_HOST:eureka-7900}:7900/eureka/
+  instance:
     hostname: localhost
-    instance-id: online-taxi-zuul 
+    instance-id: online-taxi-zuul
 
 management:
   endpoints:
@@ -32,12 +32,12 @@ management:
         include: "*"
   endpoint:
     health:
-      ##默认是never
+      # Default is never
       show-details: ALWAYS
       enabled: true
-    routes: 
+    routes:
       enabled: true
-        
+
 logging:
   level:
     com.netflix: debug

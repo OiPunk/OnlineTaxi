@@ -23,7 +23,7 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
     private RedisTemplate<String, String> redisTemplate;
 
     /**
-     * 生成验证码
+     * Generate verification code
      * @param identity
      * @param phoneNumber
      * @return
@@ -31,26 +31,26 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
     @Override
     public ResponseResult generate(int identity , String phoneNumber){
 
-        //校验 发送时限，三挡验证，不能无限制发短信
+        // Validate send time limit, three-tier verification, cannot send SMS without restrictions
 //        checkSendCodeTimeLimit(phoneNumber);
 
         String code = String.valueOf((int)((Math.random()*9+1)*Math.pow(10,5)));
 
         /**
-         * 有人用这种写法。生成6位code，错误用法，虽然大部分情况下结果正确，但不能这么用，偶尔位数不够？
+         * Some people use this approach to generate a 6-digit code. Incorrect usage - although the result is correct most of the time, it should not be used this way as occasionally the number of digits may be insufficient.
          */
 //        String code = String.valueOf(new Random().nextInt(1000000));
 
-        //生成redis key
+        // Generate Redis key
         String keyPre = RedisKeyUtil.generateKeyPreByIdentity(identity);
         String key = keyPre + phoneNumber;
-        //存redis，2分钟过期
+        // Store in Redis, expires in 2 minutes
         BoundValueOperations<String, String> codeRedis = redisTemplate.boundValueOps(key);
-        // 此处最好是原子操作，不要分开。
+        // This should ideally be an atomic operation, not separated.
 //        codeRedis.set(code,120, TimeUnit.SECONDS);
         codeRedis.set(code,120, TimeUnit.MINUTES);
 
-        //返回
+        // Return result
         VerifyCodeResponse result = new VerifyCodeResponse();
         result.setCode(code);
         return ResponseResult.success(result);
@@ -58,10 +58,10 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
 
     @Override
     public ResponseResult verify(int identity,String phoneNumber,String code){
-        //三档验证
+        // Three-tier verification
 
 
-        //生成redis key
+        // Generate Redis key
         String keyPre = RedisKeyUtil.generateKeyPreByIdentity(identity);
         String key = keyPre + phoneNumber;
         BoundValueOperations<String, String> codeRedis = redisTemplate.boundValueOps(key);
@@ -79,12 +79,12 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
 
 
     /**
-     * 判断此手机号发送时限限制
+     * Check send time limit for this phone number
      * @param phoneNumber
      * @return
      */
     private ResponseResult checkSendCodeTimeLimit(String phoneNumber){
-        //判断是否有 限制1分钟，10分钟，24小时。
+        // Check if there are limits for 1 minute, 10 minutes, 24 hours.
 
         return ResponseResult.success("");
     }
@@ -95,7 +95,7 @@ public class VerifyCodeServiceImpl implements VerifyCodeService {
             String code = String.valueOf(new Random().nextInt(1000000));
 //            String code = String.valueOf((int)((Math.random()*9+1)*Math.pow(10,5)));
             if (code.length()<6){
-                System.out.println("有小于6位长的数");
+                System.out.println("There are numbers with fewer than 6 digits");
             }
         }
 

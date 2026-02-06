@@ -9,12 +9,12 @@ import lombok.Getter;
 public enum BusinessInterfaceStatus implements CodeEnum {
 
     /**
-     * 操作成功
+     * Operation successful
      */
     SUCCESS(0, "success"),
 
     /**
-     * 操作失败
+     * Operation failed
      */
     FAIL(1, "fail");
 

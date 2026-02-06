@@ -10,6 +10,6 @@ public class MyStreamListener {
     @StreamListener(Sink.INPUT)
     public void input(String s){
 
-        System.out.println("监听 消息队列 手动的内容 : " + s);
+        System.out.println("Listening to message queue manual content: " + s);
     }
 }

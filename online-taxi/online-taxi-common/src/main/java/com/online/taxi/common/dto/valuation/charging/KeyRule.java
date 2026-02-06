@@ -3,49 +3,49 @@ package com.online.taxi.dto.valuation.charging;
 import lombok.Data;
 
 /**
- * 计费规则主键类
+ * Charging rule key class
  *
  * @date 2018/8/14
  */
 @Data
 public class KeyRule {
     /**
-     * 城市编码
+     * City code
      */
     private String cityCode;
 
     /**
-     * 城市名称
+     * City name
      */
     private String cityName;
 
     /**
-     * 服务类型id
+     * Service type ID
      */
     private Integer serviceTypeId;
 
     /**
-     * 服务类型名称
+     * Service type name
      */
     private String serviceTypeName;
 
     /**
-     * 渠道名称id
+     * Channel ID
      */
     private Integer channelId;
 
     /**
-     * 渠道名称
+     * Channel name
      */
     private String channelName;
 
     /**
-     * 车辆级别id
+     * Vehicle level ID
      */
     private Integer carLevelId;
 
     /**
-     * 车辆级别名称
+     * Vehicle level name
      */
     private String carLevelName;
 }

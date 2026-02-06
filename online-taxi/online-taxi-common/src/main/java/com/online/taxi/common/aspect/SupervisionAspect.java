@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * 对insert，update和delete进行切面操作
+ * Aspect operations for insert, update, and delete
  *
  * @author yueyi2019
  * @date 2018/8/22
@@ -42,28 +42,28 @@ public class SupervisionAspect {
     private boolean isGovernmentUploadEnabled;
 
     /**
-     * 插入操作的切入点
+     * Pointcut for insert operations
      */
     @Pointcut("execution(* com.online.taxi.mapper..*.insert*(..))")
     private void insert() {
     }
 
     /**
-     * 更新操作的切入点
+     * Pointcut for update operations
      */
     @Pointcut("execution(* com.online.taxi.mapper..*.update*(..))")
     private void update() {
     }
 
     /**
-     * 删除操作的切入点
+     * Pointcut for delete operations
      */
     @Pointcut("execution(* com.online.taxi.mapper..*.delete*(..))")
     private void delete() {
     }
 
     /**
-     * 插入成功后的操作
+     * Operation after successful insert
      *
      * @param joinPoint joinPoint
      */
@@ -73,7 +73,7 @@ public class SupervisionAspect {
     }
 
     /**
-     * 插入成功后的操作
+     * Operation after successful update
      *
      * @param joinPoint joinPoint
      */
@@ -83,7 +83,7 @@ public class SupervisionAspect {
     }
 
     /**
-     * 插入成功后的操作
+     * Operation before delete
      *
      * @param joinPoint joinPoint
      */
@@ -93,9 +93,9 @@ public class SupervisionAspect {
     }
 
     /**
-     * 上报
+     * Report to supervision system
      *
-     * @param operationType 操作类型
+     * @param operationType operation type
      * @param joinPoint     joinPoint
      */
     @SuppressWarnings("unchecked")
@@ -123,7 +123,7 @@ public class SupervisionAspect {
                 jmsTemplate.convertAndSend(bufferQueue, json);
             } catch (Exception e) {
                 e.printStackTrace();
-                log.error("SupervisionAspect发生错误：", e);
+                log.error("SupervisionAspect error occurred: ", e);
             }
         }
     }

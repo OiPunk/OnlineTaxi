@@ -1,7 +1,7 @@
 package com.online.taxi.constatnt;
 
 /**
- * 通用枚举接口
+ * Common enum interface
  *
  * @author yueyi2019
  * @date 2018/8/14
@@ -9,16 +9,16 @@ package com.online.taxi.constatnt;
 public interface CodeEnum {
 
     /**
-     * 返回枚举体的code值
+     * Returns the code value of the enum
      *
-     * @return code值
+     * @return code value
      */
     int getCode();
 
     /**
-     * 返回枚举体的code值
+     * Returns the code value of the enum
      *
-     * @return 字符串格式的code值
+     * @return code value in string format
      */
     default String getCodeAsString() {
         return "" + getCode();

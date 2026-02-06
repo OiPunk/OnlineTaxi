@@ -52,14 +52,14 @@
 		</dependency>
 		 
 
-		<!-- 引用自定义通用组件 -->
+		<!-- Reference custom common component -->
 		<dependency>
 			<groupId>com.online.taxi</groupId>
 			<artifactId>online-taxi-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-		<!--导入配置文件处理器，配置文件进行绑定就会有提示-->
+		<!-- Import configuration file processor for binding hints -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
@@ -73,20 +73,20 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- mysql:MyBatis相关依赖 -->
+		<!-- MySQL: MyBatis related dependencies -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.0.0</version>
         </dependency>
         
-        <!-- mysql:mysql驱动 -->
+        <!-- MySQL: MySQL driver -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         
-        <!-- mysql:阿里巴巴数据库连接池 -->
+        <!-- MySQL: Alibaba Druid database connection pool -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>

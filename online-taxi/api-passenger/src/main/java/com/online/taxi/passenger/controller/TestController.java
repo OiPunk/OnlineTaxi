@@ -25,44 +25,44 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 @RestController
 @RequestMapping("/test")
 public class TestController {
-	
+
 	@Value("${server.port}")
 	String port;
-	
+
 	@RequestMapping("/hello")
 	public String hello() {
 		return "api-passenger-hello:"+port;
 	}
 
 	/**
-	 * 注意是 org.springframework.cloud.client.discovery.DiscoveryClient;不是
+	 * Note: use org.springframework.cloud.client.discovery.DiscoveryClient; not the other one
 	 */
 	@Autowired
 	private DiscoveryClient client;
-	
+
 	@GetMapping("/service-instance/{applicationName}")
 	public List<ServiceInstance> getServiceInstance(@PathVariable String applicationName) {
-		
+
 		return client.getInstances(applicationName);
-		
-		
+
+
 	}
-	
-	
+
+
 	@GetMapping("/api1")
 	public ResponseResult send(HttpServletRequest request) {
-		
+
 		String token = request.getHeader("token");
 		String cookie = request.getHeader("Cookie");
-		
-		System.out.println("乘客api：token："+token);
-		System.out.println("乘客api：cookie："+cookie);
-		
+
+		System.out.println("Passenger API: token: "+token);
+		System.out.println("Passenger API: cookie: "+cookie);
+
 		JSONObject result = new JSONObject();
-		result.put("api-passenger", "乘客api接口服务");
-		
+		result.put("api-passenger", "Passenger API service");
+
 		return ResponseResult.success(result);
 	}
-	
-	
+
+
 }

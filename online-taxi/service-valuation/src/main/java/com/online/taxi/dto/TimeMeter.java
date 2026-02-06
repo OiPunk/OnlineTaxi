@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 /**
- * 时间片计价器
+ * Time slice price meter
  *
  * @date 2018/8/14
  */
@@ -22,95 +22,95 @@ import java.time.LocalTime;
 public class TimeMeter {
 
     /**
-     * 计价结果
+     * Pricing result
      */
     @Data
     @Accessors(chain = true)
     public static class TimePriceResult {
         /**
-         * 时长（秒）
+         * Duration (seconds)
          */
         private double duration;
 
         /**
-         * 时间价格（秒价格）
+         * Time price (per-second price)
          */
         private BigDecimal timePrice;
 
         /**
-         * 距离（米）
+         * Distance (meters)
          */
         private double distance;
 
         /**
-         * 距离价格（米价格）
+         * Distance price (per-meter price)
          */
         private BigDecimal distancePrice;
     }
 
     /**
-     * 计价单位
+     * Pricing unit
      */
     @Data
     @Accessors(chain = true)
     public static class TimePriceUnit {
 
         /**
-         * 计价规则种类枚举
+         * Charging category enum
          */
         private ChargingCategoryEnum chargingCategoryEnum;
 
         /**
-         * 开始时间点
+         * Start time
          */
         private LocalTime start;
 
         /**
-         * 结束时间点
+         * End time
          */
         private LocalTime end;
 
         /**
-         * 距离（米）
+         * Speed (meters/second)
          */
         private Double speed;
 
         /**
-         * 每秒钟价格
+         * Per-second price
          */
         private BigDecimal perSecondPrice;
 
         /**
-         * 每米价格
+         * Per-meter price
          */
         private BigDecimal perMeterPrice;
 
         /**
-         * 计价服务请求任务实体类
+         * Valuation service request task entity
          */
         private ValuationRequestTask requestTask;
 
         /**
-         * 车辆ID
+         * Vehicle ID
          */
         private int carId;
 
         /**
-         * 城市编码
+         * City code
          */
         private String cityCode;
 
         /**
-         * 私有构造函数
+         * Private constructor
          */
         private TimePriceUnit() {
         }
 
         /**
-         * 预估时使用的构造函数
+         * Constructor used for forecast
          *
-         * @param speed 速度（米/秒）
-         * @return TimePriceUnit实例
+         * @param speed speed (meters/second)
+         * @return TimePriceUnit instance
          */
         public static TimePriceUnit instanceByForecast(double speed) {
             TimePriceUnit unit = new TimePriceUnit();
@@ -120,12 +120,12 @@ public class TimeMeter {
         }
 
         /**
-         * 实时、结算时使用的构造函数
+         * Constructor used for real-time and settlement
          *
-         * @param requestTask 计价服务请求任务
-         * @param carId       车辆ID
-         * @param cityCode    城市编码
-         * @return TimePriceUnit实例
+         * @param requestTask valuation service request task
+         * @param carId       vehicle ID
+         * @param cityCode    city code
+         * @return TimePriceUnit instance
          */
         public static TimePriceUnit instanceBySettlement(ChargingCategoryEnum chargingCategory, ValuationRequestTask requestTask, int carId, String cityCode) {
             TimePriceUnit unit = new TimePriceUnit();
@@ -139,21 +139,21 @@ public class TimeMeter {
     }
 
     /**
-     * 根据单位参数进行计价计算
+     * Perform pricing calculation based on unit parameters
      *
-     * @param totalSlice 总时长的时间片
-     * @param unit       单位
-     * @return 计价结果
+     * @param totalSlice total duration time slice
+     * @param unit       unit
+     * @return pricing result
      */
     public static TimePriceResult measure(TimeSlice totalSlice, TimePriceUnit unit) {
         TimePriceResult result = new TimePriceResult();
 
-        //参数校验
+        // Parameter validation
         if (totalSlice == null || unit == null || unit.getStart() == null || unit.getEnd() == null) {
             return result;
         }
 
-        //设置默认值
+        // Set default values
         if (unit.getPerMeterPrice() == null) {
             unit.setPerMeterPrice(BigDecimal.ZERO);
         }
@@ -165,17 +165,17 @@ public class TimeMeter {
         result.setDistance(0);
         result.setDistancePrice(BigDecimal.ZERO);
 
-        //根据时长算出天数
+        // Calculate number of days based on duration
         double totalSeconds = Duration.between(totalSlice.getX(), totalSlice.getY()).getSeconds();
         int totalDays = (int) Math.ceil(totalSeconds / Duration.ofDays(1).getSeconds()) + 1;
 
-        //计算价格
+        // Calculate price
         for (int i = 0; i < totalDays; i++) {
-            //获取要比较的两个时间段
+            // Get the two time periods to compare
             LocalDate startDate = totalSlice.getX().toLocalDate().plusDays(i);
             TimeSlice currentSlice = new TimeSlice(LocalDateTime.of(startDate, unit.getStart()), LocalDateTime.of(startDate, unit.getEnd()));
 
-            //夜间跨天
+            // Night crossing midnight
             if (unit.getEnd().isBefore(unit.getStart())) {
                 currentSlice.setY(currentSlice.getY().plusDays(1));
 
@@ -183,15 +183,15 @@ public class TimeMeter {
                 currentSlice.setY(currentSlice.getY().minusDays(1));
             }
 
-            //计算该时间段内的时长
+            // Calculate the duration within this time period
             double durationSeconds = totalSlice.until(currentSlice).getSeconds();
             result.setDuration(result.getDuration() + durationSeconds);
 
-            //时间费用
+            // Time cost
             BigDecimal timePrice = unit.getPerSecondPrice().multiply(BigDecimal.valueOf(durationSeconds));
             result.setTimePrice(result.getTimePrice().add(timePrice));
 
-            //距离费用
+            // Distance cost
             double distance = 0;
             if (durationSeconds > 0) {
                 switch (unit.getChargingCategoryEnum()) {
@@ -201,7 +201,7 @@ public class TimeMeter {
                     case Settlement:
                     case RealTime:
                         try {
-                            //实际出发时间，以避免跨天的情况
+                            // Actual departure time, to avoid cross-day situations
                             LocalDateTime realStart = totalSlice.getX().isAfter(currentSlice.getX()) ? totalSlice.getX() : currentSlice.getX();
                             distance = unit.requestTask.requestDistance(unit.carId, unit.cityCode, realStart, currentSlice.getY()).getDistance();
                         } catch (Exception e) {

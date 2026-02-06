@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * 夜间服务费
+ * Night service fee
  *
  * @date 2018/8/14
  */
@@ -14,22 +14,22 @@ import java.util.Date;
 public class NightRule {
 
     /**
-     * 夜间时间段 - 开始
+     * Night time period - start
      */
     private Date start;
 
     /**
-     * 夜间时间段 - 结束
+     * Night time period - end
      */
     private Date end;
 
     /**
-     * 超公里加收单价（元/公里）
+     * Extra distance surcharge unit price (yuan/km)
      */
     private BigDecimal perKiloPrice;
 
     /**
-     * 超时间加收单价（元/分钟）
+     * Extra time surcharge unit price (yuan/minute)
      */
     private BigDecimal perMinutePrice;
 }

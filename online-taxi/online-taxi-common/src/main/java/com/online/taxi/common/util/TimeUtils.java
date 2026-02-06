@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * 功能描述
+ * Time Utility
  *
  * @date 2018/8/14
  */

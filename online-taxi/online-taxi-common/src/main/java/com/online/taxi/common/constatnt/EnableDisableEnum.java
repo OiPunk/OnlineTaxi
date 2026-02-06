@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 功能描述
+ * Feature description
  *
  * @author yueyi2019
  * @date 2018/8/31
@@ -13,8 +13,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum EnableDisableEnum implements CodeEnum {
 
-    ENABLE(0,"未启用"),
-    DISABLE(1, "启用");
+    ENABLE(0,"Disabled"),
+    DISABLE(1, "Enabled");
     private int code;
     private String value;
 }

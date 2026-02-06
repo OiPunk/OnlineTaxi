@@ -12,65 +12,65 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 /**
- * 鉴权filter
+ * Authentication filter
  * @author oi
  */
 @Component
 public class AuthFilter extends ZuulFilter {
 
 	/**
-	 * 	该过滤器是否生效
+	 * 	Whether this filter is active
 	 */
 	@Override
 	public boolean shouldFilter() {
-		//获取上下文
+		// Get the context
 		RequestContext requestContext = RequestContext.getCurrentContext();
 		HttpServletRequest request = requestContext.getRequest();
-		
+
 		String uri = request.getRequestURI();
-		System.out.println("来源uri："+uri);
-		//只有此接口/api-passenger/api-passenger-gateway-test/hello才被拦截
+		System.out.println("Source uri: "+uri);
+		// Only this endpoint /api-passenger/api-passenger-gateway-test/hello will be intercepted
 		String checkUri = "/api-passenger/api-passenger-gateway-test/hello";
 		if(checkUri.equalsIgnoreCase(uri)) {
 			return true;
 		}
-		// 测试路径
+		// Test path
 //		if(uri.contains("api-driver")) {
 //			return true;
 //		}
-		
+
 		return false;
 	}
-	
+
 	/**
-	 * 	拦截后的具体业务逻辑
+	 * 	Specific business logic after interception
 	 */
 	@Override
 	public Object run() throws ZuulException {
-		System.out.println("auth 拦截");
-		//获取上下文（重要，贯穿 所有filter，包含所有参数）
+		System.out.println("auth intercepted");
+		// Get the context (important, spans all filters, contains all parameters)
 		RequestContext requestContext = RequestContext.getCurrentContext();
 		HttpServletRequest request = requestContext.getRequest();
-		
+
 		String token = request.getHeader("Authorization");
-		//如果token是1234，过
+		// If token is 1234, pass
 		String defaultToken = "1234";
 
         String parseToken = JwtUtil.parseToken(token);
 
         if(StringUtils.isNotBlank(parseToken)) {
-			System.out.println("auth filter:校验通过");
+			System.out.println("auth filter: verification passed");
 		} else {
-			// 不往下的过滤器继续了
+			// Stop forwarding to downstream filters
 			requestContext.setSendZuulResponse(false);
 			requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
-			requestContext.setResponseBody("认证失败");
+			requestContext.setResponseBody("Authentication failed");
 		}
 		requestContext.setSendZuulResponse(true);
 		return null;
 	}
 	/**
-	 * 拦截类型，4中类型。
+	 * Interception type, 4 types available.
 	 */
 	@Override
 	public String filterType() {
@@ -79,7 +79,7 @@ public class AuthFilter extends ZuulFilter {
 	}
 
 	/**
-	 * 	值越小，越在前
+	 * 	The smaller the value, the higher the priority
 	 */
 	@Override
 	public int filterOrder() {

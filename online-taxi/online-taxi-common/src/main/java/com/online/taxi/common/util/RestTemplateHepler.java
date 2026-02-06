@@ -9,7 +9,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * RestTemplate帮助类
+ * RestTemplate Helper Class
  *
  */
 @Configuration
@@ -21,13 +21,13 @@ public class RestTemplateHepler {
     }
 
     /**
-     * 将ResponseResult解析为指定的类
+     * Parse ResponseResult into the specified class
      *
      * @param result    ResponseResult
-     * @param clazz     指定的类
-     * @param <T>指定的类类型
-     * @return 指定的类的实例
-     * @throws Exception 异常
+     * @param clazz     the specified class
+     * @param <T>       the specified class type
+     * @return an instance of the specified class
+     * @throws Exception exception
      */
     public static <T> T parse(@Nullable ResponseResult result, Class<T> clazz) throws Exception {
         ObjectMapper mapper = new ObjectMapper();

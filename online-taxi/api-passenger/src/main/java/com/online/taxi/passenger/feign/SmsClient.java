@@ -20,7 +20,7 @@ import com.online.taxi.passenger.fallback.SmsClientFallback;
 //@FeignClient(name = "service-sms")
 public interface SmsClient {
 	/**
-	 * 按照短信模板发送验证码
+	 * Send verification code via SMS template
 	 * @param smsSendRequest
 	 * @return
 	 */

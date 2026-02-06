@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * 计费方法
+ * Pricing method
  *
  * @date 2018/8/14
  */
@@ -14,17 +14,17 @@ import java.util.List;
 public class PriceRule {
 
     /**
-     * 超公里单价（元/公里）
+     * Extra distance unit price (yuan/km)
      */
     private BigDecimal perKiloPrice;
 
     /**
-     * 超时间单价（元/分钟）
+     * Extra time unit price (yuan/minute)
      */
     private BigDecimal perMinutePrice;
 
     /**
-     * 分段计时规则
+     * Time-segmented billing rules
      */
     private List<TimeRule> timeRules;
 }

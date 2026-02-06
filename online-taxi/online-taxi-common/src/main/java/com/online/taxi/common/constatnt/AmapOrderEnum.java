@@ -4,51 +4,51 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 高德订单状态
+ * Amap order status
  */
 @Getter
 @AllArgsConstructor
 public enum AmapOrderEnum implements CodeEnum{
 
-	NO_ASSIGN(1,"未派单"),
+	NO_ASSIGN(1,"Not dispatched"),
     /**
-     *已派单
+     * Dispatched
      */
-    ASSIGN(2,"已派单"),
+    ASSIGN(2,"Dispatched"),
     /**
-     *开始计费
+     * Billing started
      */
-	CHARGE_START(3,"开始计费"),
+	CHARGE_START(3,"Billing started"),
     /**
-     *订单撤销
+     * Order cancelled
      */
-	CANCEL_ORDER(4,"订单撤销"),
+	CANCEL_ORDER(4,"Order cancelled"),
     /**
-     *订单待支付
+     * Order pending payment
      */
-	TO_PAY(5,"订单待支付"),
+	TO_PAY(5,"Order pending payment"),
     /**
-     *订单已评价
+     * Order reviewed
      */
-	EVALUATE_DO(6,"订单已评价"),
+	EVALUATE_DO(6,"Order reviewed"),
     /**
-     *订单待评价
+     * Order pending review
      */
-	TO_EVALUATE(7,"订单待评价"),
+	TO_EVALUATE(7,"Order pending review"),
     /**
-     *结束行程
+     * Trip ended
      */
-	END_TRAVEL(8,"结束行程"),
+	END_TRAVEL(8,"Trip ended"),
     /**
-     *开始服务
+     * Service started
      */
-	START_SERVICE(9,"开始服务"),
+	START_SERVICE(9,"Service started"),
     /**
-     *撤单待支付
+     * Cancellation pending payment
      */
-	CANCEL_ORDER_TO_PAY(10,"撤单待支付"),
+	CANCEL_ORDER_TO_PAY(10,"Cancellation pending payment"),
 
-	EC9999(9999, "其他异常");
+	EC9999(9999, "Other exception");
 
 	private int code;
     private String value;

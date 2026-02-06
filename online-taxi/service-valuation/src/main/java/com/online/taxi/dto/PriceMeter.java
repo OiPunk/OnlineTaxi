@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * 价格集合类
+ * Price collection class
  *
  * @date 2018/10/18
  */
@@ -19,32 +19,32 @@ import java.util.List;
 public class PriceMeter {
 
     /**
-     * 规则ID
+     * Rule ID
      */
     private Integer ruleId;
 
     /**
-     * 计费明细
+     * Charging detail
      */
     private OrderRulePrice rulePrice;
 
     /**
-     * 分段计时计费明细
+     * Segmented time-based charging detail
      */
     private List<OrderRulePriceDetail> rulePriceDetails;
 
     /**
-     * 标签计费明细
+     * Tag charging detail
      */
     private List<TagPrice> tagPrices;
 
     /**
-     * 计费明细+分段计时计费明细
+     * Charging detail + segmented time-based charging detail
      */
     private BigDecimal basicPriceValue;
 
     /**
-     * 计费明细+分段计时计费明细+标签计费明细
+     * Charging detail + segmented time-based charging detail + tag charging detail
      */
     private BigDecimal totalPriceValue;
 

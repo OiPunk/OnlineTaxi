@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * 计价结果DTO
+ * Pricing result DTO
  *
  * @date 2018/8/14
  */

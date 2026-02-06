@@ -7,17 +7,17 @@ package com.online.taxi.constatnt;
 public interface OrderRuleNames {
 
     /**
-     * 订单规则前缀
+     * Order rule prefix
      */
     String PREFIX = "order_rule";
 
     /**
-     * 规则
+     * Rule
      */
     String RULE = "rule";
 
     /**
-     * 价格
+     * Price
      */
     String PRICE = "price";
 }

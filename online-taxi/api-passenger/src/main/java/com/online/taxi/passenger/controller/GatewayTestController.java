@@ -26,29 +26,29 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 @RestController
 @RequestMapping("/api-passenger-gateway-test")
 public class GatewayTestController {
-	
+
 	@GetMapping("/hello")
 	public String helloWorld() {
 		log.info("api-passenger-hello");
 		return "api-passenger-hello";
 	}
-	
+
 	@GetMapping("/test-token")
 	public ResponseResult send(HttpServletRequest request) {
-		
+
 		String token = request.getHeader("token");
 		String cookie = request.getHeader("Cookie");
-		
-		System.out.println("乘客api：token："+token);
-		System.out.println("乘客api：cookie："+cookie);
-		
+
+		System.out.println("Passenger API: token: "+token);
+		System.out.println("Passenger API: cookie: "+cookie);
+
 		JSONObject result = new JSONObject();
-		result.put("api-passenger", "乘客api接口服务");
-		
+		result.put("api-passenger", "Passenger API service");
+
 		return ResponseResult.success(result);
 	}
-	
-	
-	
-	
+
+
+
+
 }

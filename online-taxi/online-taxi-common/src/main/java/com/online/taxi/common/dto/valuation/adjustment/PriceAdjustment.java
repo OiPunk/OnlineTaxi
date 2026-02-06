@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 调价
+ * Price adjustment
  *
  */
 @Data

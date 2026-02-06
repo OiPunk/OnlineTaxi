@@ -3,24 +3,24 @@ package com.online.taxi.dto.sms;
 import lombok.Data;
 
 /**
- * 功能描述
+ * SMS request
  *
  * @date 2018/10/23
  */
 @Data
 public class SmsRequest {
     /**
-     * 模板ID
+     * Template ID
      */
     private String templateId;
 
     /**
-     * 手机号
+     * Phone numbers
      */
     private String[] phones;
 
     /**
-     * 替换内容
+     * Replacement content
      */
     private String[] content;
 }

@@ -5,28 +5,28 @@ import lombok.Getter;
  * @author oi
  */
 public enum SmsStatusEnum {
-	
+
 	/**
-     * 操作成功
+     * Operation successful
      */
     SEND_SUCCESS(0, "sms send success"),
-    
+
     /**
-     * 操作异常
+     * Operation exception
      */
     INTERNAL_SERVER_EXCEPTION(-1, "exception"),
-	
+
     /**
-     * 操作失败
+     * Operation failed
      */
     SEND_FAIL(1, "sms send fail");
-	
+
 	@Getter
 	private final int code;
-	
+
 	@Getter
     private final String value;
-    
+
     private SmsStatusEnum(int code, String value) {
         this.code = code;
         this.value = value;

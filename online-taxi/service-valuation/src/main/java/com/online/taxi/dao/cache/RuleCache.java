@@ -11,7 +11,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 /**
- * 对计价规则进行缓存操作
+ * Cache operations for charging rules
  *
  * @date 2018/10/18
  */
@@ -26,35 +26,35 @@ public class RuleCache {
     private ObjectMapper mapper = new ObjectMapper();
 
     /**
-     * 缓存计价规则
+     * Get cached charging rule
      *
-     * @param orderId 订单ID
-     * @return 计价规则
+     * @param orderId order ID
+     * @return charging rule
      */
     public Rule get(Integer orderId) {
         Rule rule = null;
         String key = generateKey(orderId);
-        log.info("查找缓存orderId={}, RuleJsonInRedis={}", orderId, key);
+        log.info("Looking up cache orderId={}, RuleJsonInRedis={}", orderId, key);
         try {
             rule = mapper.readValue(redisTemplate.opsForValue().get(key), Rule.class);
-            log.info("获取缓存orderId={}, RuleJsonInRedis={}", orderId, key);
+            log.info("Retrieved cache orderId={}, RuleJsonInRedis={}", orderId, key);
         } catch (Exception e) {
             e.printStackTrace();
-            log.warn("orderId={}, Redis解析Rule失败{}", orderId, key);
+            log.warn("orderId={}, Failed to parse Rule from Redis {}", orderId, key);
         }
 
         return rule;
     }
 
     /**
-     * 从缓存中获取计价规则
+     * Set charging rule in cache
      *
-     * @param orderId 订单ID
-     * @param rule    计价规则
+     * @param orderId order ID
+     * @param rule    charging rule
      */
     public void set(Integer orderId, Rule rule) {
         String key = generateKey(orderId);
-        log.info("设置缓存orderId={}, RuleInRedis={}", orderId, key);
+        log.info("Setting cache orderId={}, RuleInRedis={}", orderId, key);
         try {
             redisTemplate.opsForValue().set(key, mapper.writeValueAsString(rule));
         } catch (JsonProcessingException e) {
@@ -63,21 +63,21 @@ public class RuleCache {
     }
 
     /**
-     * 删除缓存
+     * Delete cache
      *
-     * @param orderId 订单ID
+     * @param orderId order ID
      */
     public void delete(Integer orderId) {
         String key = generateKey(orderId);
-        log.info("删除缓存orderId={}, RuleInRedis={}", orderId, key);
+        log.info("Deleting cache orderId={}, RuleInRedis={}", orderId, key);
         redisTemplate.delete(key);
     }
 
     /**
-     * 生成redis的key
+     * Generate Redis key
      *
-     * @param orderId 订单ID
-     * @return redis的key
+     * @param orderId order ID
+     * @return Redis key
      */
     private String generateKey(Integer orderId) {
         return String.format("%s:%s:%s", OrderRuleNames.PREFIX, OrderRuleNames.RULE, orderId);

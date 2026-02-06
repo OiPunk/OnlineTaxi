@@ -26,29 +26,29 @@ public class PassengerInfoDaoTest {
 //    public void selectByPhone(){
 //
 //        PassengerInfo passengerInfo =  dao.selectByPhoneNumber("1111");
-//        System.out.println("性别"+passengerInfo.getGender());
+//        System.out.println("Gender: "+passengerInfo.getGender());
 //    }
 
 
     @Test
-    // 不回滚
+    // Do not rollback
 //    @Rollback(value = false)
-    // 回滚
+    // Rollback
     @Rollback(value = true)
     public void save(){
         PassengerUserInfo user = new PassengerUserInfo();
-        user.setPassengerName("姓名");
+        user.setPassengerName("Name");
         user.setCreateTime(new Date());
         user.setPassengerGender((byte)1);
-        user.setPassengerPhone("17678987654");
+        user.setPassengerPhone("13800000002");
         user.setRegisterDate(new Date());
         user.setUserState((byte)1);
         int i =  passengerUserInfoCustomMapper.insertSelective(user);
         System.out.println("id..."+user.getId());
 
-        PassengerUserInfo passengerUserInfo = passengerUserInfoCustomMapper.selectByPhoneNumber("17678987654");
+        PassengerUserInfo passengerUserInfo = passengerUserInfoCustomMapper.selectByPhoneNumber("13800000002");
         System.out.println(passengerUserInfo);
-        Assert.assertEquals("姓名",passengerUserInfo.getPassengerName());
+        Assert.assertEquals("Name",passengerUserInfo.getPassengerName());
     }
 
 }

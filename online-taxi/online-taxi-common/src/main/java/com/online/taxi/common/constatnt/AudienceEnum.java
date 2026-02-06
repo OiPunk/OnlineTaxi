@@ -4,26 +4,26 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 监听消息听众类型
+ * Message listener audience type
  * @author yueyi2019
  */
 @Getter
 @AllArgsConstructor
 public enum AudienceEnum implements CodeEnum {
     /**
-     * 别名
+     * Alias
      */
-    ALIAS(1, "别名"),
+    ALIAS(1, "Alias"),
 
     /**
-     * 注册Id
+     * Registration Id
      */
-    REGISTRATION_ID(2, "注册Id"),
+    REGISTRATION_ID(2, "Registration Id"),
 
     /**
-     * 其他
+     * Other
      */
-    OTHER(9, "其他");
+    OTHER(9, "Other");
 
     private final int code;
     private final String value;

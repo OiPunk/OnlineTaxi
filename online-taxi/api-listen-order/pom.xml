@@ -49,7 +49,7 @@
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 
-		<!-- 引用自定义通用组件 -->
+		<!-- Reference custom common component -->
 		<dependency>
 			<groupId>com.online.taxi</groupId>
 			<artifactId>online-taxi-common</artifactId>

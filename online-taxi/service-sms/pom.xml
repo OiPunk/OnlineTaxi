@@ -44,27 +44,27 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- mysql:MyBatis相关依赖 -->
+		<!-- MySQL: MyBatis related dependencies -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.0.0</version>
 		</dependency>
 		
-		<!-- mysql:mysql驱动 -->
+		<!-- MySQL: MySQL driver -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		
-		<!-- mysql:阿里巴巴数据库连接池 -->
+		<!-- MySQL: Alibaba Druid database connection pool -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>1.1.12</version>
 		</dependency>
 		
-		<!-- 引入sleuth依赖 -->
+		<!-- Include Sleuth dependency -->
 		<!-- <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-sleuth</artifactId>
@@ -76,7 +76,7 @@
 			<artifactId>spring-cloud-starter-zipkin</artifactId>
 		</dependency>
 		
-		<!-- 引用自定义通用组件 -->
+		<!-- Reference custom common component -->
 		<dependency>
 			<groupId>com.online.taxi</groupId>
 			<artifactId>online-taxi-common</artifactId>
@@ -90,7 +90,7 @@
             <version>1.18.8</version>
         </dependency>
 
-        <!-- 安全认证 -->
+        <!-- Security authentication -->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
             <!--<artifactId>spring-boot-starter-security</artifactId>-->

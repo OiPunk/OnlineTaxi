@@ -21,52 +21,52 @@ public class MysqlLock implements Lock {
 
 	@Autowired
 	private OrderLockMapper mapper;
-	
+
 	private ThreadLocal<OrderLock> orderLockThreadLocal ;
 
 	@Override
 	public void lock() {
-		// 1、尝试加锁
+		// 1. Try to acquire the lock
 		if(tryLock()) {
 			return;
 		}
-		// 2.休眠
+		// 2. Sleep
 		try {
 			Thread.sleep(10);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		// 3.递归再次调用
+		// 3. Recursively call again
 		lock();
 	}
-	
+
 	/**
-	 * 	非阻塞式加锁，成功，就成功，失败就失败。直接返回
+	 * Non-blocking lock attempt: succeeds or fails immediately and returns directly
 	 */
 	@Override
 	public boolean tryLock() {
 		try {
 			mapper.insertSelective(orderLockThreadLocal.get());
-			System.out.println("加锁对象："+orderLockThreadLocal.get());
+			System.out.println("Lock acquired on object: "+orderLockThreadLocal.get());
 			return true;
 		}catch (Exception e) {
 			return false;
 		}
-		
-		
+
+
 	}
-	
+
 	@Override
 	public void unlock() {
 		mapper.deleteByPrimaryKey(orderLockThreadLocal.get().getOrderId());
-		System.out.println("解锁对象："+orderLockThreadLocal.get());
+		System.out.println("Lock released on object: "+orderLockThreadLocal.get());
 		orderLockThreadLocal.remove();
 	}
 
 	@Override
 	public void lockInterruptibly() throws InterruptedException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

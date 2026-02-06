@@ -11,15 +11,18 @@ import java.util.Date;
  */
 public class JwtUtil {
     /**
-     * 密钥，仅服务端存储
+     * Secret key, stored only on the server side.
+     * IMPORTANT: Override via environment variable JWT_SECRET in production.
      */
-    private static String secret = "ko346134h_we]rg3in_yip1!";
+    private static String secret = System.getenv("JWT_SECRET") != null
+            ? System.getenv("JWT_SECRET") : "changeme-override-in-production";
 
     /**
+     * Create a JWT token.
      *
-     * @param subject
-     * @param issueDate 签发时间
-     * @return
+     * @param subject   the subject claim
+     * @param issueDate the token issue date
+     * @return the signed JWT token string
      */
     public static String createToken(String subject, Date issueDate) {
         String compactJws = Jwts.builder()
@@ -33,10 +36,10 @@ public class JwtUtil {
     }
 
     /**
-     * 解密 jwt
-     * @param token
-     * @return
-     * @throws Exception
+     * Parse and validate a JWT token.
+     *
+     * @param token the JWT token to parse
+     * @return the subject claim, or empty string if invalid/expired
      */
     public static String parseToken(String token) {
         try {
@@ -46,7 +49,7 @@ public class JwtUtil {
             }
         }catch (ExpiredJwtException e){
             e.printStackTrace();
-            System.out.println("jwt过期了");
+            System.out.println("JWT token has expired");
         }
 
         return "";
@@ -60,10 +63,9 @@ public class JwtUtil {
 			Thread.sleep(10010);
 //        	Thread.sleep(100);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        System.out.println("原始值："+parseToken(token));
+        System.out.println("Original value: "+parseToken(token));
 
     }
 

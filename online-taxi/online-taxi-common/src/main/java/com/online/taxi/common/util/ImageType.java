@@ -2,7 +2,7 @@ package com.online.taxi.util;
 
 
 /**
- * 功能描述
+ * Image Type Enum
  *
  * @date 2018/8/20
  */

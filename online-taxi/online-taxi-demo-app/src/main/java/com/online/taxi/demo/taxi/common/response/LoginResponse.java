@@ -1,20 +1,20 @@
 package com.online.taxi.demo.taxi.common.response;
 
 public class LoginResponse {
-	
+
 	private String id;
-	
+
 	private String name;
-	
+
 	/**
-	 * 1:乘客
-	 * 2:司机
+	 * 1: Passenger
+	 * 2: Driver
 	 */
 	private Integer roleCode;
-	
+
 	private Integer workStatus;
-	
-	
+
+
 	public Integer getWorkStatus() {
 		return workStatus;
 	}
@@ -46,6 +46,6 @@ public class LoginResponse {
 	public void setRoleCode(Integer roleCode) {
 		this.roleCode = roleCode;
 	}
-	
-	
+
+
 }

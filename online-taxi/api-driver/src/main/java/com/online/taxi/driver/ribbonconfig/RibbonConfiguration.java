@@ -11,8 +11,8 @@ import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;
 import com.online.taxi.driver.annotation.ExcudeRibbonConfig;
 /**
- * 该类不应该在主应用程序的扫描之下，需要修改启动类的扫描配置。
- * 
+ * This class should not be under the main application's component scan; the startup class scan configuration needs to be modified.
+ *
  * @author oi
  *
  */
@@ -25,23 +25,23 @@ public class RibbonConfiguration {
 //	public RestTemplate restTemplate() {
 //		return new RestTemplate();
 //	}
-	
+
 	/**
-	 * 修改IRule
+	 * Modify IRule
 	 * @return
 	 */
 	@Bean
 	public IRule ribbonRule() {
 		return new RandomRule();
 	}
-	
+
 	/**
-	 * 自定义rule
+	 * Custom rule
 	 * @return
 	 */
 //	@Bean
 //	public IRule ribbonRule() {
 //		return new MsbRandomRule();
 //	}
-	
+
 }
