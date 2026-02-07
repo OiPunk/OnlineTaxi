@@ -11,7 +11,26 @@
 		
 	<packaging>pom</packaging>
     <name>rydr-parent</name>
-    <description>rydr-parent</description>
+    <description>A microservices-based ride-hailing platform built with Spring Cloud</description>
+    <url>https://github.com/OiPunk/rydr</url>
+
+    <scm>
+        <url>https://github.com/OiPunk/rydr</url>
+        <connection>scm:git:https://github.com/OiPunk/rydr.git</connection>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/OiPunk/rydr/issues</url>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <id>oipunk</id>
+            <name>OiPunk</name>
+            <url>https://github.com/OiPunk</url>
+        </developer>
+    </developers>
 	
     <modules>
 		

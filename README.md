@@ -133,6 +133,8 @@ The system follows a **three-layer microservices architecture**:
 | **Real-time** | WebSocket |
 | **Build Tool** | Maven 3.x |
 
+> **Note:** This project uses Spring Boot 2.1.x and Spring Cloud Greenwich, which have reached end-of-life. It remains a solid learning reference for microservices patterns, but production use should consider upgrading to a supported release train.
+
 ## Prerequisites
 
 - **Java** 8+
@@ -147,8 +149,8 @@ The system follows a **three-layer microservices architecture**:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/OiPunk/Rydr.git
-cd Rydr
+git clone https://github.com/OiPunk/rydr.git
+cd rydr
 ```
 
 ### 2. Configure Environment Variables
@@ -173,13 +175,15 @@ Key variables:
 
 > See [`.env.example`](.env.example) for the full list of configurable variables.
 
-### 3. Initialize the Database
+### 3. Start Infrastructure (Docker)
 
 ```bash
-mysql -u root -p < rydr-sql.sql
+docker compose up -d
 ```
 
-The SQL file creates **108 tables** covering orders, passengers, drivers, payments, configuration, and more.
+This starts MySQL (with schema auto-imported), Redis, ActiveMQ, and RabbitMQ. See [`docker-compose.yml`](docker-compose.yml).
+
+> **Without Docker:** install each service manually and run `mysql -u root -p < rydr-sql.sql` to import the schema (108 tables).
 
 ### 4. Start Services (in order)
 
@@ -229,7 +233,7 @@ cd rydr/rydr-zuul && mvn spring-boot:run
 ## Project Structure
 
 ```
-Rydr/
+rydr/                                    # Repository root
 ├── rydr/                        # Maven parent project
 │   ├── api-driver/                     # Driver API
 │   ├── api-listen-order/               # Order listener API

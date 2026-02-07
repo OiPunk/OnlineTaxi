@@ -6,7 +6,7 @@ Thank you for your interest in contributing to Rydr! This document provides guid
 
 ### Reporting Issues
 
-- Use the [GitHub Issues](https://github.com/OiPunk/Rydr/issues) page
+- Use the [GitHub Issues](https://github.com/OiPunk/rydr/issues) page
 - Include a clear title and description
 - Provide steps to reproduce the issue
 - Include relevant logs and screenshots

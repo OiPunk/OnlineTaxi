@@ -1,0 +1,52 @@
+version: "3.8"
+
+# Infrastructure services for local development.
+# Usage:
+#   docker compose up -d          # start all
+#   docker compose down -v        # stop and remove volumes
+
+services:
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-changeme}
+      MYSQL_DATABASE: ${DB_NAME:-rydr}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./rydr-sql.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  redis:
+    image: redis:6-alpine
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
+
+  activemq:
+    image: rmohr/activemq:5.15.9-alpine
+    ports:
+      - "${ACTIVEMQ_PORT:-61616}:61616"   # JMS
+      - "8161:8161"                        # Web console
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: ${ACTIVEMQ_USER:-admin}
+      ACTIVEMQ_ADMIN_PASSWORD: ${ACTIVEMQ_PASSWORD:-changeme}
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "${RABBITMQ_PORT:-5672}:5672"      # AMQP
+      - "15672:15672"                      # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+
+volumes:
+  mysql-data:
+  redis-data:
+  rabbitmq-data:

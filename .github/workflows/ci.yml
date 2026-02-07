@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: "8"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Compile
+        run: mvn compile -T 4 -B -q
+        working-directory: rydr
+
+      - name: Run tests
+        run: mvn test -T 4 -B -q -Dspring.profiles.active=test
+        working-directory: rydr
+        continue-on-error: true # Some tests need infrastructure
