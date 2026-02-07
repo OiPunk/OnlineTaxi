@@ -11,7 +11,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>com.rydr.taxi</groupId>
+	<groupId>com.rydr</groupId>
 	<artifactId>config-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>verificationCode</name>
@@ -68,7 +68,7 @@
 		
 		<!-- Reference custom common component -->
 		<dependency>
-			<groupId>com.rydr.taxi</groupId>
+			<groupId>com.rydr</groupId>
 			<artifactId>rydr-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

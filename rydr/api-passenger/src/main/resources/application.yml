@@ -46,7 +46,7 @@ feign:
     config:
       service-valuation:
 #        request-interceptors:
-#        - com.rydr.taxi.passenger.feign.interceptor.MyBasicAuthRequestInterceptor
+#        - com.rydr.passenger.feign.interceptor.MyBasicAuthRequestInterceptor
         connect-timeout: 5000
         read-timeout: 5000
         logger-level: basic
@@ -79,4 +79,4 @@ management:
 logging:
   level:
     org.springframework: DEBUG
-    com.rydr.taxi.passenger.feign.ServiceForecast: debug
+    com.rydr.passenger.feign.ServiceForecast: debug

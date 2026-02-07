@@ -46,7 +46,7 @@ mybatis:
   # MyBatis config file path
   config-location: classpath:mybatis/mybatis.cfg.xml
   # Package alias for entity classes
-  type-aliases-package: com.rydr.taxi.common
+  type-aliases-package: com.rydr.common
   # Mapper XML file locations
   mapper-locations:
   - classpath:mybatis/mapper/*.xml

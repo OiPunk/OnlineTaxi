@@ -5,7 +5,7 @@
 	
 
 
-    <groupId>com.rydr.taxi</groupId>
+    <groupId>com.rydr</groupId>
     <artifactId>rydr-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 		
@@ -21,7 +21,6 @@
 		<module>api-passenger</module>
 		
 		<!-- Service layer -->
-		<module>service-app-update</module>
 		<module>service-order</module>
 		<module>service-order-dispatch</module>
 		<module>service-passenger-user</module>

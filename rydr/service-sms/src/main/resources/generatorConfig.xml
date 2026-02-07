@@ -28,7 +28,7 @@
 		<!-- Remember to update the package name and target path -->
 		<!-- Package name and location for generated model classes -->
 		<javaModelGenerator
-				targetPackage="com.rydr.taxi.dao.entity"
+				targetPackage="com.rydr.dao.entity"
 				targetProject="src/main/java">
 			<property name="enableSubPackages" value="false" />
 			<!-- Whether to call trim() on String fields in setter methods -->
@@ -43,7 +43,7 @@
 
 		<!-- Package name and location for generated DAO classes -->
 		<javaClientGenerator type="XMLMAPPER"
-							 targetPackage="com.rydr.taxi.dao.mapper"
+							 targetPackage="com.rydr.dao.mapper"
 							 targetProject="src/main/java">
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>

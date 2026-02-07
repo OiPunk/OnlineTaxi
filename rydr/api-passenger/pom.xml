@@ -13,7 +13,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.rydr.taxi</groupId>
+	<groupId>com.rydr</groupId>
 	<artifactId>api-passenger</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api-passenger</name>
@@ -63,7 +63,7 @@
 
 		<!-- Reference custom common component -->
 		<dependency>
-			<groupId>com.rydr.taxi</groupId>
+			<groupId>com.rydr</groupId>
 			<artifactId>rydr-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

@@ -12,7 +12,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.rydr.taxi</groupId>
+	<groupId>com.rydr</groupId>
 	<artifactId>rydr-demo-app</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>

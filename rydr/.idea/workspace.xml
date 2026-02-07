@@ -4,42 +4,42 @@
     <list default="true" id="a2bfd1cd-f7c7-45fd-8582-1fc9e13f78bc" name="Default" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/controller/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/controller/ValuationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dao/DynamicDiscountRuleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dao/OrderDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dao/OrderRuleMirrorDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dao/OrderRulePriceDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dao/OrderRulePriceDetailDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dao/OrderRulePriceTagDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dao/cache/PriceCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dao/cache/RuleCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dto/DriveMeter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dto/ForecastDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dto/PriceMeter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dto/TimeMeter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dto/request/CurrentPriceRequestDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/dto/response/CurrentPriceResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/mapper/DynamicDiscountRuleMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/mapper/OrderMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/mapper/OrderRuleMirrorMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/mapper/OrderRulePriceDetailMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/mapper/OrderRulePriceMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/mapper/OrderRulePriceTagMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/service/ValuationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/service/impl/ValuationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/task/ValuationRequestTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/task/ValuationTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/util/PriceHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/util/TimeSlice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/util/UnitConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/controller/ValuationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dao/DynamicDiscountRuleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dao/OrderDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dao/OrderRuleMirrorDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dao/OrderRulePriceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dao/OrderRulePriceDetailDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dao/OrderRulePriceTagDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dao/cache/PriceCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dao/cache/RuleCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dto/DriveMeter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dto/ForecastDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dto/PriceMeter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dto/TimeMeter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dto/request/CurrentPriceRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/dto/response/CurrentPriceResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/mapper/DynamicDiscountRuleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/mapper/OrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/mapper/OrderRuleMirrorMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/mapper/OrderRulePriceDetailMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/mapper/OrderRulePriceMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/mapper/OrderRulePriceTagMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/service/ValuationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/service/impl/ValuationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/task/ValuationRequestTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/task/ValuationTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/util/PriceHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/util/TimeSlice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/util/UnitConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rydr-common/src/main/java/com/rydr/taxi/common/dto/ResponseResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/rydr-common/src/main/java/com/rydr/taxi/common/dto/ResponseResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rydr-common/src/main/java/com/rydr/taxi/common/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/rydr-common/src/main/java/com/rydr/taxi/common/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/valuation/ServiceValuationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/ServiceValuationApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/valuation/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/valuation/controller/ForecastController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/controller/ForecastController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rydr-common/src/main/java/com/rydr/common/dto/ResponseResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/rydr-common/src/main/java/com/rydr/common/dto/ResponseResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rydr-common/src/main/java/com/rydr/common/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/rydr-common/src/main/java/com/rydr/common/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/valuation/ServiceValuationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/ServiceValuationApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/valuation/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/valuation/controller/ForecastController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/controller/ForecastController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +74,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/taxi/valuation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/service-valuation/src/main/java/com/rydr/valuation" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
@@ -84,7 +84,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.rydr.taxi" />
+      <recent name="com.rydr" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\develop\GitHub\Rydr\rydr\service-valuation\src\main\java\com\online\taxi\valuation" />
@@ -106,70 +106,70 @@
     </configuration>
     <configuration name="ConfigClientDiyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="config-client-diy" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.taxi.ConfigClientDiyApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.ConfigClientDiyApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="RydrDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="rydr-demo-app" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.taxi.demo.RydrDemoApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.demo.RydrDemoApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ServiceJmsConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-jms-consumer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.taxi.jms.consumer.ServiceJmsConsumerApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.jms.consumer.ServiceJmsConsumerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ServiceJmsProduceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-jms-produce" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.taxi.jms.produce.ServiceJmsProduceApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.jms.produce.ServiceJmsProduceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ServiceOrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-order" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.taxi.order.ServiceOrderApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.order.ServiceOrderApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ServiceOrderDispatchApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-order-dispatch" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.taxi.order.dispatch.ServiceOrderDispatchApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.order.dispatch.ServiceOrderDispatchApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ServicePassengerUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-passenger-user" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.taxi.ServicePassengerUserApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.ServicePassengerUserApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ServiceValuationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-valuation" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.taxi.ServiceValuationApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.ServiceValuationApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ServiceWalletApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-wallet" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.taxi.wallet.ServiceWalletApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.wallet.ServiceWalletApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="VerificationCodeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="service-verification-code" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.taxi.VerificationCodeApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.rydr.VerificationCodeApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

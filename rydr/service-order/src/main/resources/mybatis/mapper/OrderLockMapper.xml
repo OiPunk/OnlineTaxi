@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.rydr.taxi.order.dao.OrderLockMapper" >
-  <resultMap id="BaseResultMap" type="com.rydr.taxi.common.entity.OrderLock" >
+<mapper namespace="com.rydr.order.dao.OrderLockMapper" >
+  <resultMap id="BaseResultMap" type="com.rydr.entity.OrderLock" >
     <id column="order_id" property="orderId" jdbcType="INTEGER" />
     <id column="driver_id" property="driverId" jdbcType="INTEGER" />
   </resultMap>
@@ -9,7 +9,7 @@
     delete from tbl_order_lock
     where order_id = #{orderId}
   </delete>
-  <insert id="insertSelective" parameterType="com.rydr.taxi.common.entity.OrderLock" >
+  <insert id="insertSelective" parameterType="com.rydr.entity.OrderLock" >
     insert into tbl_order_lock
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="orderId != null" >

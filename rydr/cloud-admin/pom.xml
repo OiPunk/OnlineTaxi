@@ -12,7 +12,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>com.rydr.taxi</groupId>
+	<groupId>com.rydr</groupId>
 	<artifactId>cloud-admin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cloud-admin</name>

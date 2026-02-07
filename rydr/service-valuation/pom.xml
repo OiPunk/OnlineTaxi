@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>com.rydr.taxi</groupId>
+	<groupId>com.rydr</groupId>
 	<artifactId>service-valuation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>service-valuation</name>
@@ -40,7 +40,7 @@
 
 		<!-- Reference custom common component -->
 		<dependency>
-			<groupId>com.rydr.taxi</groupId>
+			<groupId>com.rydr</groupId>
 			<artifactId>rydr-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
@@ -55,6 +55,25 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<!-- MyBatis -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+
+		<!-- MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
 

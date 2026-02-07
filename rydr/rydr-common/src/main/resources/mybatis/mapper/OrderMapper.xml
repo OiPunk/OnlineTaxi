@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.rydr.taxi.common.dao.OrderMapper" >
-  <resultMap id="BaseResultMap" type="com.rydr.taxi.common.entity.Order" >
+<mapper namespace="com.rydr.common.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.rydr.entity.Order" >
     <id column="orderId" property="orderid" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
@@ -18,11 +18,11 @@
     delete from tbl_order
     where orderId = #{orderid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.rydr.taxi.common.entity.Order" >
+  <insert id="insert" parameterType="com.rydr.entity.Order" >
     insert into tbl_order (orderId, status)
     values (#{orderid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.rydr.taxi.common.entity.Order" >
+  <insert id="insertSelective" parameterType="com.rydr.entity.Order" >
     insert into tbl_order
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="orderid != null" >
@@ -41,7 +41,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.rydr.taxi.common.entity.Order" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.rydr.entity.Order" >
     update tbl_order
     <set >
       <if test="status != null" >
@@ -50,7 +50,7 @@
     </set>
     where orderId = #{orderid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.rydr.taxi.common.entity.Order" >
+  <update id="updateByPrimaryKey" parameterType="com.rydr.entity.Order" >
     update tbl_order
     set status = #{status,jdbcType=INTEGER}
     where orderId = #{orderid,jdbcType=INTEGER}

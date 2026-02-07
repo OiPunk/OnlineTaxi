@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>com.rydr.taxi</groupId>
+	<groupId>com.rydr</groupId>
 	<artifactId>service-order-dispatch</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>service-order-dispatch</name>
@@ -43,7 +43,7 @@
 
 		<!-- Reference custom common component -->
 		<dependency>
-			<groupId>com.rydr.taxi</groupId>
+			<groupId>com.rydr</groupId>
 			<artifactId>rydr-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

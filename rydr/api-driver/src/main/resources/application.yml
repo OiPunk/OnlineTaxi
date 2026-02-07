@@ -38,7 +38,7 @@ eureka:
 #  ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 #    # Custom load balancing strategy
-#    NFLoadBalancerRuleClassName: com.rydr.taxi.driver.ribbonconfig.MsbRandomRule
+#    NFLoadBalancerRuleClassName: com.rydr.driver.ribbonconfig.MsbRandomRule
 
 #service-valuation:
 #  ribbon:
